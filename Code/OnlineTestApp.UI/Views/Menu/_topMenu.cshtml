@@ -1,0 +1,26 @@
+﻿@model OnlineTestApp.Domain.User.ApplicationUsers
+<nav class="navbar-top fixed-top flex-md-nowrap bg-primary py-0">
+    <a class="navbar-brand mr-0" href="javascript:void(0)">
+        <img src="~/Templates/Themes/CommonTheme/images/logo.png" style="max-width:200px">
+    </a>
+    <span class="px-4 menu-toggle" id="menu-toggle"
+          data-just-post-me="true"
+          data-showblackimage="false"
+          data-process-url="/menu/changeusermenusetting">
+        <i class="fa fa-bars" aria-hidden="true" style="font-size: 16px;"></i>
+        @if (!Model.ApplicationUserSettings.IsMenuOpen)
+        {
+            <input type="hidden" id="closeMenu" value="true" />
+        }
+    </span>
+    <div class="btn-group">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="~/Templates/Themes/CommonTheme/images/user-profile.png" style="max-width: 42px;" class="user-profile mr-2">  @Model.FullName
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/myaccount/editprofile">Edit Profile</a>
+            <a class="dropdown-item" href="/myaccount/changepassword">Change Password</a>
+            <a class="dropdown-item" href="/userMemberShip/logout">Logout</a>
+        </div>
+    </div>
+</nav>

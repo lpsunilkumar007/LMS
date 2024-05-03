@@ -1,0 +1,58 @@
+﻿@model OnlineTestApp.Domain.Candidate.CandidateTestQuestions
+
+<ul class="list-unstyled static-table">
+
+    <li>
+        <div class="rTableHead candidtae-TR-first">
+            Options
+        </div>
+
+        <div class="rTableHead text-center">
+            Answered
+        </div>
+
+        <div class="rTableHead text-center">
+            Correct
+        </div>
+    </li>
+
+    @foreach (var option in @Model.LstCandidateTestQuestionOptions.Where(x => x.IsDeleted == false).OrderBy(x => x.DisplayOrder))
+    {
+        <li>
+            @{
+                var attempted = option.IsCandidateAnswered ? "checked" : "";
+
+                var labelClass = (option.IsCorrect ? "bg-success" : (option.IsCandidateAnswered ? "bg-danger" : ""));
+                var spanClass = (option.IsCorrect ? "far fa-check" : (option.IsCandidateAnswered ? "fas fa-times" : ""));
+                <div class="custom-control custom-checkbox rTableCell candidtae-TR-first">
+                    <input type="checkbox" id="customCheckbox_@option.FkQuestionId@option.DisplayOrder" name="customCheckbox_@option.FkQuestionId" class="custom-control-input">
+                    <label class="custom-control-label" for="customCheckbox_@option.FkQuestionId@option.DisplayOrder">@option.QuestionAnswer</label>
+
+                </div>
+            }
+            <div class="rTableCell text-center">
+                @if (option.IsCandidateAnswered && option.IsCorrect)
+                {
+                    if (option.IsCorrect)
+                    {<i class="fa fa-check"></i>}
+                    else
+                    {<i class="fa fa-times"></i>
+                    }
+                }
+
+            </div>
+
+            <div class="rTableCell text-center">
+                @if (option.IsCorrect)
+                {
+                    <i class="fa fa-check"></i>
+                }
+            </div>
+        </li>
+    }
+
+</ul>
+
+
+
+

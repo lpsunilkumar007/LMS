@@ -1,0 +1,54 @@
+﻿<div id="time-tab" class="invite-test-tabs d-none">
+    <h3> 3. Select Time Duration </h3>
+
+    <div class="row tim-tab">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-6">
+            <a onclick="checkTestDurationRadio('testDuration-option1')" class="time-dur">
+                <i class="fa fa-hourglass-half" aria-hidden="true"></i> <span>45 <br>min</span>
+                <input type="radio" id="testDuration-option1" name="testDuration" class="custom-control-input " value="45">
+            </a>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-6">
+            <a onclick="checkTestDurationRadio('testDuration-option2')" class="time-dur selected-duration">
+                <i class="fa fa-hourglass-half" aria-hidden="true"></i> <span>60 <br>min</span>
+                <input type="radio" id="testDuration-option2" name="testDuration" class="custom-control-input " value="60" checked>
+            </a>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-6">
+            @*<a onclick="checkTestDurationRadio('testDuration-option3')" class="time-dur">
+                <i class="fa fa-hourglass-half" aria-hidden="true"></i> <span>90 <br>min</span>
+                <input type="radio" id="testDuration-option3" name="testDuration" class="custom-control-input " value="90">
+            </a>*@
+
+            <a  class="time-dur">
+                <i class="fa fa-hourglass-half" aria-hidden="true"></i> <span>90 <br>min</span>
+                @*<input type="radio" id="testDuration-option3" name="testDuration" class="custom-control-input " value="90">*@
+            </a>
+        </div>       
+    </div>
+
+
+    <div class="alert alert-danger d-none " id="duration-tab-error">
+        Please select  duration 
+    </div>
+
+    <div class="new-field mt-5">
+        <h3> 4. Negative Marking </h3>
+        <div class="col tim-tab clearfix">
+            <div class="custom-control custom-radio">
+                <input type="radio" id="isNegative-option1" name="IsNagativeMarking" class="custom-control-input" value="true">
+                <label class="custom-control-label" for="isNegative-option1">Yes</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="isNegative-option2" name="IsNagativeMarking" class="custom-control-input" value="false" checked>
+                <label class="custom-control-label" for="isNegative-option2">No</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="note mt-4"> Please choose duration & Negative marking option. This will be used to fetch questions for preparing the test </div>
+    <div class="right-btn float-right mt-4">
+        <button type="button" class="btn btn-default btn-block" onclick="testDurationSubmit()">Prepare test <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+    </div>
+
+</div>

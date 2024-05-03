@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css")   
+</head>
+<body>
+    <!--  Header start-->
+    @{Html.RenderAction("_topMenu", "Menu"); }
+    <!--  Header Ends -->
+    <section id="main">
+        <div class="container-fluid">
+            <div class="row">
+                <aside class=" col-lg-4 col-md-4 col-sm-12 col-xs-12 left-side">
+                    <div class="dashboard">
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i> Site Information</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-cogs" aria-hidden="true"></i> Administrator</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Reports</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-comments" aria-hidden="true"></i> Help</a></li>
+                        </ul>
+
+
+                        <div class="content-side-left mt-5">
+                            <div class="card-box">
+                                <div class="icon-card">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="content-card">
+                                    <h2 class="text-white">145</h2>
+                                    <p>Total Candidates</p>
+                                </div>
+                            </div>
+                            <div class="card-box">
+                                <div class="icon-card">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="content-card">
+                                    <h2 class="text-white">105</h2>
+                                    <p>Passed Candidates</p>
+                                </div>
+                            </div>
+                            <div class="card-box">
+                                <div class="icon-card">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="content-card">
+                                    <h2 class="text-white">20</h2>
+                                    <p>Shortlisted  Candidate</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </aside>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 right-side">
+                    <div class="right-panel">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <!-- row -->
+        </div>
+    </section>
+    <!-- main-->
+    <footer>
+        <ul class="footer-menu">
+            <li> Copyright @DateTime.Now.Year ITCM Terms & Conditions </li>
+            <li> <a href="#"> How it works </a> </li>
+            <li> <a href="#">Contact us</a> </li>
+        </ul>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    @Scripts.Render("~/CompanyJs")
+    <div id="company-modal-pop-up" class="modal" role="dialog">
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

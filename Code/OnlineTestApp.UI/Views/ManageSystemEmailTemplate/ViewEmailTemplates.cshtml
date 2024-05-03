@@ -1,0 +1,109 @@
+﻿@model OnlineTestApp.ViewModel.Email.ViewSystemEmailTemplate
+@{
+    ViewBag.PageTitle = "View System Email Templates";
+    
+}
+
+@section PageHeading
+{
+    Email Templates
+}
+@section PageSubHeading
+{
+    View System Email Templates
+}
+@section PageBreadCrum
+{
+    <li><a href="/managesystememailtemplate/viewemailtemplates">Email Templates</a></li>
+    <li class="active">View System Email Templates</li>
+}
+
+@*<form role="form" method="get">
+    <div class="card-body card-box-body">
+        <div class="form-row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Company</label>
+                    @Html.DropDownListFor(m => m.CompanyId, new SelectList(Model.LstCompany, "CompanyId", "CompanyName"), "Not assigned")
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <a href="/managesystememailtemplate/viewemailtemplates" class="btn btn-secondary">
+                        Reset
+                        &nbsp; <i class="fa fa-refresh position-right"></i>
+                    </a>
+                    <button class="btn btn-info" value="Search">Search &nbsp;<i class="fa fa-search"></i></button>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+</form>*@
+
+
+<div class="bg-white p-3 mt-4 card-box-body">
+    @if (Model.LstEmailTemplates.Count > 0)
+    {
+
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" placeholder="Search....." data-filter-grid="true" data-filter-grid-id="filter-me">
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="data-grid pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:20%">Email template name</th>
+                        <th style="width:60%">Template Description</th>
+                        <th style="width:10%">Created At</th>
+                        <th style="width:10%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="filter-me">
+
+                    @foreach (var emailTemplate in Model.LstEmailTemplates)
+                    {
+                        <tr>
+                            <td>
+                                @emailTemplate.EmailTemplateName
+                            </td>
+                            <td>@emailTemplate.EmailTemplateDescription</td>
+                            <td><time>@emailTemplate.CreatedDateTime_ToLongDateString</time></td>
+
+                            <td class="tr-action">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="javascript:void(0)"
+                                           data-inline-popup="true"
+                                           data-process-url="/managesystememailtemplate/assignemailtemplatetocompany?emailTemplateId=@emailTemplate.EmailTemplateId"
+                                           data-window-id="AssignEmailTemplateToCompany" data-pop-width="500" data-pop-height="400" class="dropdown-item">Assign<i class="fas fa-tasks"></i></a>
+
+                                         <a href="/managesystememailtemplate/editemailtemplate/?emailTemplateId=@emailTemplate.EmailTemplateId" class="dropdown-item">Edit <i class="fas fa-edit"></i></a>
+                                        <a href="javascript:void(0)"
+                                           data-inline-delete="true" data-succuss-message="Record deleted successfully" class="dropdown-item"
+                                           data-process-url="/managesystememailtemplate/deleteemailtemplate?emailTemplateId=@emailTemplate.EmailTemplateId">Delete<i style="" class="fas fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+    }
+</div>

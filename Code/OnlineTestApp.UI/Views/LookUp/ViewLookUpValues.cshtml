@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.PageTitle ="";
+}
+
+@section PageHeading
+{
+    Settings
+}
+@section PageSubHeading
+{
+    Manage {{LooUpValues.LookUpDomain.LookUpDomainDescription}}
+}
+@section PageBreadCrum
+{
+    <li>Settings</li>
+    <li class="active">Manage </li>
+
+}
+<div ng-controller="LookUpController" ng-init="GetLookUpValue('@ViewBag.lookUpDomainCode')">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-group pull-right">
+                <a data-inline-popup="true"
+                   data-process-url="/lookup/addlookupdomainvalue?lookupdomainid={{LooUpValues.LookUpDomain.LookUpDomainId}}"
+                   data-window-id="Add"
+                   data-pop-width="500"
+                   data-pop-height="700"
+                   class="btn btn-info pull-right">Add New &nbsp;<i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-3 mt-4 card-box-body" ng-show="LooUpValues.TotalRecords>0">
+
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" placeholder="Search....." data-filter-grid="true" data-filter-grid-id="filter-me">
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+            </div>
+        </div>
+        <div class="data-grid pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Value</th>
+                        <th>Is Active</th>
+                        <th>Display Order</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="filter-me">
+                    <tr ng-repeat="lookUpDomainValue in LooUpValues.LookUpDomain.LstLookUpDomainValue">
+                        <td>{{lookUpDomainValue.LookUpDomainValueText}}</td>
+                        <td>
+                            {{lookUpDomainValue.IsActive_YesNo}}
+                        </td>
+                        <td>
+                            {{lookUpDomainValue.DisplayOrder}}
+                        </td>
+                        <td>
+                            {{lookUpDomainValue.CreatedDateTime_ToLongDateString}}
+                        </td>
+                        <td class="tr-action">
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <a href="javascript:void(0)"
+                                       data-inline-popup="true"
+                                       data-process-url="/lookup/editlookupdomainvalue?lookUpDomainValueId={{lookUpDomainValue.LookUpDomainValueId}}"
+                                       data-window-id="EditlookUpDomainValue" data-pop-width="500" data-pop-height="700" class="dropdown-item">Edit<i class="fas fa-edit"></i></a>
+
+
+
+                                    <a href="javascript:void(0)" ng-show="lookUpDomainValue.CanDeleteRecord"
+                                       data-inline-delete="true" data-succuss-message="Record deleted successfully" class="dropdown-item"
+                                       data-process-url="/lookup/deletelookUpDomainValue?lookUpDomainValueId={{lookUpDomainValue.LookUpDomainValueId}}">Delete<i style="" class="fas fa fa-trash"></i></a>
+
+
+                                </div>
+                            </div>
+                        </td>
+
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+

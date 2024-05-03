@@ -1,0 +1,175 @@
+﻿@model OnlineTestApp.ViewModel.Test.ViewTestViewModel
+@{
+    ViewBag.PageTitle = "View Tests";
+
+}
+@section PageHeading
+{
+    Manage Test
+}
+@section PageSubHeading
+{
+    View Test
+}
+@section PageBreadCrum
+ {
+    <li><a href="/test/viewtests">Manage Test</a></li>
+    <li class="active"> View Test</li>
+}
+<form role="form" method="get">
+    <div class="card-body card-box-body">
+        <div class="form-row">
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Test Title</label>
+                    @Html.TextBoxFor(m => m.TestTitle)
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Test Technology</label>
+                    @Html.DropDownListFor(m => m.TestTechnology, new SelectList(Model.LstTestTechnology, "LookUpDomainValueId", "LookUpDomainValueText"), "Please Select")
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Test Level</label>
+                    @Html.DropDownListFor(m => m.TestLevel, new SelectList(Model.LstTestLevel, "LookUpDomainValueId", "LookUpDomainValueText"), "Please Select")
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <a href="/test/viewtests" class="btn btn-secondary">
+                        Reset
+                        &nbsp; <i class="fa fa-refresh position-right"></i>
+                    </a>
+
+                    <button class="btn btn-info" value="Search">Search &nbsp;<i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                <div class="form-group">
+                    <label>Expired</label>
+                    <div style="padding:20px;width:20px" class="bg-danger"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="card-box-body card-body mt-4">
+    @if (Model.LstTestDetails.Count > 0)
+    {
+        string sorting = Model.SortBy;
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" data-filter-grid="true" data-filter-grid-id="filter-tests" placeholder="search" />
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                @{
+                    Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize, isTopPaging = true });
+                }
+            </div>
+        </div>
+        <div class="data-grid pt-3">
+            <table class="display datatable-pagination table table-stripped dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+                        @switch (sorting)
+                        {
+                            case "TestTitle asc":
+                                <th class="sorting_asc"><a href="?sortBy=TestTitle desc">Test Title</a></th>
+                                break;
+                            case "TestTitle desc":
+                                <th class="sorting_desc"><a href="?sortBy=TestTitle asc">Test Title</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=TestTitle asc">Test Title</a></th>
+                                break;
+                        }
+                        <th>Test Description</th>
+
+                        @switch (sorting)
+                        {
+                            case "TotalCandidates asc":
+                                <th class="sorting_asc"><a href="?sortBy=TotalCandidates desc">Total Candidates</a></th>
+                                break;
+                            case "TotalCandidates desc":
+                                <th class="sorting_desc"><a href="?sortBy=TotalCandidates asc">Total Candidates</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=TotalCandidates asc">Total Candidates</a></th>
+                                break;
+                        }
+                        @switch (sorting)
+                        {
+                            case "ValidUpTo asc":
+                                <th class="sorting_asc"><a href="?sortBy=ValidUpTo desc">Valid Upto</a></th>
+                                break;
+                            case "ValidUpTo desc":
+                                <th class="sorting_desc"><a href="?sortBy=ValidUpTo asc">Valid Upto</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=ValidUpTo asc">Valid Upto</a></th>
+                                break;
+                        }
+                        @switch (sorting)
+                        {
+                            case "CreatedDateTime asc":
+                                <th class="sorting_asc"><a href="?sortBy=CreatedDateTime desc">Created At</a></th>
+                                break;
+                            case "CreatedDateTime desc":
+                                <th class="sorting_desc"><a href="?sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                        }
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="filter-tests">
+                    @foreach (var data in Model.LstTestDetails)
+                    {
+                        <tr @(data.IsTestExpired ? "class=bg-danger" : "")>
+                            <td>@data.TestTitle</td>
+                            <td>@data.TestIntroductoryText</td>
+                            <td>
+                                <a class="btn btn-secondary" href="/test/viewinvitedtestcandidates/?testDetailId=@data.TestDetailId">@data.TotalCandidates</a>
+                            </td>
+                            <td><time>@data.ValidUpTo</time></td>
+                            <td><time>@data.CreatedDateTime_ToLongDateString</time></td>
+                            <td class="tr-action actionsBtn">
+
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="/test/edittest/@data.TestDetailId" class="dropdown-item">Edit <i class="fas fa-pencil-alt"></i></a>
+                                        <a href="javascript:void(0)" class="dropdown-item"
+                                           data-inline-delete="true" data-succuss-message="Test deleted successfully"
+                                           data-process-url="/test/deletetest?testDetailId=@data.TestDetailId">Delete<i class="fas fa-trash"></i></a>
+                                        @*<a href="/test/inviteagain/@data.TestDetailId" class="dropdown-item">Invite Again <i class="fas fa-envelope"></i></a>*@
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>}
+                </tbody>
+            </table>
+        </div>
+        Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize });
+    }
+    else
+    {
+        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+    }
+</div>

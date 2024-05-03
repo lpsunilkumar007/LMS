@@ -1,0 +1,6 @@
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\bin\Release\OnlineTestApp.Enums.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\bin\Release\OnlineTestApp.Enums.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Release\OnlineTestApp.Enums.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Release\OnlineTestApp.Enums.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Release\OnlineTestApp.Enums.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Release\OnlineTestApp.Enums.csprojResolveAssemblyReference.cache

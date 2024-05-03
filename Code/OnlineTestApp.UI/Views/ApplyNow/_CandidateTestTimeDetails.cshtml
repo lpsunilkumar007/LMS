@@ -1,0 +1,89 @@
+﻿@model OnlineTestApp.ViewModel.ApplyNow.Step3CandidateTestViewModel
+
+<div class="top-breadcrumb">
+    <div class="row">
+        @if (Model != null)
+        {
+            TimeSpan testDuration = (@Model.CandidateTestDetails.EndTime - OnlineTestApp.DateSettings.CurrentDateTime);
+
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <p>@Model.TestDetails.TestTitle:  <a href="javascript:void(0)">@Model.TestDetails.TestIntroductoryText</a></p>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <h4>Time Left: <span id="test-timer"> </span>/<span>@Model.CandidateTestDetails.StrTotalTime</span></h4>
+            </div>
+            <script>
+             var testTotalTime  ='@testDuration.Hours:@testDuration.Minutes:@testDuration.Seconds';
+             var testTotalTimeArr = testTotalTime.split(':');
+             var testTotalhours = testTotalTimeArr[0] == null ? 0 : testTotalTimeArr[0];;
+             var testTotalminutes = testTotalTimeArr[1] == null ? 0 : testTotalTimeArr[1];
+             var testTotalseconds = testTotalTimeArr[2] == null ? 0 : testTotalTimeArr[2];
+             var testTotalmillis = testTotalseconds * 1000 +testTotalminutes * 60 * 1000 + testTotalhours * 60 * 60 * 1000;
+             var testCheckCounter = 0;
+                setInterval(function () {
+                    testCheckCounter++;
+                    if (testCheckCounter % 4 == 0) {
+                        var data = { candidateTestDetailsId: '@Model.CandidateTestDetails.FkCandidateAssignedTestId' }
+                        PostData("/applynow/IsTestValidByCandidateTestDetailsId", data, TestValidByCandidateTestDetailsIdSuccess, false);
+                    }
+                    testTotalmillis -= 1000;
+                    displayTestTimer();
+                }, 1000);
+                function TestValidByCandidateTestDetailsIdSuccess(result) {
+                    if (result == "Test already completed") {
+                        var data = { Message: "", RedirectUrl:"/applynow/applyfortest" };
+                        AjaxRedirectToUrlSuccessfully(data);
+                    }
+
+                    if (result == "Test time expired") {
+                        var data = { Message: "Test time expired", RedirectUrl: "/applynow/applyfortest" };
+                        AjaxRedirectToUrlSuccessfully(data);
+                    }
+        else {
+            // check for question
+            var data = {
+                candidateTestQuestionId:$("#CandidateTestQuestionId").val()
+            }
+                PostData("/candidate/isquestionvalidbycandidatetestquestionid", data, QuestionValidByCandidateTestQuestionIdSuccess, false);
+       }
+    }
+
+    function QuestionValidByCandidateTestQuestionIdSuccess(result) {
+    //alert(result);
+    if (result) {
+        if (result.Item2 == -1) {
+            // question is already answered
+            GetNextQuestion();
+
+        }
+                if (result.Item2 == -2) {
+                    NextQuestion();
+            // skip the  question ???
+
+
+        }
+      }
+    }
+
+    function displayTestTimer() {
+        var hours = Math.floor(testTotalmillis / 36e5),
+            mins = Math.floor((testTotalmillis % 36e5) / 6e4),
+            secs = Math.floor((testTotalmillis % 6e4) / 1000);
+        //Here, the DOM that the timer will appear using jQuery
+        if (hours <= 0 && mins <= 0 && secs <= 0) {
+           // e.preventDefault();
+           // alert("test time is over");
+        }
+        else {
+            $('#test-timer').html(hours + ':' + mins + ':' + secs);
+        }
+    }
+            </script>
+
+        }
+    </div>
+</div>
+
+
+
+

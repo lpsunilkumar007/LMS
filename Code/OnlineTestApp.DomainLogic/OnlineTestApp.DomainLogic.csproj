@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DDC238FB-4D98-4E89-BBE7-E9824D0C4CC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineTestApp.DomainLogic</RootNamespace>
+    <AssemblyName>OnlineTestApp.DomainLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\ApplyNow\ProcessApplyNowDomainLogic.cs" />
+    <Compile Include="Admin\BaseClasses\DomainLogicBase.cs" />
+    <Compile Include="Admin\Candidate\EmailCandidateDomainLogic.cs" />
+    <Compile Include="Admin\Candidate\ManageCandidateDomainLogic.cs" />
+    <Compile Include="Admin\Common\CompanyDomainLogic.cs" />
+    <Compile Include="Admin\Common\EmailDomainLogic.cs" />
+    <Compile Include="Admin\Common\LookUpDomainValuesDomainLogic.cs" />
+    <Compile Include="Admin\Common\QuestionDomainLogic.cs" />
+    <Compile Include="Admin\Common\UserDomainLogic.cs" />
+    <Compile Include="Admin\ManageCompany\ManageCompanyDomainLogic.cs" />
+    <Compile Include="Admin\EmailTemplate\ManageAdminEmailTemplateDomainLogic.cs" />
+    <Compile Include="Admin\EmailTemplate\ManageSystemEmailTemplateDomainLogic.cs" />
+    <Compile Include="Admin\Email\EmailLogDomainLogic.cs" />
+    <Compile Include="Admin\Email\SendEmailDomainLogic.cs" />
+    <Compile Include="Admin\LookUps\LookUpDomainDomainLogic.cs" />
+    <Compile Include="Admin\LookUps\LookUpDomainValueDomainLogic.cs" />
+    <Compile Include="Admin\Menu\MenuDomainLogic.cs" />
+    <Compile Include="Admin\MyAccount\MyAccountDomainLogic.cs" />
+    <Compile Include="Admin\SampleTest\SampleTestDomainLogic.cs" />
+    <Compile Include="Admin\UserMemberShip\UserLoginDomainLogic.cs" />
+    <Compile Include="Admin\User\ManageUsersDomainLogic.cs" />
+    <Compile Include="Admin\User\ManageUserSettingsDomainLogic.cs" />
+    <Compile Include="Company\CandidateDomainLogic.cs" />
+    <Compile Include="Company\CompanyUserDomainLogic.cs" />
+    <Compile Include="Company\InviteTestDomainLogic.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Admin\Question\ManageQuestionsDomainLogic.cs" />
+    <Compile Include="Admin\Candidate\AssignTestToCandidateDomainLogic.cs" />
+    <Compile Include="Admin\Settings\FileSystemDomainLogic.cs" />
+    <Compile Include="Admin\Test\ManageTestDomainLogic.cs" />
+    <Compile Include="Admin\ApplyNow\ApplyNowDomainLogic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnLineTestApp.DataAccess\OnlineTestApp.DataAccess.csproj">
+      <Project>{8e310a58-ce49-4175-9451-eaa537c7549f}</Project>
+      <Name>OnlineTestApp.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Domain\OnlineTestApp.Domain.csproj">
+      <Project>{0f0a4be7-8d08-449c-ab52-2e51584bc6cb}</Project>
+      <Name>OnlineTestApp.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Enums\OnlineTestApp.Enums.csproj">
+      <Project>{70386b26-6aac-4653-beba-81a68f611353}</Project>
+      <Name>OnlineTestApp.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Settings\OnlineTestApp.Settings.csproj">
+      <Project>{eee94b8f-b218-4d2c-9f95-d0a51f9b1f9f}</Project>
+      <Name>OnlineTestApp.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.UserVariables\OnlineTestApp.UserVariables.csproj">
+      <Project>{cd8eb6c5-8107-4ec8-956f-1c817dc2d585}</Project>
+      <Name>OnlineTestApp.UserVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.ViewModel\OnlineTestApp.ViewModel.csproj">
+      <Project>{04abcaed-84fc-4477-8d04-0729ab1a2d57}</Project>
+      <Name>OnlineTestApp.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Conversion\Utilities.Conversion.csproj">
+      <Project>{67f4d2f5-b9db-4f6b-b03f-fd389c116f15}</Project>
+      <Name>Utilities.Conversion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.EmailSender\Utilities.EmailSender.csproj">
+      <Project>{6c2bde55-09f8-49f8-aa32-6ad4f38218b3}</Project>
+      <Name>Utilities.EmailSender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Encryption\Utilities.Encryption.csproj">
+      <Project>{9c39781e-7601-4e58-bfee-2eb4c74011b0}</Project>
+      <Name>Utilities.Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.ErrorLog\Utilities.ErrorLog.csproj">
+      <Project>{b37509c6-47d0-41ba-bc09-ded0d93fd721}</Project>
+      <Name>Utilities.ErrorLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Export\Utilities.Export.csproj">
+      <Project>{78fac066-d639-481d-a286-a2819cfa3f65}</Project>
+      <Name>Utilities.Export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.FileSystem\Utilities.FileSystem.csproj">
+      <Project>{bbc50f7e-e796-4f96-9906-3c5919be92f3}</Project>
+      <Name>Utilities.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Helper\Utilities.Helper.csproj">
+      <Project>{fda6780b-4e2f-44e0-acec-d4ca6ec1a76e}</Project>
+      <Name>Utilities.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

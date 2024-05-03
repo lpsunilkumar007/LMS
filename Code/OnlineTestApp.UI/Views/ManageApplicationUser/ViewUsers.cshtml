@@ -1,0 +1,163 @@
+﻿@model OnlineTestApp.ViewModel.User.ViewApplicationUserViewModel
+@{
+    ViewBag.PageTitle = "View Users";
+
+}
+@section PageHeading
+{
+    Manage Users
+}
+
+@section PageSubHeading
+{
+    View Users
+}
+@section PageBreadCrum
+ {
+    <li><a href="/manageapplicationuser/viewusers">Manage Users</a></li>
+    <li class="active"> View Users</li>
+}
+<form role="form" method="get">
+
+
+    <div class="card-body card-box-body">
+        <div class="form-row">
+           
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>UserName/Name/Email/Mobile/Alt Number</label>
+                    @Html.TextBoxFor(m => m.FreeTextBox)
+
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Company</label>
+                    @Html.DropDownListFor(m => m.CompanyId, new SelectList(Model.LstCompanies, "CompanyId", "CompanyName"), "Please Select")
+                </div>
+            </div>
+            
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <a href="/manageapplicationuser/viewusers" class="btn btn-secondary">
+                        Reset
+                        &nbsp; <i class="fa fa-refresh "></i>
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Search
+                        &nbsp; <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+<div class="bg-white p-3 mt-4 card-box-body">
+    @if (Model.LstApplicationUsers.Count > 0)
+    {
+        string sorting = Model.SortBy;
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="search-data">
+                    <input type="text" placeholder="Search....." data-filter-grid="true" data-filter-grid-id="filter-me">
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                @{
+                    Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize, isTopPaging = true });
+                }
+            </div>
+        </div>
+        <div class="data-grid pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        @switch (sorting)
+                        {
+                            case "UserName asc":
+                                <th class="sorting_asc"><a href="@Model.QueryString&sortBy=UserName desc">User Name</a></th>
+                                break;
+                            case "UserName desc":
+                                <th class="sorting_desc"><a href="@Model.QueryString&sortBy=UserName asc">User Name</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="@Model.QueryString&sortBy=UserName asc">User Name</a></th>
+                                break;
+                        }                        
+                        <th>Details</th>
+                        @switch (sorting)
+                        {
+                            case "UserCompany.CompanyName asc":
+                                <th class="sorting_asc"><a href="@Model.QueryString&sortBy=UserCompany.CompanyName desc">Company</a></th>
+                                break;
+                            case "UserCompany.CompanyName desc":
+                                <th class="sorting_desc"><a href="@Model.QueryString&sortBy=UserCompany.CompanyName asc">Company</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="@Model.QueryString&sortBy=UserCompany.CompanyName asc">Company</a></th>
+                                break;
+                        }  
+                         
+                        <th>User Role</th>
+                        @switch (sorting)
+                        {
+                            case "CreatedDateTime asc":
+                                <th class="sorting_asc"><a href="@Model.QueryString&sortBy=CreatedDateTime desc">Created At</a></th>
+                                break;
+                            case "CreatedDateTime desc":
+                                <th class="sorting_desc"><a href="@Model.QueryString&sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="@Model.QueryString&sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                        }
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="filter-me">
+                    @foreach (var user in Model.LstApplicationUsers)
+                {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td>
+                                Name : @user.FullName <br />
+                                E : @user.EmailAddress <br />
+                                M : @user.MobileNumber <br />
+                                Alt : @user.AlternateNumber <br />
+                            </td>
+                            <td>@user.UserCompany.CompanyName</td>
+                            <td>@user.ApplicationUserRoles.UserRoleName</td>
+                            <td><time>@user.CreatedDateTime_ToLongDateString</time></td>
+                            <td class="tr-action">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="/manageapplicationuser/edituser/?applicationUserId=@user.ApplicationUserId" class="dropdown-item">Edit <i class="fas fa-edit"></i></a>
+                                        <a href="javascript:void(0)"
+                                           data-inline-delete="true" data-succuss-message="User deleted successfully"
+                                           data-process-url="/manageapplicationuser/deleteuser?applicationUserId=@user.ApplicationUserId" class="dropdown-item">Delete<i class="fas fa fa-trash"></i></a>
+                                    </div>
+                                </div>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+                        Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize });
+                    }
+                    else
+                    {
+                        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+                    }
+
+</div>

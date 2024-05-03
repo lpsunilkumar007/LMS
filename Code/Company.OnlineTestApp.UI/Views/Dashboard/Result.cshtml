@@ -1,0 +1,109 @@
+﻿@model OnlineTestApp.ViewModel.Company.CandidateTestReportsViewModel
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_CompanyMaster.cshtml";
+
+}
+<div class="dashboard-result">
+    <div class="card">
+        <div class="card-body">
+
+            <div class="top-row clearfix">
+                <h3 class="float-left"><img src="/Template/Company/images/srch-icon.png" align="srch-cion">Test Results</h3>
+                <div class="export float-right"> <a href="#"> <img src="/Template/Company/images/xl-icon.png" align="export excel icon"> </a></div>
+
+            </div>
+
+            <!-- top-row --->
+            <div class="table-search clearfix">
+                <div class="input-group">
+                    <input class="form-control border-secondary py-2" type="search" placeholder="search" data-filter-grid="true"  data-filter-grid-id="test-paper-results-tbody">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <table id="test-paper-results" class="tablesorter rTable">
+                <thead class="">
+                    <tr class="rTableRow">
+                        <th class="rTableHead test-date sorting">Test Name </th>
+                        <th class="rTableHead attempt sorting">Attempted </th>
+                        <th class="rTableHead passed sorting">	Passed </th>
+                        <th class="rTableHead failed sorting">Failed</th>
+                    </tr>
+                </thead>
+                <tbody id="test-paper-results-tbody">
+                    @foreach (var testPaper in Model.LstTestPaperReport)
+                    {
+                        <tr class="rTableRow">
+                            <td class="rTableCell rTableCellLinked rtablecellTestName" data-th="Test Name" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',1)">
+                                @testPaper.TestName
+                            </td>
+                            <td class="rTableCell rTableCellLinked AttemptedTestTD" data-th="Attempted" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',4)">
+                                @*   here is the spanns for attempted/total  *@
+                                <div class="AttemptedTestResult">
+                                    <span> @testPaper.TotalAttempted  </span>/<span> @testPaper.Total </span>
+                                    <span class="AttemptedText">(Attempted/ Total)</span>
+                                </div>
+
+                                <div class="progress-top">
+                                    <span> @testPaper.TotalAttempted  </span>/<span> @testPaper.Total </span>
+                                    <span class="AttemptedText">(Attempted/ Total)</span>
+                                </div>
+
+                                <div class="progress">
+                                    <div class="progress-bar bg-orange" style="width:@testPaper.PerAttempt%">@testPaper.PerAttempt%</div>
+                                </div>
+                            </td>
+                            @if (testPaper.TotalPassed != 0)
+                            {
+                                <td class="rTableCell passed rTableCellLinked" data-th="Passed" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',2)">
+                                    @testPaper.TotalPassed
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="rTableCell  rTableCellLinked" data-th="Passed"></td>
+                            }
+                            @if (testPaper.TotalFail != 0)
+                            {
+                                <td class="rTableCell failed rTableCellLinked" data-th="Failed" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',3)">
+
+                                    <span> @testPaper.TotalFail </span>
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="rTableCell  rTableCellLinked" data-th="Failed"></td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/Template/Plugins/TableSorter/jquery.tablesorter.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#test-paper-results").tablesorter({
+                headers: { 0: { sorter: false }, 1: { sorter: false } },
+                // sort on the first column and third column, order asc
+                //sortList: [[0, 0], [2, 0]]
+                sortList: [[0, 0]]
+            });
+            $("header").addClass('result-nav');
+            $(".right-panel").addClass('result-right-panel');
+        }
+        );
+    </script>
+}

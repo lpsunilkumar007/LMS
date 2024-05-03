@@ -1,0 +1,84 @@
+﻿@model OnlineTestApp.ViewModel.Candidate.CandidateTestResultViewModel
+@{
+    ViewBag.Title = "TestResult";
+    Layout = "~/Views/Shared/_CandidateMaster.cshtml";
+}
+<div class="right-panel">
+    <div class="dashboard-result">
+        @if (Model.TestInvitation != null && Model.LstCandidateTestQuestions != null)
+        {
+            <div class="top-row clearfix">
+                <h3>
+                    <img src="~/Template/Candidate/images/srch-icon.png" align="srch-cion"> Result
+                </h3>
+               
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 res"><b>Test Name:</b> @Model.TestInvitation.TestPaper.MockupName</div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 res">
+                            <b>Total Marks:</b> @Model.TestInvitation.TestPaper.TotalMarks
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-12 res">
+                            <b>Marks Obtained:</b>  @Model.TestInvitation.TotalScore
+                        </div>
+                    </div>
+
+                <div class="export float-right"> <a href="#"> @*<img src="~/Template/Candidate/images/xl-icon.png" align="export excel icon">*@ </a></div>
+            </div>
+
+            <div class="table-search clearfix">
+            </div>
+            <table id="testResult" class="tablesorter rTable">
+                <thead class="">
+                    <tr class="rTableRow">
+                        <th class="rTableHead test-date sorting">Question</th>
+                        <th class="rTableHead passed sorting">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var question in Model.LstCandidateTestQuestions)
+                    {
+                        <tr class="rTableRow">
+                            <td class="rTableCell">@question.QuestionTitle</td>
+                            @if (@question.IsFullyCorrectAnswered)
+                            {
+                                <td class="rTableCell correct">
+                                    <span class="d-none">1</span>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="rTableCell incorrect">
+                                    <span class="d-none">0</span>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-danger"> No Record Found !</div>
+
+        }
+    </div>
+</div>
+@section scripts {
+    <script src="~/Template/Plugins/TableSorter/jquery.tablesorter.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#testResult").tablesorter({
+                //headers: { 0: { sorter: false } },
+                // sort on the first column and third column, order asc
+                // sortList: [[0, 0], [2, 0]]
+                sortList: [[0, 0]]
+            });
+            $("header").addClass('result-nav');
+            $(".right-panel").addClass('result-right-panel');
+        }
+
+            
+        );
+    </script>
+}
+

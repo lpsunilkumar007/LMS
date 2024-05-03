@@ -1,0 +1,66 @@
+﻿@model OnlineTestApp.Domain.LookUps.LookUpDomainValues
+@{
+    string title = "Add New " + Model.LookUpDomain.LookUpDomainDescription;
+    ViewBag.PageTitle = title;
+    Layout = "~/Views/Shared/MasterPages/SuperAdminPopUpMaster.cshtml";
+}
+@section PageHeading
+{
+    @title
+
+}
+@section PopUpCloseButton
+{
+    <button class="close" onclick="window.parent.GetControllerScope('div', 'LookUpController').GetLookUpValue('@Model.LookUpDomain.LookUpDomainCode');window.parent.closeModelPopUpForm(false)">&times;</button>
+}
+<form method="post" id="addLookUp" data-clear-form="true" data-post-type='ajax' action="/lookup/addlookupdomainvalue?lookupdomainid=@Model.LookUpDomain.LookUpDomainId" data-success-method="AjaxHitRunSuccessfully">
+    @Html.AntiForgeryToken()
+    <div class="card">
+        <div class="card-body card-box-body">
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label>Value <i class="fa fa-asterisk"></i></label>
+                        @Html.TextAreaFor(m => m.LookUpDomainValueText, new { autofocus = "autofocus", @rows = 5 })
+                        @Html.ValidationMessageFor(m => m.LookUpDomainValueText)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-6 singlecheckbox">
+                    <div class="form-group">
+                        <label>Display Order <i class="fa fa-asterisk"></i></label>
+                        @Html.TextBoxFor(m => m.DisplayOrder)
+                        @Html.ValidationMessageFor(m => m.DisplayOrder)
+                    </div>
+                </div>
+                <div class="col-sm-6 singlecheckbox">
+                    <div class="form-group">
+                        <label>Is Active</label>
+                        <span class="custom-control custom-checkbox">
+                            @Html.CheckBoxFor(m => m.IsActive, new { @class = "custom-control-input" })
+                            <label class="custom-control-label" for="IsActive"></label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bg-gradient">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                <button type="reset" class="btn btn-secondary hideReset">
+                    <i class="fa fa-refresh"></i>
+                    Reset
+                </button>
+
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                <button type="submit" class="btn btn-info">Save <i class="far fa-save"></i></button>
+            </div>
+        </div>
+    </div>
+
+</form>

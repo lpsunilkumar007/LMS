@@ -1,0 +1,54 @@
+﻿@model OnlineTestApp.Domain.User.ApplicationUsers
+
+<header>
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between">
+            <div class="p-2 logo">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"> <span class="navbar-toggler-icon"></span> </button>
+                <a href="/dashboard/index" class="logo-link">
+                    <img src="~/Template/Company/images/logo.png" alt="logo" class="web-logo">
+                    <img src="~/Template/Company/images/mobile-logo.png" alt="logo" class="mobile-logo">
+                </a>
+            </div>
+            <div class="user-logout nav-right align-self-center">
+                <img src="~/Template/Company/images/avatar-image.jpg" class=" mr-3 rounded-circle d-inline-block" style="width:40px">
+                <div class="d-inline-block">
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle" href="javascript:void(0)" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @Model.UserName
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+                            <a class="dropdown-item" href="javascript:void(0)">Edit Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)">Change Password</a>
+                            <a class="dropdown-item" href="/Account/Logout">Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- d-flex -->
+    </div>
+    <!-- container -->
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+
+            <div class="collapse navbar-collapse justify-content-start" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item"> <a class="nav-link" href="/dashboard/index">Dashboard</a> </li>
+                    <li class="nav-item "> <a class="nav-link" href="/invitetest/index">Invite to Interview </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="/dashboard/result">View results</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Invite to second stage </a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Shortlisted candidates</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#">Email templates</a> </li>
+                </ul>
+            </div>
+        </div>
+        <!--container-->
+    </nav>
+</header>
+
+
+

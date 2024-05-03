@@ -1,0 +1,26 @@
+﻿@model OnlineTestApp.ViewModel.Test.AddNewTestViewModel
+
+
+
+<div class="tab-border">
+    <h5>Invite Candidate</h5>
+    @*<p>Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>*@
+</div>
+<div class="form-group">
+    @Html.TextAreaFor(m => m.InviteForTest.EmailToEmailAddress, new { placeholder = "Enter Candidate  Emails", @rows = 5 })
+    @Html.ValidationMessageFor(m=>m.InviteForTest.EmailToEmailAddress)
+    <p class="help-block">( use semi-colon ";" or comma ',' for adding multiple email )</p>
+</div>
+<div class="form-group">
+    @Html.TextBoxFor(m => m.InviteForTest.EmailSubject, new { placeholder = "Email Subject" })
+    @Html.ValidationMessageFor(m => m.InviteForTest.EmailSubject)
+
+</div>
+<div class="form-group">
+    @Html.TextAreaFor(m => m.InviteForTest.EmailBody, new { placeholder = "Enter body" })
+    @Html.ValidationMessageFor(m => m.InviteForTest.EmailBody)
+@Html.TextBoxFor(m=>m.InviteForTest.EmailTemplateId)
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-success">Click Here To Create Test</button>
+</div>

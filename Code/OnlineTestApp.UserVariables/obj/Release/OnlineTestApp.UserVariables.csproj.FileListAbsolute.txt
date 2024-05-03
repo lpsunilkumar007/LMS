@@ -1,0 +1,12 @@
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\OnlineTestApp.UserVariables.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\OnlineTestApp.UserVariables.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\OnlineTestApp.Enums.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\Utilities.Conversion.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\Utilities.Helper.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\OnlineTestApp.Enums.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\Utilities.Conversion.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\bin\Release\Utilities.Helper.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\obj\Release\OnlineTestApp.UserVariables.csprojResolveAssemblyReference.cache
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\obj\Release\OnlineTestApp.UserVariables.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\obj\Release\OnlineTestApp.UserVariables.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.UserVariables\obj\Release\OnlineTestApp.UserVariables.pdb

@@ -1,0 +1,73 @@
+﻿@model OnlineTestApp.ViewModel.UserMemberShip.CompanyUserViewModel
+@{
+    Layout = "~/Views/Shared/_UserAuthenticationMaster.cshtml";
+    ViewBag.PageTitle = "User Login";
+}
+<div class="col-md-6 mx-auto mt-5 log-in">
+    <!-- form card login -->
+    <div class="card rounded-0 mt-5">
+        <div class="card-header">
+            <h3 class="mb-0"><img src="~/Template/Account/images/logo.png" alt="logo"></h3>
+        </div>
+        <div class="card-body">
+            <form class="form" method="post" role="form" id="frm-login">
+                @Html.AntiForgeryToken()
+                @if (ViewBag.ErrorBlock != null)
+                {
+                    <div class="alert alert-danger" id="login-fail-msg">
+                        <strong>Error!</strong> @ViewBag.ErrorBlock
+                    </div>
+                }
+                <div class="alert alert-success d-none" id="otp-success-msg">
+                    <strong>Password, </strong> is sent on your registered email.
+                </div>
+                <div class="form-group">
+                    <label for="uname1">Email</label>
+                    @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Enter email", autofocus = "autofocus", @class = "form-control form-control-lg rounded-0" })
+                    @Html.ValidationMessageFor(m => m.EmailAddress)
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    @*@Html.PasswordFor(m => m.UserPassword, new { placeholder = "Enter password", @class = "form-control form-control-lg rounded-0" })*@
+                    @Html.TextBoxFor(m => m.UserPassword, new { placeholder = "Enter password", @class = "form-control form-control-lg rounded-0",type="password" })
+
+                    <div class="invalid-feedback">Enter your password too!</div>
+                    @Html.ValidationMessageFor(m => m.UserPassword)
+                </div>
+                <div class="clearfix row">
+                    <div class="col-md-6">
+                        <div class="custom-control custom-checkbox clearfix">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "custom-control-input" })
+
+                            @*<input type="checkbox" class="custom-control-input" id="customCheck1">*@
+                            <label class="custom-control-label ml-3  mt-2" for="RememberMe"> Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="forgot"> <a onclick="forgetPassword()">Forgot Password? </a> </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg	 hvr-bounce-to-bottom" id="btnLogin">Login</button>
+            </form>
+
+
+            @*<form class="form  d-none" method="post" role="form" id="frm-forgetPassword">
+                    @Html.AntiForgeryToken()
+                    <div class="alert alert-success" id="otp-success-msg">
+                        <strong>Enter, </strong> OTP sent on your registered email.
+                    </div>
+                    <div class="form-group">
+                        <label for="uname1">Enter OTP</label>
+                        @Html.TextBoxFor(m => m.OTP, new { placeholder = "Enter otp", autofocus = "autofocus", @class = "form-control form-control-lg rounded-0" })
+                        @Html.ValidationMessageFor(m => m.OTP)
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-lg	 hvr-bounce-to-bottom" id="btnOtp">OTP</button>
+                </form>*@
+
+        </div>
+        <!--/card-block-->
+    </div>
+    <!-- /form card login -->
+</div>
+

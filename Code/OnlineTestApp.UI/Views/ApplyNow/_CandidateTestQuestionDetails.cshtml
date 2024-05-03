@@ -1,0 +1,75 @@
+﻿@model OnlineTestApp.Domain.Candidate.CandidateTestQuestions
+@{
+    Layout = null;
+
+}
+@if (Model != null)
+{
+    TimeSpan questionDuration = (@Model.EndTime - OnlineTestApp.DateSettings.CurrentDateTime).Value;
+    <div id="QuestionDetails">
+        <form id="CandidateQuestionDetails">
+            @Html.AntiForgeryToken()
+            <div>
+
+                <div class="question-heading">
+                    <h2>
+                        <span class="ques-num">@Model.DisplayOrder</span>
+                            @if (!@Model.CanSkipQuestion)
+                            {
+                            <span class="text-danger">*</span>
+                           }
+                        @Model.QuestionTitle
+                    </h2>
+                    <h5>Time Left: <span id="ques-timer"> </span><span>/ 00: @Model.TotalTime :00</span></h5>
+                </div>          
+            </div>
+            <div class="QuestionOptions">
+                @if (@Model.FieldType == @OnlineTestApp.Enums.Question.FieldType.CheckBoxList)
+                {
+                    Html.RenderPartial("~/Views/ApplyNow/Controls/_CheckBoxList.cshtml", @Model);
+                }
+                else
+                {
+                    Html.RenderPartial("~/Views/ApplyNow/Controls/_RadioButtonList.cshtml", @Model);
+                }
+            </div>
+            @Html.HiddenFor(m => m.FkCandidateAssignedTestId)
+            @Html.HiddenFor(m => m.CandidateTestQuestionId)
+            <div class="card-footer-content">
+                @if (@Model.CanSkipQuestion)
+                {
+                    <div class="float-left">
+                        <a href="javascript:void(0)" class="btn btn-primary" onclick="UpdateSkipQuestion('@Model.CandidateTestQuestionId','@Model.FkCandidateAssignedTestId')"><i class="fas fa-share"></i> Skip</a>
+                    </div>
+                }
+                <div class="float-right">
+                    @*<input type="submit" class="btn btn-primary" value="Next" />*@
+                    <a href="javascript:void(0)" class="btn btn-primary" onclick="GetNextQuestion()"><i class="fas fa-chevron-right"></i> Next</a>
+                    @* onclick="GetNextQuestion('@Model.CandidateTestQuestions.CandidateTestQuestionId','@ViewBag.CandidateTestDetailsId','@Convert.ToString(Model.CandidateTestQuestions.CanSkipQuestion)')"*@
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        var totalQuesTime = '@questionDuration.Minutes:@questionDuration.Seconds';
+        var totalQuestTimeArr = totalQuesTime.split(':');
+        var questMinutes = totalQuestTimeArr[0];
+        var questSec = totalQuestTimeArr[1];
+        var Quesmillis = questSec * 1000 + questMinutes * 60 * 1000;
+           questionSetInterVariable=  setInterval(function () {
+                Quesmillis -= 1000;
+                displayQuesTimer();
+            }, 1000);
+        function displayQuesTimer() {
+            var hours = Math.floor(Quesmillis / 36e5),
+                mins = Math.floor((Quesmillis % 36e5) / 6e4),
+                secs = Math.floor((Quesmillis % 6e4) / 1000);
+            if (hours <= 0 && mins <= 0 && secs <= 0) {
+            }
+            else {
+                $('#ques-timer').html(hours + ':' + mins + ':' + secs);
+            }
+        }
+    </script>
+}

@@ -1,0 +1,70 @@
+﻿@model OnlineTestApp.Domain.TestPaper.TestInvitations
+@{
+    ViewBag.Title = "InvitedTestCandidateTestResults";
+    Layout = "~/Views/Shared/_CompanyMaster.cshtml";
+}
+
+<div class="candidtae-TR-Pannel">
+    <div class="row candidate_res">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 res_head">
+            <h3>Candidate Test Results</h3>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+            <h5><b>Total Question:</b> <span>@Model.TotalQuestions</span></h5>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+            <h5><b>Total Marks:</b> <span>@Model.TotalScore</span></h5>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+            <h5><b>Marks Obt:</b> <span>@Model.TotalCandidateScoreObtained</span></h5>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+            <h5>
+                @if (Model.IsPassed)
+                {
+                    <span class="text-success"> PASSED </span>
+                }
+                else { <span class="text-danger"> FAILED </span>}
+            </h5>
+        </div>
+        @*<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+                <h4>  Total Time:  @Model.StrTotalTime  <span>Minute</span></h4>
+            </div>*@
+    </div>
+
+    @foreach (var question in Model.LstCandidateTestQuestions)
+    {
+        int index = Model.LstCandidateTestQuestions.FindIndex(a => a.CandidateTestQuestionId == question.CandidateTestQuestionId) + 1;
+
+        <div class="question-box card-box-body">
+            <div class="question-heading">
+                <h5><span class="ques-num">@index. </span> @question.QuestionTitle</h5>
+                @*<h5><span class="ques-num">&nbsp; </span>@question.QuestionDescription</h5>*@
+            </div>
+
+            @if (@question.FieldType == @OnlineTestApp.Enums.Question.FieldType.CheckBoxList)
+            {
+                Html.RenderPartial("~/Views/Dashboard/Controls/CandidateTestResult/CheckBoxList.cshtml", @question);
+            }
+            else
+            {
+                Html.RenderPartial("~/Views/Dashboard/Controls/CandidateTestResult/RadioButtonList.cshtml", @question);
+            }
+        </div>
+
+    }
+
+</div>
+<style>
+    .container-steps, .container-steps .row {
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .question-box {
+        height: auto;
+        padding: 20px 50px;
+        margin: 25px 60px;
+    }
+</style>

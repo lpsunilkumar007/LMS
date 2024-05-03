@@ -1,0 +1,96 @@
+﻿<!DOCTYPE HTML>
+<html ng-app="onlineTestApp">
+@*<html >*@
+<head>
+    @{
+        Html.RenderPartial("~/Views/Shared/_pageHeader.cshtml");
+        Layout = null;
+    }
+    @RenderSection("pageHeaderResources", false)
+    <link href="~/Templates/Scripts/Angular/2.0.11_ng-grid.css" rel="stylesheet" />
+</head>
+<body id="wrapper" class="MenuActive">
+
+
+    <!--top menu start here -->
+    <nav class="navbar-top fixed-top flex-md-nowrap bg-primary py-0" ng-controller="TopNavController">
+        <a class="navbar-brand mr-0" href="javascript:void(0)">
+            <img src="~/Templates/Themes/CommonTheme/images/logo.png" style="max-width:200px">
+        </a>
+        <span class="px-4 menu-toggle" id="menu-toggle"
+              data-just-post-me="true"
+              data-showblackimage="false"
+              data-process-url="/menu/changeusermenusetting">
+            <i class="fa fa-bars" aria-hidden="true" style="font-size: 16px;"></i>
+            @*@if (!Model.ApplicationUserSettings.IsMenuOpen)
+                {
+                    <input type="hidden" id="closeMenu" value="true" />
+                }*@
+            @*<input type="hidden" id="closeMenu" value="true" ng-if="!IsMenuOpen" />*@
+
+        </span>
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="~/Templates/Themes/CommonTheme/images/user-profile.png" style="max-width: 42px;" class="user-profile mr-2">
+                {{FullName}}
+                <span ng-hide="DataLoaded">
+                    &nbsp; <i class="fa fa-spinner fa-spin"></i>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="/myaccount/editprofile">Edit Profile</a>
+                <a class="dropdown-item" href="/myaccount/changepassword">Change Password</a>
+                <a class="dropdown-item" href="/userMemberShip/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- top menu end Here -->
+    <!--Left Menu start here -->
+
+    @{Html.RenderPartial("~/Views/Menu/_leftMenu.cshtml");}
+
+
+    <!--Left Menu End here -->
+
+
+    <div class="right-content-area">
+        <div class="jumbotron bg-white heading-box py-3 mb-2">
+            <h1 class="text-primary">
+                @RenderSection("PageHeading", true)
+                <span style="color:#2d2d2d;font-size:14px">@RenderSection("PageSubHeading", false)</span>
+            </h1>
+        </div>
+        <div class="mx-2 mx-sm-2 mx-xl-3 mx-lg-3 my-3">
+            <ol class="breadcrumb bg-gradient">
+                @RenderSection("PageBreadCrum", true)
+            </ol>
+            @RenderBody()
+        </div>
+        <div style="height:40px; margin-top:20px;"></div>
+        <footer class="py-2 px-5">
+            <p class="mb-0"><a href="javascript:void(0)">copyright &copy; </a></p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    @Scripts.Render("~/Ljs")
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="~/Templates/Scripts/Angular/2.0.11_ng-grid.debug.js"></script>
+    <script src="~/Templates/Scripts/Angular/angular-script.js"></script>
+    @RenderSection("pageFooterResources", false)
+    @if (ViewBag.ErrorBlock != null)
+    {
+        <script type="text/javascript">
+        ErrorBlock('@ViewBag.ErrorBlock');
+        </script>
+    }
+    else if (ViewBag.success != null)
+    {
+        <script type="text/javascript">
+        Success('@ViewBag.Success');
+        </script>
+    }
+
+</body>
+
+</html>

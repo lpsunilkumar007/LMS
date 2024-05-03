@@ -1,0 +1,20 @@
+﻿@model OnlineTestApp.ViewModel.ApplyNow.Step1CheckReferenceViewModel
+@{
+    Layout = "~/Views/Shared/MasterPages/CandidateApplyNowMaster.cshtml";
+    ViewBag.PageTitle = "Apply For Test";
+}
+<div class="main-card">
+    <div class="content-card">
+        <p class="text-center">Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley </p>
+        <form class="UsedIdKey" method="post" id="applyForCandidateTest" action="/applynow/applyfortest" data-success-method="AjaxRedirectToUrlSuccessfully" data-post-type='ajax'>
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label>Please enter your User ID Key</label>
+                @Html.TextBoxFor(m => m.ReferenceNumber, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-secondary"> Proceed</button>
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.PageTitle = "View Users";
+
+}
+@section PageHeading
+{
+    Manage Users
+}
+
+@section PageSubHeading
+{
+    View Users
+}
+@section PageBreadCrum
+ {
+    <li><a href="/manageapplicationuser/viewusers">Manage Users</a></li>
+    <li class="active"> View Users</li>
+}
+    <div ng-controller="ViewUsersController" ng-init="GetMoreData(1)">
+        <form role="form" method="get">
+
+
+            <div class="card-body card-box-body">
+                <div class="form-row">
+                </div>
+
+            </div>
+
+        </form>
+        <span ng-hide="DataLoaded">
+            &nbsp; <i class="fa fa-spinner fa-spin"></i>
+        </span>
+        <div class="gridStyle" ng-grid="dtgSearchResult" style="height:150px; width:800px">
+
+
+        </div>
+
+    </div>

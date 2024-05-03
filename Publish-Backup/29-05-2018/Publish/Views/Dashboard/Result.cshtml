@@ -1,0 +1,76 @@
+﻿@model OnlineTestApp.ViewModel.Company.CandidateTestReportsViewModel
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_CompanyMaster.cshtml";
+
+}
+<div class="dashboard-result">
+    <div class="card">
+        <div class="card-body">
+            <div class="top-row clearfix">
+                <h3 class="float-left"><img src="/Template/Company/images/srch-icon.png" align="srch-cion">Test Results</h3>
+                <div class="export float-right"> <a href="#"> <img src="/Template/Company/images/xl-icon.png" align="export excel icon"> </a></div>
+
+            </div> <!-- top-row --->
+
+            <div class="table-search clearfix">
+                <div class="input-group">
+                    <input class="form-control border-secondary py-2" type="search" placeholder="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <table id="test-paper-results" class="tablesorter rTable">
+                <thead class="">
+                    <tr class="rTableRow">
+                        <th class="rTableHead test-date sorting">Test Name </th>
+                        <th class="rTableHead attempt sorting">Attempted </th>
+                        <th class="rTableHead passed sorting">	Passed </th>
+                        <th class="rTableHead failed sorting">Failed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var testPaper in Model.LstTestPaperReport)
+                    {
+                        <tr class="rTableRow">
+                            <td class="rTableCell rTableCellLinked" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',1)">
+                                @testPaper.TestName @testPaper.TestpaperId
+                            </td>
+                            <td class="rTableCell">
+                                <div class="progress"><div class="progress-bar bg-orange" style="width:@testPaper.PerAttempt%">@testPaper.PerAttempt%</div></div>
+                            </td>
+                            @if (testPaper.TotalPassed != 0)
+                            {
+                                <td class="rTableCell passed rTableCellLinked" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',2)">
+                                    @testPaper.TotalPassed
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="rTableCell  rTableCellLinked" ></td>
+                            }
+                            @if (testPaper.TotalFail != 0)
+                            {
+                                <td class="rTableCell failed rTableCellLinked" onclick="viewCandidatesByTestId('@testPaper.TestpaperId',3)">
+
+                                    @testPaper.TotalFail
+
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="rTableCell  rTableCellLinked" ></td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model OnlineTestApp.ViewModel.Company.TestInvitationViewModel
+<div id="send-invitation-tab" class="invite-test-tabs d-none">
+  
+    <div id="send-invitation-panel">
+        <input type="hidden" id="selectdTestMockup" />
+        <h3> Send Invitation to Candidates: </h3>
+        <p>
+            please enter multiple candidate entries. So the test will be
+            emailed to candidates as a link
+        </p>
+        <div class="alert alert-success d-none" id="alert-success-invitation">
+            Invitation sent successfully to all candidates.
+        </div>
+        <div class="col send-invitation clearfix">
+            <form method="post" id="submitTestQuestionDetails"
+                  action="/invitetest/sendtestinvitation"
+                  data-id="submitTestQuestionDetails"
+                  data-clear-form="true" data-success-method="AjaxOnSendIvitationPageWithSuccessMessage"
+                  data-post-type='ajax'
+                  data-success-selector="alert-success-invitation"
+                  data-validation-faluire-method="ValidationFailSendInvitation"
+                  data-fail-selector="alert-fail-invitation">
+                @Html.HiddenFor(m => m.FkTestPaperId)
+                @Html.TextAreaFor(m => m.EmailFromEmailAddress, new { placeholder = "Enter Candidate  Emails", @rows = 5 })
+                @*@Html.ValidationMessageFor(m => m.EmailFromEmailAddress)*@
+                <div class="clearfix"></div>
+                <div class="send-button right-btn">
+                    <div class="alert alert-danger d-none" id="alert-email-required"> Please enter email address</div>
+                    <div class="alert alert-danger d-none" id="alert-fail-invitation"></div>
+
+                    @*<button type="submit" class="d-none" id="btn-send-invitation"></button>*@
+                    <button type="submit" class="btn btn-default" id="btn-send-invitation">Send <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+                    @*<a onclick="submitSendInvitationForm()" class="btn btn-default">Send <i class="fa fa-caret-right" aria-hidden="true"></i></a>*@
+                </div>
+            </form>
+
+        </div>
+
+
+
+    </div>
+    <div class="float-right right-btn">
+        <a href="/InviteTest/Index" class="btn btn-default btn-block d-none" id="send-more-invitation">Send More Invitations <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+    </div>
+</div>
+<script>
+
+
+
+</script>

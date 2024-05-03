@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ADC68D53-0A63-4E91-BA27-536F597D45C9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Company.OnlineTestApp.UI</RootNamespace>
+    <AssemblyName>Company.OnlineTestApp.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Base\AnonymousController.cs" />
+    <Compile Include="Controllers\Base\AuthorizeController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\CandidateController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InviteTestController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Extensions\ControllerExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Template\Account\account.js" />
+    <Content Include="Template\Account\bootstrap.js" />
+    <Content Include="Template\Account\common.css" />
+    <Content Include="Template\Account\Css\bootstrap-grid.css" />
+    <Content Include="Template\Account\Css\bootstrap-grid.min.css" />
+    <Content Include="Template\Account\Css\bootstrap-reboot.css" />
+    <Content Include="Template\Account\Css\bootstrap-reboot.min.css" />
+    <Content Include="Template\Account\Css\bootstrap.css" />
+    <Content Include="Template\Account\Css\bootstrap.min.css" />
+    <Content Include="Template\Account\Css\common.css" />
+    <Content Include="Template\Account\Css\font-awesome.css" />
+    <Content Include="Template\Account\Css\font-awesome.min.css" />
+    <Content Include="Template\Account\Css\fontawesome-all.min.css" />
+    <Content Include="Template\Account\images\favicon.png" />
+    <Content Include="Template\Account\images\login-bg.jpg" />
+    <Content Include="Template\Account\images\logo.png" />
+    <Content Include="Template\Candidate\bootstrap.js" />
+    <Content Include="Template\Candidate\candidate.js" />
+    <Content Include="Template\Candidate\Css\bootstrap-grid.css" />
+    <Content Include="Template\Candidate\Css\bootstrap-grid.min.css" />
+    <Content Include="Template\Candidate\Css\bootstrap-reboot.css" />
+    <Content Include="Template\Candidate\Css\bootstrap-reboot.min.css" />
+    <Content Include="Template\Candidate\Css\bootstrap.css" />
+    <Content Include="Template\Candidate\Css\bootstrap.min.css" />
+    <Content Include="Template\Candidate\Css\common.css" />
+    <Content Include="Template\Candidate\Css\font-awesome.css" />
+    <Content Include="Template\Candidate\Css\font-awesome.min.css" />
+    <Content Include="Template\Candidate\Css\fontawesome-all.min.css" />
+    <Content Include="Template\Candidate\fonts\fontawesome-webfont.svg" />
+    <Content Include="Template\Candidate\images\failed-icon.png" />
+    <Content Include="Template\Candidate\images\favicon.png" />
+    <Content Include="Template\Candidate\images\logo.png" />
+    <Content Include="Template\Candidate\images\online-test-icon.png" />
+    <Content Include="Template\Candidate\images\passed-icon.png" />
+    <Content Include="Template\Candidate\images\preview-icon-hover.png" />
+    <Content Include="Template\Candidate\images\preview-icon.png" />
+    <Content Include="Template\Candidate\images\skip.png" />
+    <Content Include="Template\Candidate\images\sorting-icon.png" />
+    <Content Include="Template\Candidate\images\srch-icon.png" />
+    <Content Include="Template\Candidate\images\srch-icon2.png" />
+    <Content Include="Template\Candidate\images\tech-icon-hover.png" />
+    <Content Include="Template\Candidate\images\tech-icon.png" />
+    <Content Include="Template\Candidate\images\test-icon.png" />
+    <Content Include="Template\Candidate\images\vertical-line.jpg" />
+    <Content Include="Template\Candidate\images\xl-icon.png" />
+    <Content Include="Template\Company\Css\common - Copy.css" />
+    <Content Include="Template\Company\fonts\fontawesome-webfont.svg" />
+    <Content Include="Template\Company\images\failed-icon-mobile.png" />
+    <Content Include="Template\Company\images\failed-icon.png" />
+    <Content Include="Template\Company\images\mobile-logo.png" />
+    <Content Include="Template\Company\images\passed-icon.png" />
+    <Content Include="Template\Company\images\preview-test-icon.png" />
+    <Content Include="Template\Company\images\project-detail-graph.png" />
+    <Content Include="Template\Company\images\site-access-report.png" />
+    <Content Include="Template\Company\images\sorting-icon.png" />
+    <Content Include="Template\Company\images\srch-icon.png" />
+    <Content Include="Template\Company\images\srch-icon2.png" />
+    <Content Include="Template\Company\images\tick.png" />
+    <Content Include="Template\Candidate\images\token-image.jpg" />
+    <Content Include="Template\Candidate\images\user-test-icon.png" />
+    <Content Include="Template\Company\Css\bootstrap-grid.css" />
+    <Content Include="Template\Company\Css\bootstrap-grid.min.css" />
+    <Content Include="Template\Company\Css\bootstrap-reboot.css" />
+    <Content Include="Template\Company\Css\bootstrap-reboot.min.css" />
+    <Content Include="Template\Company\Css\bootstrap.css" />
+    <Content Include="Template\Company\Css\bootstrap.min.css" />
+    <Content Include="Template\Company\Css\common.css" />
+    <Content Include="Template\Company\Css\font-awesome.css" />
+    <Content Include="Template\Company\Css\font-awesome.min.css" />
+    <Content Include="Template\Company\Css\fontawesome-all.min.css" />
+    <Content Include="Template\Company\images\avatar-image.jpg" />
+    <Content Include="Template\Company\images\exp-icon-hover.png" />
+    <Content Include="Template\Company\images\exp-icon.png" />
+    <Content Include="Template\Company\images\favicon.png" />
+    <Content Include="Template\Company\images\login-bg.jpg" />
+    <Content Include="Template\Company\images\login-logo.png" />
+    <Content Include="Template\Company\images\logo.png" />
+    <Content Include="Template\Company\images\preview-icon-hover.png" />
+    <Content Include="Template\Company\images\preview-icon.png" />
+    <Content Include="Template\Company\images\tech-icon-hover.png" />
+    <Content Include="Template\Company\images\tech-icon.png" />
+    <Content Include="Template\Company\images\test-icon.png" />
+    <Content Include="Template\Company\images\time-es-icon-hover.png" />
+    <Content Include="Template\Company\images\time-es-icon.png" />
+    <Content Include="Template\Company\images\time-icon-hover.png" />
+    <Content Include="Template\Company\images\time-icon.png" />
+    <Content Include="Template\Company\images\vertical-line.jpg" />
+    <Content Include="Template\Company\images\xl-icon.png" />
+    <Content Include="Template\images\ajaxLoader.gif" />
+    <Content Include="Template\images\ajaxLoader121212212.gif" />
+    <Content Include="Template\images\ajaxLoader12.gif" />
+    <Content Include="Template\images\correct.png" />
+    <Content Include="Template\images\incorrect.png" />
+    <Content Include="Template\images\ajaxLoader23232.gif" />
+    <Content Include="Template\images\sorting-az.png" />
+    <Content Include="Template\images\sorting-za.png" />
+    <Content Include="Template\images\sorting.png" />
+    <Content Include="Template\Plugins\drpAUtoHelp\chosen-sprite.png" />
+    <Content Include="Template\Plugins\TableSorter\jquery-latest.js" />
+    <Content Include="Template\Plugins\TableSorter\jquery.metadata.js" />
+    <Content Include="Template\Plugins\TableSorter\jquery.tablesorter.js" />
+    <Content Include="Template\Plugins\TableSorter\jquery.tablesorter.min.js" />
+    <Content Include="Template\Scripts\bootstrap.js" />
+    <Content Include="Template\Scripts\common.js" />
+    <Content Include="Template\Scripts\Jquery\jquery-3.2.1.js" />
+    <Content Include="Template\Scripts\Jquery\jquery-ui.js" />
+    <Content Include="Template\Plugins\AlertMessage\sweetalert-dev.js" />
+    <Content Include="Template\Plugins\AlertMessage\sweetalert.css" />
+    <Content Include="Template\Plugins\DateTimePicker\jquery.datetimepicker.css" />
+    <Content Include="Template\Plugins\DateTimePicker\jquery.datetimepicker.js" />
+    <Content Include="Template\Plugins\Chosen\chosen-sprite.png" />
+    <Content Include="Template\Plugins\Chosen\chosen.css" />
+    <Content Include="Template\Plugins\Chosen\chosen.jquery.js" />
+    <Content Include="Template\Plugins\Chosen\prism.js" />
+    <Content Include="Template\Plugins\jquery.blockUI.js" />
+    <Content Include="Template\Plugins\jquery.mCustomScrollbar.concat.js" />
+    <Content Include="Template\Plugins\pace.js" />
+    <Content Include="Template\Scripts\popper.min.js" />
+    <Content Include="Template\Scripts\Secure.js" />
+    <Content Include="Template\Scripts\validation\jquery-migrate-1.1.0.js" />
+    <Content Include="Template\Scripts\validation\jquery.validate.js" />
+    <Content Include="Template\Scripts\validation\jquery.validate.unobtrusive.js" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\InviteTest\Index.cshtml" />
+    <Content Include="Views\InviteTest\_ExperienceLevels.cshtml" />
+    <Content Include="Views\InviteTest\_Technologies.cshtml" />
+    <Content Include="Views\InviteTest\_TestDuration.cshtml" />
+    <Content Include="Views\InviteTest\_PreviewTest.cshtml" />
+    <Content Include="Views\InviteTest\_SampleTest.cshtml" />
+    <Content Include="Views\InviteTest\_GetSampleTestByGuid.cshtml" />
+    <Content Include="Views\InviteTest\_GetSampleTests.cshtml" />
+    <Content Include="Views\InviteTest\PreviewTestById.cshtml" />
+    <Content Include="Views\Shared\_CompanyModelPopUpMaster.cshtml" />
+    <Content Include="Views\InviteTest\_SendInvitation.cshtml" />
+    <Content Include="Views\Shared\_CandidateMaster.cshtml" />
+    <Content Include="AppSettings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Candidate\TestTockenVerification.cshtml" />
+    <Content Include="Views\Candidate\_accountVerificationAsside.cshtml" />
+    <Content Include="Views\Candidate\TestDetail.cshtml" />
+    <Content Include="Views\Candidate\_testDetailAsside.cshtml" />
+    <Content Include="Views\Candidate\CandidateTestQuestions.cshtml" />
+    <Content Include="Views\Candidate\_CandidateTestTimeDetails.cshtml" />
+    <Content Include="Views\Candidate\_CandidateTestQuestionDetails.cshtml" />
+    <Content Include="Views\Candidate\Controls\_CheckBoxList.cshtml" />
+    <Content Include="Views\Candidate\Controls\_RadioButtonList.cshtml" />
+    <Content Include="Template\Candidate\Css\bootstrap-grid.css.map" />
+    <Content Include="Template\Candidate\Css\bootstrap-grid.min.css.map" />
+    <Content Include="Template\Candidate\Css\bootstrap-reboot.css.map" />
+    <Content Include="Template\Candidate\Css\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\Candidate\Css\bootstrap.css.map" />
+    <Content Include="Template\Candidate\Css\bootstrap.min.css.map" />
+    <Content Include="Views\Candidate\TestResult.cshtml" />
+    <Content Include="Template\Account\Css\bootstrap-grid.css.map" />
+    <Content Include="Template\Account\Css\bootstrap-grid.min.css.map" />
+    <Content Include="Template\Account\Css\bootstrap-reboot.css.map" />
+    <Content Include="Template\Account\Css\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\Account\Css\bootstrap.css.map" />
+    <Content Include="Template\Account\Css\bootstrap.min.css.map" />
+    <Content Include="Views\Shared\_UserAuthenticationMaster.cshtml" />
+    <Content Include="Template\Company\Css\bootstrap-grid.css.map" />
+    <Content Include="Template\Company\Css\bootstrap-grid.min.css.map" />
+    <Content Include="Template\Company\Css\bootstrap-reboot.css.map" />
+    <Content Include="Template\Company\Css\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\Company\Css\bootstrap.css.map" />
+    <Content Include="Template\Company\Css\bootstrap.min.css.map" />
+    <Content Include="Views\Shared\_CompanyMaster.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Template\Company\fonts\fontawesome-webfont.eot" />
+    <Content Include="Template\Company\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Template\Company\fonts\fontawesome-webfont.woff" />
+    <Content Include="Template\Company\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Template\Company\fonts\FontAwesome.otf" />
+    <Content Include="Template\Candidate\fonts\fontawesome-webfont.eot" />
+    <Content Include="Template\Candidate\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Template\Candidate\fonts\fontawesome-webfont.woff" />
+    <Content Include="Template\Candidate\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Template\Candidate\fonts\FontAwesome.otf" />
+    <Content Include="Views\Candidate\_CandidateTestLeftSide.cshtml" />
+    <Content Include="AppSettings-server.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Web-server.config" />
+    <Content Include="Views\Dashboard\Result.cshtml" />
+    <Content Include="Views\InviteTest\_topMenu.cshtml" />
+    <Content Include="Views\Dashboard\GetCandidatesResultbyTestpaperId.cshtml" />
+    <Content Include="Views\Dashboard\InvitedTestCandidateTestResults.cshtml" />
+    <Content Include="Views\Dashboard\Controls\CandidateTestResult\CheckBoxList.cshtml" />
+    <Content Include="Views\Dashboard\Controls\CandidateTestResult\RadioButtonList.cshtml" />
+    <Content Include="Views\Dashboard\Controls\PreviewTest\CheckBoxList.cshtml" />
+    <Content Include="Views\Dashboard\Controls\PreviewTest\RadioButtonList.cshtml" />
+    <Content Include="Views\Account\SendEmail.cshtml" />
+    <Content Include="Views\Menu\_topMenu.cshtml" />
+    <None Include="Web.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Debug.config" />
+    <None Include="Web.Debug.config__">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config" />
+    <None Include="Web.Release.config__">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineTestApp.DomainLogic\OnlineTestApp.DomainLogic.csproj">
+      <Project>{ddc238fb-4d98-4e89-bbe7-e9824d0c4cc4}</Project>
+      <Name>OnlineTestApp.DomainLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Domain\OnlineTestApp.Domain.csproj">
+      <Project>{0f0a4be7-8d08-449c-ab52-2e51584bc6cb}</Project>
+      <Name>OnlineTestApp.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Enums\OnlineTestApp.Enums.csproj">
+      <Project>{70386b26-6aac-4653-beba-81a68f611353}</Project>
+      <Name>OnlineTestApp.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Settings\OnlineTestApp.Settings.csproj">
+      <Project>{eee94b8f-b218-4d2c-9f95-d0a51f9b1f9f}</Project>
+      <Name>OnlineTestApp.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.UserVariables\OnlineTestApp.UserVariables.csproj">
+      <Project>{cd8eb6c5-8107-4ec8-956f-1c817dc2d585}</Project>
+      <Name>OnlineTestApp.UserVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.ViewModel\OnlineTestApp.ViewModel.csproj">
+      <Project>{04abcaed-84fc-4477-8d04-0729ab1a2d57}</Project>
+      <Name>OnlineTestApp.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Conversion\Utilities.Conversion.csproj">
+      <Project>{67f4d2f5-b9db-4f6b-b03f-fd389c116f15}</Project>
+      <Name>Utilities.Conversion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.EmailSender\Utilities.EmailSender.csproj">
+      <Project>{6c2bde55-09f8-49f8-aa32-6ad4f38218b3}</Project>
+      <Name>Utilities.EmailSender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Encryption\Utilities.Encryption.csproj">
+      <Project>{9c39781e-7601-4e58-bfee-2eb4c74011b0}</Project>
+      <Name>Utilities.Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.ErrorLog\Utilities.ErrorLog.csproj">
+      <Project>{b37509c6-47d0-41ba-bc09-ded0d93fd721}</Project>
+      <Name>Utilities.ErrorLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Export\Utilities.Export.csproj">
+      <Project>{78fac066-d639-481d-a286-a2819cfa3f65}</Project>
+      <Name>Utilities.Export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.FileSystem\Utilities.FileSystem.csproj">
+      <Project>{bbc50f7e-e796-4f96-9906-3c5919be92f3}</Project>
+      <Name>Utilities.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Helper\Utilities.Helper.csproj">
+      <Project>{fda6780b-4e2f-44e0-acec-d4ca6ec1a76e}</Project>
+      <Name>Utilities.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52199</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52199/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

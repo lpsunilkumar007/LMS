@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04ABCAED-84FC-4477-8D04-0729AB1A2D57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineTestApp.ViewModel</RootNamespace>
+    <AssemblyName>OnlineTestApp.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplyNow\ApplyNowBase.cs" />
+    <Compile Include="ApplyNow\CandidateTestQuestionDetailsViewModel.cs" />
+    <Compile Include="ApplyNow\Step3CandidateTestViewModel.cs" />
+    <Compile Include="BaseClasses\SearchDomainBase.cs" />
+    <Compile Include="Candidate\CandidateTestQuestionsViewModel.cs" />
+    <Compile Include="Candidate\CandidateTestResultViewModel.cs" />
+    <Compile Include="Candidate\TestDetailsViewModel.cs" />
+    <Compile Include="Company\CandidateTestLeftSideViewModel.cs" />
+    <Compile Include="Company\CandidateTestReportsViewModel.cs" />
+    <Compile Include="Company\SampleTestMockupViewModel.cs" />
+    <Compile Include="Company\TestInvitationViewModel.cs" />
+    <Compile Include="Company\TestTockenVerficationViewModel.cs" />
+    <Compile Include="Company\ViewCompanyViewModel.cs" />
+    <Compile Include="Email\AddEditSystemEmailTemplate.cs" />
+    <Compile Include="Email\AssignSystemEmailTemplateToCompany.cs" />
+    <Compile Include="Email\EmailCandidateViewModel.cs" />
+    <Compile Include="Email\ViewSystemEmailTemplate.cs" />
+    <Compile Include="LookUps\ViewLookUpsViewModel.cs" />
+    <Compile Include="MyAccount\ChangePasswordViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question\AddEditQuestionViewModel.cs" />
+    <Compile Include="Question\ViewQuestionViewModel.cs" />
+    <Compile Include="SampleTest\SampleTestViewModel.cs" />
+    <Compile Include="Test\AddNewTestViewModel.cs" />
+    <Compile Include="Test\PreviewTestViewModel.cs" />
+    <Compile Include="ApplyNow\Step1CheckReferenceViewModel.cs" />
+    <Compile Include="ApplyNow\Step2ConfirmationViewModel.cs" />
+    <Compile Include="Test\ViewPreparedTestBaches.cs" />
+    <Compile Include="Test\ViewTestDetailsViewModel.cs" />
+    <Compile Include="Test\ViewTestViewModel.cs" />
+    <Compile Include="UserMemberShip\CompanyUserViewModel.cs" />
+    <Compile Include="UserMemberShip\UserLoginViewModel.cs" />
+    <Compile Include="User\AddEditApplicationUserViewModel.cs" />
+    <Compile Include="User\ViewApplicationUserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineTestApp.Domain\OnlineTestApp.Domain.csproj">
+      <Project>{0f0a4be7-8d08-449c-ab52-2e51584bc6cb}</Project>
+      <Name>OnlineTestApp.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Enums\OnlineTestApp.Enums.csproj">
+      <Project>{70386b26-6aac-4653-beba-81a68f611353}</Project>
+      <Name>OnlineTestApp.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.UserVariables\OnlineTestApp.UserVariables.csproj">
+      <Project>{cd8eb6c5-8107-4ec8-956f-1c817dc2d585}</Project>
+      <Name>OnlineTestApp.UserVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Conversion\Utilities.Conversion.csproj">
+      <Project>{67f4d2f5-b9db-4f6b-b03f-fd389c116f15}</Project>
+      <Name>Utilities.Conversion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Helper\Utilities.Helper.csproj">
+      <Project>{fda6780b-4e2f-44e0-acec-d4ca6ec1a76e}</Project>
+      <Name>Utilities.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Test\SubmitTest\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

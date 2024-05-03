@@ -1,0 +1,39 @@
+﻿@using OnlineTestApp.Domain.Question
+@model QuestionOptions
+@{
+    int i = ViewBag.Order;
+}
+
+
+<tr id="tr@(Model.QuestionOptionId)">
+    <td scope="col" class="td-question">
+        <span class="question-input">
+            @Html.Hidden("Questions.LstQuestionOptions[" + @i + "].FkQuestionId", Model.FkQuestionId)
+            @Html.Hidden("Questions.LstQuestionOptions[" + @i + "].QuestionOptionId", Model.QuestionOptionId)
+            @Html.Hidden("Questions.LstQuestionOptions[" + @i + "].IsDeleted", Model.IsDeleted, new { @class = "deleteOptions" })
+            @Html.TextBox("Questions.LstQuestionOptions[" + @i + "].QuestionAnswer", Model.QuestionAnswer, new { @class = "AutoHeightTextarea" })
+        </span>
+    </td>
+    <td scope="col" class="td-order displayOrder" data-th="SET ORDER">
+        <span class="order-input">
+            @Html.TextBox("Questions.LstQuestionOptions[" + @i + "].DisplayOrder", Model.DisplayOrder)
+        </span>
+    </td>
+    <td scope="col" class="td-score" data-th="SET SCORE">
+        <span class="score-input">
+            @Html.TextBox("Questions.LstQuestionOptions[" + @i + "].QuestionAnswerScore", Model.QuestionAnswerScore, new { @class = "bg-success" })
+        </span>
+    </td>
+    <td scope="col" class="td-answer" data-th="IS ANSWER">
+        <span class="score-input">
+            <span class="custom-control custom-checkbox">
+                @Html.CheckBox("Questions.LstQuestionOptions[" + @i + "].IsCorrect", Model.IsCorrect, new { @class = "custom-control-input" })
+                <label class="custom-control-label" for="Questions_LstQuestionOptions_@(i)__IsCorrect"></label>
+            </span>
+        </span>
+    </td>
+    <td scope="col" class="td-action">
+        <span class="btn btn-danger isDeletedFalse" onclick="DelQuestionOptions('@Model.QuestionOptionId',true)" title="Delete"><i class="fas fa-times"></i></span>
+        <span class="btn btn-primary isDeletedTrue" style="display:none;" title="Restore" onclick="DelQuestionOptions('@Model.QuestionOptionId',false)"><i class="fas fa-undo-alt"></i></span>
+    </td>
+</tr>

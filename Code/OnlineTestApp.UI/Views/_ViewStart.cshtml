@@ -1,0 +1,17 @@
+﻿@{
+    if (OnlineTestApp.UserVariables.IsAuthenticated)
+    {
+        if (OnlineTestApp.UserVariables.CanAccessEverything)
+        {
+            Layout = "~/Views/Shared/MasterPages/SuperAdminMaster.cshtml";
+        }
+        else if (OnlineTestApp.UserVariables.CanAccessAdminModules)
+        {
+            Layout = "~/Views/Shared/MasterPages/AdminMaster.cshtml";
+        }
+    }
+    else
+    {
+        Layout = "~/Views/Shared/MasterPages/AnonymousUserMaster.cshtml";
+    }
+} 

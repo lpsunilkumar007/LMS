@@ -1,0 +1,78 @@
+﻿@model OnlineTestApp.ViewModel.Candidate.TestDetailsViewModel
+@{
+    ViewBag.Title = "TestDetail";
+    Layout = "~/Views/Shared/_CandidateMaster.cshtml";
+}
+
+<div class="row">
+    @if (Model != null)
+    {
+        Html.RenderAction("_testDetailAsside", new { testPaper = Model });
+
+        <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12 right-side">
+            <div class="right-panel test-detail ">
+                <h4 class="title-heading">See below the details which we have choose for you: </h4>
+                <form id="frm-Candidate-Info" class="mt-4">
+                    @Html.HiddenFor(x => x.FkTestInvitationId)
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Your Name :</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(x => x.CandidateName, new { @class = "form-control" })
+                            @*<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">*@
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger d-none ml-0" id="alert-name-required"> Enter your name </div>
+                </form>
+
+                <div class="table-responsive table-data">
+                    <table class="table ">
+                        <tbody>
+                            <tr>
+                                <td>Test Name: </td>
+                                <td>@Model.TestPapers.MockupName</td>
+                            </tr>
+                            <tr>
+                                <td>Skills/ Technology:</td>
+                                <td>
+                                    @{
+                                        foreach (var tech in Model.TestPapers.LstPaperTechnologies)
+                                        {
+                                            @tech.Technologies.LookUpDomainValue
+                                        }
+                                    }
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Experience:</td>
+                                <td>@Model.TestPapers.TestLevels.LookUpDomainValue</td>
+                            </tr>
+                            <tr>
+                                <td>Time Limit: </td>
+                                <td>@Model.TestPapers.Duration Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Total No. of Questions:</td>
+                                <td>@Model.TestPapers.TotalQuestions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="right-btn float-right">
+
+                    @*<a class="btn btn-default btn-block" href="/Candidate/CandidateTestQuestions?testId='@Model.TestPaperId'">Start <i class="fa fa-caret-right" aria-hidden="true"></i></a>*@
+                    <button class="btn btn-default btn-block" onclick="startCandidateTest('@Model.FkTestInvitationId')">Start <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1> No test paper found !</h1>
+    }
+
+</div>
+
+

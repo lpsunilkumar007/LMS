@@ -1,0 +1,77 @@
+﻿@model OnlineTestApp.ViewModel.SampleTest.SampleTestViewModel
+
+@{
+    ViewBag.PageTitle = "";
+
+}
+@section PageHeading
+{
+    Manage Questions
+}
+
+@section PageSubHeading
+{
+    Add New Question
+}
+@section PageBreadCrum
+ {
+
+}
+
+<div class="card-box-body card-body mt-4">
+    @if (Model.Questions.Count > 0)
+    {
+
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" data-filter-grid="true" data-filter-grid-id="filter-questions" placeholder="search" />
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <span>Mockup Name :@Model.SampleTestMockups.MockupName</span>
+                <span>Batch Name :@Model.SampleTestMockups.SampleTestBatch</span>
+                <span>Total Questions :@Model.SampleTestMockups.TotalQuestions</span>
+                <span>Total Time :@Model.SampleTestMockups.Duration</span>
+                <span>Total Marks :@Model.SampleTestMockups.TotalMarks</span>
+            </div>
+        </div>
+        <div class="data-grid pt-3">
+            <table class="display datatable-pagination table table-stripped dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>QuestionId </th>
+                        <th>Question </th>
+                        <th>Marks </th>
+                        <th>Duration </th>
+                        <th>Technology</th>
+                    </tr>
+                </thead>
+                @{ 
+                    int i = 0;
+                }
+                <tbody id="filter-questions">
+                    @foreach (var data in Model.SampleTestQuestions)
+                    {
+                        i++;
+                    <tr>
+                        <td>@i</td>
+                        <td>@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().QuestionDescription</td>
+                        <td>@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().TotalScore</td>
+                        <td>@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().TotalTime</td>
+                        <td>@Model.LookUpDomainValues.Where(x => x.LookUpDomainValueId == data.FkQuestionTechnologyId).FirstOrDefault().LookUpDomainValueText</td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+    }
+</div>

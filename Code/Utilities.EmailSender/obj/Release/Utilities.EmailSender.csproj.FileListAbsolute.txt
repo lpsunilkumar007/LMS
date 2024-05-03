@@ -1,0 +1,17 @@
+D:\Codes\Utilities\Utilities.EmailSender\bin\Release\Utilities.EmailSender.dll
+D:\Codes\Utilities\Utilities.EmailSender\bin\Release\Utilities.EmailSender.pdb
+D:\Codes\Utilities\Utilities.EmailSender\obj\Release\Utilities.EmailSender.csprojResolveAssemblyReference.cache
+D:\Codes\Utilities\Utilities.EmailSender\obj\Release\Utilities.EmailSender.dll
+D:\Codes\Utilities\Utilities.EmailSender\obj\Release\Utilities.EmailSender.pdb
+D:\CyerDime\Utilities.EmailSender\bin\Release\Utilities.EmailSender.dll
+D:\CyerDime\Utilities.EmailSender\bin\Release\Utilities.EmailSender.pdb
+D:\CyerDime\Utilities.EmailSender\obj\Release\Utilities.EmailSender.csprojResolveAssemblyReference.cache
+D:\CyerDime\Utilities.EmailSender\obj\Release\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+D:\CyerDime\Utilities.EmailSender\obj\Release\Utilities.EmailSender.dll
+D:\CyerDime\Utilities.EmailSender\obj\Release\Utilities.EmailSender.pdb
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\bin\Release\Utilities.EmailSender.dll
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\bin\Release\Utilities.EmailSender.pdb
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Release\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Release\Utilities.EmailSender.dll
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Release\Utilities.EmailSender.pdb
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Release\Utilities.EmailSender.csprojResolveAssemblyReference.cache

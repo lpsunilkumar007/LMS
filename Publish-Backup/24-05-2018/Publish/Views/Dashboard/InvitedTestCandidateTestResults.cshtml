@@ -1,0 +1,102 @@
+﻿@model OnlineTestApp.Domain.TestPaper.TestInvitations
+@{
+    ViewBag.Title = "InvitedTestCandidateTestResults";
+    Layout = "~/Views/Shared/_CompanyMaster.cshtml";
+}
+
+<h2>InvitedTestCandidateTestResults</h2>
+
+@*@{
+
+    ViewBag.PageTitle = "Candidate Test Results";
+    var testDetailId = Request.QueryString[1];
+}
+@{
+    ViewBag.PageTitle = "View Tests";
+
+}
+@section PageHeading
+{
+    Manage Test
+}
+@section PageSubHeading
+{
+    View Test Candidates
+}
+@section PageBreadCrum
+ {
+    <li><a href="/test/viewtests">Manage Test</a></li>
+    <li><a href="/test/viewtests">View Test</a></li>
+    <li> <a href="/test/viewinvitedtestcandidates/?testDetailId=@testDetailId">View Test Candidates</a></li>
+    <li class="active">@ViewBag.PageTitle </li>
+}*@
+<div class="container-fluid">
+    <div class="row candidate_res">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res_head">
+            <h3>Candidate Test Results</h3>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+                    <h4> Total Question: <span>@Model.TotalQuestions</span></h4>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+                    <h4>Total Marks: <span>@Model.TotalScore</span></h4>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+                    <h4>  Marks Obtained: <span>@Model.TotalCandidateScoreObtained</span></h4>
+                </div>
+
+                @*<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 res-cell">
+                    <h4>  Total Time:  @Model.StrTotalTime  <span>Minute</span></h4>
+                </div>*@
+            </div>
+        </div>
+    </div>
+
+    @foreach (var question in Model.LstCandidateTestQuestions)
+    {
+        int index = Model.LstCandidateTestQuestions.FindIndex(a => a.CandidateTestQuestionId == question.CandidateTestQuestionId) + 1;
+
+        <div class="row">
+            <div class="question-box card-box-body">
+                <div class="row Ques">
+                    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12">
+                        <div class="question-heading">
+                            <h5><span class="ques-num">@index </span>@question.QuestionTitle</h5>
+                            @*<h5><span class="ques-num">&nbsp; </span>@question.QuestionDescription</h5>*@
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+                        @*<h4>Total Score: <span>@question.TotalScore</span></h4>
+                        <h4>Score Obtained: <span>@question.TotalCandidateScoreObtained</span></h4>*@
+                    </div>
+                </div>
+
+                @if (@question.FieldType == @OnlineTestApp.Enums.Question.FieldType.CheckBoxList)
+                {
+                    Html.RenderPartial("~/Views/Dashboard/Controls/CandidateTestResult/CheckBoxList.cshtml", @question);
+                }
+                else
+                {
+                    Html.RenderPartial("~/Views/Dashboard/Controls/CandidateTestResult/RadioButtonList.cshtml", @question);
+                }
+            </div>
+        </div>
+    }
+
+</div>
+<style>
+    .container-steps, .container-steps .row {
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .question-box {
+        height: auto;
+        padding: 20px 50px;
+        margin: 25px 60px;
+    }
+</style>

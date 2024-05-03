@@ -1,0 +1,135 @@
+﻿@model OnlineTestApp.ViewModel.Company.ViewCompanyViewModel
+@{
+    ViewBag.PageTitle = "View Companies";
+}
+
+@section PageHeading
+ {
+    Manage Companies
+}
+@section PageSubHeading
+{
+    View Companies
+}
+@section PageBreadCrum
+ {
+    <li><a href="/companies/viewcompanies">Manage Companies</a></li>
+    <li class="active"> View Companies</li>
+}
+
+<form role="form" method="get">
+
+
+    <div class="card-body card-box-body">
+        <div class="form-row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Company Name/Org No/Telehone Number/Email Address</label>
+                    @Html.TextBoxFor(m => m.FreeTextBox)
+                </div>
+            </div>             
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <a href="/companies/viewcompanies" class="btn btn-secondary">
+                        Reset
+                        &nbsp; <i class="fa fa-refresh position-right"></i>
+                    </a>
+                    <button class="btn btn-info" value="Search">Search &nbsp;<i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+ 
+<div class="bg-white p-3 mt-4 card-box-body">
+    @if (Model.LstCompanies.Count > 0)
+    {
+        string sorting = Model.SortBy;
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" placeholder="Search....." data-filter-grid="true" data-filter-grid-id="filter-me">
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                @{
+                    Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize, isTopPaging = true });
+                }
+            </div>
+        </div>
+        <div class="data-grid pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        @switch (sorting)
+                        {
+                            case "CompanyName asc":
+                                <th class="sorting_asc"><a href="@Model.QueryString&sortBy=CompanyName desc">Company Name</a></th>
+                                break;
+                            case "CompanyName desc":
+                                <th class="sorting_desc"><a href="@Model.QueryString&sortBy=CompanyName asc">Company Name</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="@Model.QueryString&sortBy=CompanyName asc">Company Name</a></th>
+                                break;
+                        }
+
+                        <th>Org No.</th>
+                        <th>Telephone</th>
+                        <th>Email</th>
+                        @switch (sorting)
+                        {
+                            case "CreatedDateTime asc":
+                                <th class="sorting_asc"><a href="@Model.QueryString&sortBy=CreatedDateTime desc">Created At</a></th>
+                                break;
+                            case "CreatedDateTime desc":
+                                <th class="sorting_desc"><a href="@Model.QueryString&sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="@Model.QueryString&sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                        }
+                        <th class="tr-action">
+                            <span>Actions</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="filter-me">
+                    @foreach (var c in Model.LstCompanies)
+                    {
+                        <tr>
+                            <td>@c.CompanyName</td>
+                            <td>@c.OrgNo</td>
+                            <td>@c.Telephone</td>
+                            <td>@c.EmailAddress</td>
+                            <td><time>@c.CreatedDateTime_ToLongDateString</time></td>
+                            <td class="tr-action">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="/companies/editcompanydetails/?companyid=@c.CompanyId" class="dropdown-item">Edit <i class="fas fa-edit text-success"></i></a>
+                                        <a href="javascript:void(0)" class="dropdown-item"
+                                           data-inline-delete="true" data-succuss-message="Company deleted successfully"
+                                           data-process-url="/companies/DeleteCompany?companyId=@c.CompanyId">Delete<i class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+                        Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize });
+                    }
+                    else
+                    {
+                        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+                    }
+</div>

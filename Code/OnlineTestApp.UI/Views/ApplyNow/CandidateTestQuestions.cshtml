@@ -1,0 +1,81 @@
+﻿@using System.Threading.Tasks;
+@{
+    ViewBag.Title = "CandidateTestQuestions";
+    Layout = "~/Views/Shared/MasterPages/CandidateApplyNowMaster.cshtml";
+}
+
+    @*<div id="CandidateTestTimeDetailsView" class=”loader”> </div>
+        <div id="CandidateTestQuestionDetailsView" class=”loader”></div>*@
+    @{Html.RenderAction("_CandidateTestTimeDetails"); }
+    <div id="dvCandidateTestQuestionDetails" class="question-box">
+        <div>
+            @{Html.RenderAction("_CandidateTestQuestionDetails"); }
+        </div>
+    </div>
+
+@section pageFooterResources{
+    <script>
+     @*if (@ViewBag.GoAway == null)
+         {
+         window.location = @ViewBag.GoAway;
+
+         }*@
+
+    @*$(document).ready(function () {
+        $("#CandidateTestTimeDetailsView").load('@Url.Action("CandidateTestTimeDetails", "ApplyNow",new { id=Model})');
+        $("#CandidateTestQuestionDetailsView").load('@Url.Action("CandidateTestQuestionDetails", "ApplyNow",new { id=Model})');
+
+    });*@
+    function UpdateSkipQuestion(CandidateTestQuestionId, CandidateTestDetailsId)
+    {
+        clearQuestiontimer();
+        PostData("/applynow/candidatequestionskipped", { CandidateTestDetailsId: CandidateTestDetailsId, CandidateTestQuestionId: CandidateTestQuestionId }, GetNextQuestionSuccess, false);
+         }
+
+    function GetNextQuestion() {
+        clearQuestiontimer();
+        PostData("/applynow/candidatequestiondetails", $("#CandidateQuestionDetails").serialize(), GetNextQuestionSuccess, false);
+        }
+
+
+        function NextQuestion() {
+            clearQuestiontimer();
+            PostData("/applynow/candidatenextquestion", $("#CandidateQuestionDetails").serialize(), GetNextQuestionSuccess, false);
+        }
+
+
+        function GetNextQuestionSuccess(result) {           
+             if (result.Success) {
+                 if (result.Message == "Test Completed") {
+                     AjaxRedirectToUrlSuccessfully(result);
+                 }
+                 else {
+                     $("div#dvCandidateTestQuestionDetails>div").remove();
+                     $("div#dvCandidateTestQuestionDetails").append('<div></div>');
+                     $("div#dvCandidateTestQuestionDetails>div").html(result.OutPut);
+                 }
+             }
+             else {
+                 ErrorBlock(result.Message);
+             }
+         }
+
+         function UpdateSelectedVal()
+         {
+             var answerIds = '';
+        $.each($(".QuestionOptions .custom-control-input"), function(key, value) {
+                 if (value.checked) {
+                         answerIds = answerIds + $(value)[0].id + ",";
+                     }
+                     });
+                 answerIds = answerIds.replace(/,\s*$/, "");
+        $("#IsSelectedAnswer").val(answerIds);
+        }
+
+         function clearQuestiontimer() {         
+             if (questionSetInterVariable != null && questionSetInterVariable != undefined) {
+                 clearInterval(questionSetInterVariable);
+             }
+         }
+    </script>
+}

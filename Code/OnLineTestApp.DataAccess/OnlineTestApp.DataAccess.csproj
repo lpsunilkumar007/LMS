@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E310A58-CE49-4175-9451-EAA537C7549F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineTestApp.DataAccess</RootNamespace>
+    <AssemblyName>OnlineTestApp.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseClasses\DataAccessBase.cs" />
+    <Compile Include="Candidate\AssignTestToCandidateDataAccess.cs" />
+    <Compile Include="Candidate\ManageCandidateDataAccess.cs" />
+    <Compile Include="Common\CompanyDataAccess.cs" />
+    <Compile Include="Common\EmailDataAccess.cs" />
+    <Compile Include="Common\LookUpDomainValuesDataAccess.cs" />
+    <Compile Include="Common\QuestionDataAccess.cs" />
+    <Compile Include="Common\UserDataAccess.cs" />
+    <Compile Include="Company\CandidateDataAccess.cs" />
+    <Compile Include="Company\CompanyUserDataAccess.cs" />
+    <Compile Include="Company\InviteTestDataAccess.cs" />
+    <Compile Include="ManageCompany\ManageCompanyDataAccess.cs" />
+    <Compile Include="DataLayer\DataTypes\DataTypePropertyAttributeConvention.cs" />
+    <Compile Include="DataLayer\ManageDataLayerDataAccess.cs" />
+    <Compile Include="DataLayer\OnlineTestAppContext.cs" />
+    <Compile Include="DataLayer\OnlineTestAppInitializer.cs" />
+    <Compile Include="EmailTemplate\ManageAdminEmailTemplateDataAccess.cs" />
+    <Compile Include="EmailTemplate\ManageSystemEmailTemplateDataAccess.cs" />
+    <Compile Include="Email\EmailLogDataAccess.cs" />
+    <Compile Include="Email\SendEmailDataAccess.cs" />
+    <Compile Include="LookUps\LookUpDomainDataAccess.cs" />
+    <Compile Include="LookUps\LookUpDomainValueDataAccess.cs" />
+    <Compile Include="Menu\MenuDataAccess.cs" />
+    <Compile Include="Migrations\201801251702366_InitialCreate.cs" />
+    <Compile Include="Migrations\201801251702366_InitialCreate.Designer.cs">
+      <DependentUpon>201801251702366_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801301708133_AddedQuestionObjects.cs" />
+    <Compile Include="Migrations\201801301708133_AddedQuestionObjects.Designer.cs">
+      <DependentUpon>201801301708133_AddedQuestionObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801310903150_ElmahObjects.cs" />
+    <Compile Include="Migrations\201801310903150_ElmahObjects.Designer.cs">
+      <DependentUpon>201801310903150_ElmahObjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802140916076_RemovedColumns.cs" />
+    <Compile Include="Migrations\201802140916076_RemovedColumns.Designer.cs">
+      <DependentUpon>201802140916076_RemovedColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802151013402_AddQuestionsTotalOptions.cs" />
+    <Compile Include="Migrations\201802151013402_AddQuestionsTotalOptions.Designer.cs">
+      <DependentUpon>201802151013402_AddQuestionsTotalOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802151108031_AddEmailTemplateTable.cs" />
+    <Compile Include="Migrations\201802151108031_AddEmailTemplateTable.Designer.cs">
+      <DependentUpon>201802151108031_AddEmailTemplateTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802160508549_AddCompanyProperties.cs" />
+    <Compile Include="Migrations\201802160508549_AddCompanyProperties.Designer.cs">
+      <DependentUpon>201802160508549_AddCompanyProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802191534409_AddedUserSettingTable.cs" />
+    <Compile Include="Migrations\201802191534409_AddedUserSettingTable.Designer.cs">
+      <DependentUpon>201802191534409_AddedUserSettingTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802210740561_ChangedFloatToDecimal.cs" />
+    <Compile Include="Migrations\201802210740561_ChangedFloatToDecimal.Designer.cs">
+      <DependentUpon>201802210740561_ChangedFloatToDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802211112469_RequiredToNonRequired.cs" />
+    <Compile Include="Migrations\201802211112469_RequiredToNonRequired.Designer.cs">
+      <DependentUpon>201802211112469_RequiredToNonRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802261136589_AddTestTables.cs" />
+    <Compile Include="Migrations\201802261136589_AddTestTables.Designer.cs">
+      <DependentUpon>201802261136589_AddTestTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802270443288_UpdateTestDetails.cs" />
+    <Compile Include="Migrations\201802270443288_UpdateTestDetails.Designer.cs">
+      <DependentUpon>201802270443288_UpdateTestDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802280942176_UpdateValidForDays.cs" />
+    <Compile Include="Migrations\201802280942176_UpdateValidForDays.Designer.cs">
+      <DependentUpon>201802280942176_UpdateValidForDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803011131007_AddedColumn_CompanyIdEmailTemplate.cs" />
+    <Compile Include="Migrations\201803011131007_AddedColumn_CompanyIdEmailTemplate.Designer.cs">
+      <DependentUpon>201803011131007_AddedColumn_CompanyIdEmailTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803011541329_AddEmailLogTable.cs" />
+    <Compile Include="Migrations\201803011541329_AddEmailLogTable.Designer.cs">
+      <DependentUpon>201803011541329_AddEmailLogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803040733190_AddedTempTestsTable.cs" />
+    <Compile Include="Migrations\201803040733190_AddedTempTestsTable.Designer.cs">
+      <DependentUpon>201803040733190_AddedTempTestsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803040745097_TempTestsTable_CreatedBy.cs" />
+    <Compile Include="Migrations\201803040745097_TempTestsTable_CreatedBy.Designer.cs">
+      <DependentUpon>201803040745097_TempTestsTable_CreatedBy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061230211_CandidateTest.cs" />
+    <Compile Include="Migrations\201803061230211_CandidateTest.Designer.cs">
+      <DependentUpon>201803061230211_CandidateTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061324228_UpdateCandidateTest.cs" />
+    <Compile Include="Migrations\201803061324228_UpdateCandidateTest.Designer.cs">
+      <DependentUpon>201803061324228_UpdateCandidateTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803080522165_UpdateTestReferenceNumber.cs" />
+    <Compile Include="Migrations\201803080522165_UpdateTestReferenceNumber.Designer.cs">
+      <DependentUpon>201803080522165_UpdateTestReferenceNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803081241195_UpdateCandidateAssignedTest.cs" />
+    <Compile Include="Migrations\201803081241195_UpdateCandidateAssignedTest.Designer.cs">
+      <DependentUpon>201803081241195_UpdateCandidateAssignedTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803081708375_ColumnsChanges.cs" />
+    <Compile Include="Migrations\201803081708375_ColumnsChanges.Designer.cs">
+      <DependentUpon>201803081708375_ColumnsChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803090516067_UpdateMaxScore.cs" />
+    <Compile Include="Migrations\201803090516067_UpdateMaxScore.Designer.cs">
+      <DependentUpon>201803090516067_UpdateMaxScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803091153421_UpdateCandidateTestDetails.cs" />
+    <Compile Include="Migrations\201803091153421_UpdateCandidateTestDetails.Designer.cs">
+      <DependentUpon>201803091153421_UpdateCandidateTestDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803091221436_UpdateCandidateTestScore.cs" />
+    <Compile Include="Migrations\201803091221436_UpdateCandidateTestScore.Designer.cs">
+      <DependentUpon>201803091221436_UpdateCandidateTestScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221010426_UpdateCandidateTestQuestionSkippedAns.cs" />
+    <Compile Include="Migrations\201803221010426_UpdateCandidateTestQuestionSkippedAns.Designer.cs">
+      <DependentUpon>201803221010426_UpdateCandidateTestQuestionSkippedAns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803260534578_UpdateCandidateTestDetails1.cs" />
+    <Compile Include="Migrations\201803260534578_UpdateCandidateTestDetails1.Designer.cs">
+      <DependentUpon>201803260534578_UpdateCandidateTestDetails1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803260548179_UpdateCandidateTestDetailsIsdeleted.cs" />
+    <Compile Include="Migrations\201803260548179_UpdateCandidateTestDetailsIsdeleted.Designer.cs">
+      <DependentUpon>201803260548179_UpdateCandidateTestDetailsIsdeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803260610051_UpdateCandidateAssignedTest1.cs" />
+    <Compile Include="Migrations\201803260610051_UpdateCandidateAssignedTest1.Designer.cs">
+      <DependentUpon>201803260610051_UpdateCandidateAssignedTest1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804250739172_DbMajorChanges.cs" />
+    <Compile Include="Migrations\201804250739172_DbMajorChanges.Designer.cs">
+      <DependentUpon>201804250739172_DbMajorChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804251037462_TestMockupTable.cs" />
+    <Compile Include="Migrations\201804251037462_TestMockupTable.Designer.cs">
+      <DependentUpon>201804251037462_TestMockupTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804251318185_ModelTestQuestions.cs" />
+    <Compile Include="Migrations\201804251318185_ModelTestQuestions.Designer.cs">
+      <DependentUpon>201804251318185_ModelTestQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804260800232_SampleTestQuestionsTable.cs" />
+    <Compile Include="Migrations\201804260800232_SampleTestQuestionsTable.Designer.cs">
+      <DependentUpon>201804260800232_SampleTestQuestionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804260819140_SampleTestQuestionDbChanges.cs" />
+    <Compile Include="Migrations\201804260819140_SampleTestQuestionDbChanges.Designer.cs">
+      <DependentUpon>201804260819140_SampleTestQuestionDbChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804261203231_sampleTestQuestionsFkTechnologyAdded.cs" />
+    <Compile Include="Migrations\201804261203231_sampleTestQuestionsFkTechnologyAdded.Designer.cs">
+      <DependentUpon>201804261203231_sampleTestQuestionsFkTechnologyAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805030952397_testPaperDbChanges.cs" />
+    <Compile Include="Migrations\201805030952397_testPaperDbChanges.Designer.cs">
+      <DependentUpon>201805030952397_testPaperDbChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805070655430_CandidateQuestionTableChanges.cs" />
+    <Compile Include="Migrations\201805070655430_CandidateQuestionTableChanges.Designer.cs">
+      <DependentUpon>201805070655430_CandidateQuestionTableChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805070704175_CandidateQuestionTableChange.cs" />
+    <Compile Include="Migrations\201805070704175_CandidateQuestionTableChange.Designer.cs">
+      <DependentUpon>201805070704175_CandidateQuestionTableChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805070904372_CandidateTestQuestionDbChanges.cs" />
+    <Compile Include="Migrations\201805070904372_CandidateTestQuestionDbChanges.Designer.cs">
+      <DependentUpon>201805070904372_CandidateTestQuestionDbChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805070919057_CandidateQuestionsDbTable.cs" />
+    <Compile Include="Migrations\201805070919057_CandidateQuestionsDbTable.Designer.cs">
+      <DependentUpon>201805070919057_CandidateQuestionsDbTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805070921484_CandidateQuestionsDbTables.cs" />
+    <Compile Include="Migrations\201805070921484_CandidateQuestionsDbTables.Designer.cs">
+      <DependentUpon>201805070921484_CandidateQuestionsDbTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805071040359_CandidateQuestionsTableChanges.cs" />
+    <Compile Include="Migrations\201805071040359_CandidateQuestionsTableChanges.Designer.cs">
+      <DependentUpon>201805071040359_CandidateQuestionsTableChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805071048137_RecreatingCandidateQuestionsandOptionsDbTables.cs" />
+    <Compile Include="Migrations\201805071048137_RecreatingCandidateQuestionsandOptionsDbTables.Designer.cs">
+      <DependentUpon>201805071048137_RecreatingCandidateQuestionsandOptionsDbTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805071147035_CandidateQuestionOptionsChanges.cs" />
+    <Compile Include="Migrations\201805071147035_CandidateQuestionOptionsChanges.Designer.cs">
+      <DependentUpon>201805071147035_CandidateQuestionOptionsChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805091339048_candidateQuestionsTable.cs" />
+    <Compile Include="Migrations\201805091339048_candidateQuestionsTable.Designer.cs">
+      <DependentUpon>201805091339048_candidateQuestionsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805111008358_ChangesInTestInvitationTable.cs" />
+    <Compile Include="Migrations\201805111008358_ChangesInTestInvitationTable.Designer.cs">
+      <DependentUpon>201805111008358_ChangesInTestInvitationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805140658216_testResultInfoAddedInTestInvitationsTable.cs" />
+    <Compile Include="Migrations\201805140658216_testResultInfoAddedInTestInvitationsTable.Designer.cs">
+      <DependentUpon>201805140658216_testResultInfoAddedInTestInvitationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805140705432_testResultInfoAddedInTestInvitationsTableIsNegative.cs" />
+    <Compile Include="Migrations\201805140705432_testResultInfoAddedInTestInvitationsTableIsNegative.Designer.cs">
+      <DependentUpon>201805140705432_testResultInfoAddedInTestInvitationsTableIsNegative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805160626557_TestNameColumnAddInTestInvitation.cs" />
+    <Compile Include="Migrations\201805160626557_TestNameColumnAddInTestInvitation.Designer.cs">
+      <DependentUpon>201805160626557_TestNameColumnAddInTestInvitation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805160633238_TestPaperNameColumnAddition.cs" />
+    <Compile Include="Migrations\201805160633238_TestPaperNameColumnAddition.Designer.cs">
+      <DependentUpon>201805160633238_TestPaperNameColumnAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180524020_PassingPersenatageColumnAddintion.cs" />
+    <Compile Include="Migrations\201805180524020_PassingPersenatageColumnAddintion.Designer.cs">
+      <DependentUpon>201805180524020_PassingPersenatageColumnAddintion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180639230_isPassedColumnAddition.cs" />
+    <Compile Include="Migrations\201805180639230_isPassedColumnAddition.Designer.cs">
+      <DependentUpon>201805180639230_isPassedColumnAddition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180640419_isPassedColumnAdditions.cs" />
+    <Compile Include="Migrations\201805180640419_isPassedColumnAdditions.Designer.cs">
+      <DependentUpon>201805180640419_isPassedColumnAdditions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180646529_IsPassedAdd.cs" />
+    <Compile Include="Migrations\201805180646529_IsPassedAdd.Designer.cs">
+      <DependentUpon>201805180646529_IsPassedAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805210559542_NegativeMarkingColumnAdded.cs" />
+    <Compile Include="Migrations\201805210559542_NegativeMarkingColumnAdded.Designer.cs">
+      <DependentUpon>201805210559542_NegativeMarkingColumnAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805210921409_FkQuestionTechnologyIdAddedInCandiateQuestions.cs" />
+    <Compile Include="Migrations\201805210921409_FkQuestionTechnologyIdAddedInCandiateQuestions.Designer.cs">
+      <DependentUpon>201805210921409_FkQuestionTechnologyIdAddedInCandiateQuestions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805240908515_uniqueEmailAddress.cs" />
+    <Compile Include="Migrations\201805240908515_uniqueEmailAddress.Designer.cs">
+      <DependentUpon>201805240908515_uniqueEmailAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806011118318_candidateDetailsIntestInvitation.cs" />
+    <Compile Include="Migrations\201806011118318_candidateDetailsIntestInvitation.Designer.cs">
+      <DependentUpon>201806011118318_candidateDetailsIntestInvitation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MyAccount\MyAccountDataAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question\ManageQuestionsDataAccess.cs" />
+    <Compile Include="SampleTest\SampleTestDataAccess.cs" />
+    <Compile Include="Test\ManageTestDataAccess.cs" />
+    <Compile Include="ApplyNow\ApplyNowDataAccess.cs" />
+    <Compile Include="UserMemberShip\UserLoginDataAccess.cs" />
+    <Compile Include="User\ManageUserSettingsDataAccess.cs" />
+    <Compile Include="User\ManageUsersDataAccess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineTestApp.Domain\OnlineTestApp.Domain.csproj">
+      <Project>{0f0a4be7-8d08-449c-ab52-2e51584bc6cb}</Project>
+      <Name>OnlineTestApp.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Enums\OnlineTestApp.Enums.csproj">
+      <Project>{70386b26-6aac-4653-beba-81a68f611353}</Project>
+      <Name>OnlineTestApp.Enums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.Settings\OnlineTestApp.Settings.csproj">
+      <Project>{eee94b8f-b218-4d2c-9f95-d0a51f9b1f9f}</Project>
+      <Name>OnlineTestApp.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.UserVariables\OnlineTestApp.UserVariables.csproj">
+      <Project>{cd8eb6c5-8107-4ec8-956f-1c817dc2d585}</Project>
+      <Name>OnlineTestApp.UserVariables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineTestApp.ViewModel\OnlineTestApp.ViewModel.csproj">
+      <Project>{04abcaed-84fc-4477-8d04-0729ab1a2d57}</Project>
+      <Name>OnlineTestApp.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Conversion\Utilities.Conversion.csproj">
+      <Project>{67f4d2f5-b9db-4f6b-b03f-fd389c116f15}</Project>
+      <Name>Utilities.Conversion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Encryption\Utilities.Encryption.csproj">
+      <Project>{9c39781e-7601-4e58-bfee-2eb4c74011b0}</Project>
+      <Name>Utilities.Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.ErrorLog\Utilities.ErrorLog.csproj">
+      <Project>{b37509c6-47d0-41ba-bc09-ded0d93fd721}</Project>
+      <Name>Utilities.ErrorLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities.Helper\Utilities.Helper.csproj">
+      <Project>{fda6780b-4e2f-44e0-acec-d4ca6ec1a76e}</Project>
+      <Name>Utilities.Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801251702366_InitialCreate.resx">
+      <DependentUpon>201801251702366_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801301708133_AddedQuestionObjects.resx">
+      <DependentUpon>201801301708133_AddedQuestionObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801310903150_ElmahObjects.resx">
+      <DependentUpon>201801310903150_ElmahObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802140916076_RemovedColumns.resx">
+      <DependentUpon>201802140916076_RemovedColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151013402_AddQuestionsTotalOptions.resx">
+      <DependentUpon>201802151013402_AddQuestionsTotalOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802151108031_AddEmailTemplateTable.resx">
+      <DependentUpon>201802151108031_AddEmailTemplateTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802160508549_AddCompanyProperties.resx">
+      <DependentUpon>201802160508549_AddCompanyProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802191534409_AddedUserSettingTable.resx">
+      <DependentUpon>201802191534409_AddedUserSettingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802210740561_ChangedFloatToDecimal.resx">
+      <DependentUpon>201802210740561_ChangedFloatToDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802211112469_RequiredToNonRequired.resx">
+      <DependentUpon>201802211112469_RequiredToNonRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802261136589_AddTestTables.resx">
+      <DependentUpon>201802261136589_AddTestTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802270443288_UpdateTestDetails.resx">
+      <DependentUpon>201802270443288_UpdateTestDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802280942176_UpdateValidForDays.resx">
+      <DependentUpon>201802280942176_UpdateValidForDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803011131007_AddedColumn_CompanyIdEmailTemplate.resx">
+      <DependentUpon>201803011131007_AddedColumn_CompanyIdEmailTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803011541329_AddEmailLogTable.resx">
+      <DependentUpon>201803011541329_AddEmailLogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803040733190_AddedTempTestsTable.resx">
+      <DependentUpon>201803040733190_AddedTempTestsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803040745097_TempTestsTable_CreatedBy.resx">
+      <DependentUpon>201803040745097_TempTestsTable_CreatedBy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061230211_CandidateTest.resx">
+      <DependentUpon>201803061230211_CandidateTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061324228_UpdateCandidateTest.resx">
+      <DependentUpon>201803061324228_UpdateCandidateTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803080522165_UpdateTestReferenceNumber.resx">
+      <DependentUpon>201803080522165_UpdateTestReferenceNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081241195_UpdateCandidateAssignedTest.resx">
+      <DependentUpon>201803081241195_UpdateCandidateAssignedTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081708375_ColumnsChanges.resx">
+      <DependentUpon>201803081708375_ColumnsChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803090516067_UpdateMaxScore.resx">
+      <DependentUpon>201803090516067_UpdateMaxScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803091153421_UpdateCandidateTestDetails.resx">
+      <DependentUpon>201803091153421_UpdateCandidateTestDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803091221436_UpdateCandidateTestScore.resx">
+      <DependentUpon>201803091221436_UpdateCandidateTestScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221010426_UpdateCandidateTestQuestionSkippedAns.resx">
+      <DependentUpon>201803221010426_UpdateCandidateTestQuestionSkippedAns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803260534578_UpdateCandidateTestDetails1.resx">
+      <DependentUpon>201803260534578_UpdateCandidateTestDetails1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803260548179_UpdateCandidateTestDetailsIsdeleted.resx">
+      <DependentUpon>201803260548179_UpdateCandidateTestDetailsIsdeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803260610051_UpdateCandidateAssignedTest1.resx">
+      <DependentUpon>201803260610051_UpdateCandidateAssignedTest1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804250739172_DbMajorChanges.resx">
+      <DependentUpon>201804250739172_DbMajorChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251037462_TestMockupTable.resx">
+      <DependentUpon>201804251037462_TestMockupTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804251318185_ModelTestQuestions.resx">
+      <DependentUpon>201804251318185_ModelTestQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804260800232_SampleTestQuestionsTable.resx">
+      <DependentUpon>201804260800232_SampleTestQuestionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804260819140_SampleTestQuestionDbChanges.resx">
+      <DependentUpon>201804260819140_SampleTestQuestionDbChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261203231_sampleTestQuestionsFkTechnologyAdded.resx">
+      <DependentUpon>201804261203231_sampleTestQuestionsFkTechnologyAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030952397_testPaperDbChanges.resx">
+      <DependentUpon>201805030952397_testPaperDbChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805070655430_CandidateQuestionTableChanges.resx">
+      <DependentUpon>201805070655430_CandidateQuestionTableChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805070704175_CandidateQuestionTableChange.resx">
+      <DependentUpon>201805070704175_CandidateQuestionTableChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805070904372_CandidateTestQuestionDbChanges.resx">
+      <DependentUpon>201805070904372_CandidateTestQuestionDbChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805070919057_CandidateQuestionsDbTable.resx">
+      <DependentUpon>201805070919057_CandidateQuestionsDbTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805070921484_CandidateQuestionsDbTables.resx">
+      <DependentUpon>201805070921484_CandidateQuestionsDbTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071040359_CandidateQuestionsTableChanges.resx">
+      <DependentUpon>201805071040359_CandidateQuestionsTableChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071048137_RecreatingCandidateQuestionsandOptionsDbTables.resx">
+      <DependentUpon>201805071048137_RecreatingCandidateQuestionsandOptionsDbTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805071147035_CandidateQuestionOptionsChanges.resx">
+      <DependentUpon>201805071147035_CandidateQuestionOptionsChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805091339048_candidateQuestionsTable.resx">
+      <DependentUpon>201805091339048_candidateQuestionsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805111008358_ChangesInTestInvitationTable.resx">
+      <DependentUpon>201805111008358_ChangesInTestInvitationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805140658216_testResultInfoAddedInTestInvitationsTable.resx">
+      <DependentUpon>201805140658216_testResultInfoAddedInTestInvitationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805140705432_testResultInfoAddedInTestInvitationsTableIsNegative.resx">
+      <DependentUpon>201805140705432_testResultInfoAddedInTestInvitationsTableIsNegative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805160626557_TestNameColumnAddInTestInvitation.resx">
+      <DependentUpon>201805160626557_TestNameColumnAddInTestInvitation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805160633238_TestPaperNameColumnAddition.resx">
+      <DependentUpon>201805160633238_TestPaperNameColumnAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180524020_PassingPersenatageColumnAddintion.resx">
+      <DependentUpon>201805180524020_PassingPersenatageColumnAddintion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180639230_isPassedColumnAddition.resx">
+      <DependentUpon>201805180639230_isPassedColumnAddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180640419_isPassedColumnAdditions.resx">
+      <DependentUpon>201805180640419_isPassedColumnAdditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180646529_IsPassedAdd.resx">
+      <DependentUpon>201805180646529_IsPassedAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805210559542_NegativeMarkingColumnAdded.resx">
+      <DependentUpon>201805210559542_NegativeMarkingColumnAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805210921409_FkQuestionTechnologyIdAddedInCandiateQuestions.resx">
+      <DependentUpon>201805210921409_FkQuestionTechnologyIdAddedInCandiateQuestions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805240908515_uniqueEmailAddress.resx">
+      <DependentUpon>201805240908515_uniqueEmailAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011118318_candidateDetailsIntestInvitation.resx">
+      <DependentUpon>201806011118318_candidateDetailsIntestInvitation.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

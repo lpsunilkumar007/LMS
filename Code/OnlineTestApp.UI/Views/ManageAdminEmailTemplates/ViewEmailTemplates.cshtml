@@ -1,0 +1,78 @@
+﻿@model List<OnlineTestApp.Domain.Email.EmailTemplates>
+@{
+    ViewBag.PageTitle = "View System Email Templates";
+    
+}
+
+@section PageHeading
+{
+    Email Templates
+}
+@section PageSubHeading
+{
+    View System Email Templates
+}
+@section PageBreadCrum
+{
+    <li><a href="/managesystememailtemplate/viewemailtemplates">Email Templates</a></li>
+    <li class="active">View System Email Templates</li>
+}
+
+<div class="bg-white p-3 mt-4 card-box-body">
+    @if (Model.Count > 0)
+    {
+
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" placeholder="Search....." data-filter-grid="true" data-filter-grid-id="filter-me">
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+        <div class="data-grid pt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:20%">Email template name</th>
+                        <th style="width:60%">Template Description</th>
+                        <th style="width:10%">Created At</th>
+                        <th style="width:10%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="filter-me">
+
+                    @foreach (var emailTemplate in Model)
+                    {
+                        <tr>
+                            <td>
+                                @emailTemplate.EmailTemplateName
+                            </td>
+                            <td>@emailTemplate.EmailTemplateDescription</td>
+                            <td><time>@emailTemplate.CreatedDateTime_ToLongDateString</time></td>
+
+                            <td class="tr-action">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="/manageadminemailtemplates/editemailtemplate/?emailTemplateId=@emailTemplate.EmailTemplateId" class="dropdown-item">Edit <i class="fas fa-edit"></i></a>
+                                        
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+    }
+</div>

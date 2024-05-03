@@ -1,0 +1,165 @@
+﻿@model OnlineTestApp.ViewModel.User.AddEditApplicationUserViewModel
+@{
+    ViewBag.PageTitle = "Edit User Details";
+    
+}
+
+@section PageHeading
+ {
+    Manage Users
+}
+@section PageSubHeading
+{
+    Edit User Details
+}
+@section PageBreadCrum
+ {
+    <li><a href="/manageapplicationuser/viewusers">Manage Users</a></li>
+    <li class="active">Edit User Details</li>
+}
+
+<form class="content-group" method="post" id="editUser" data-post-type='ajax' action="/ManageApplicationUser/EditUser?applicationuserid=@Model.ApplicationUsers.ApplicationUserId"
+      data-success-method="AjaxHitRunSuccessfully">
+    @Html.AntiForgeryToken()
+    <div class="card">
+        <div class="card-body card-box-body">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>User name <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.UserName, new { autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.UserName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Password <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.UserPassword)
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.UserPassword)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>First name <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.FirstName)
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.FirstName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Last name <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.LastName)
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.LastName)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Email address <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.EmailAddress)
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.EmailAddress)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Mobile number<i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.MobileNumber)
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.MobileNumber)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Alternate number</label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ApplicationUsers.AlternateNumber)
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.AlternateNumber)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>User roles <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.DropDownListFor(m => m.ApplicationUsers.FkUserRoleId, new SelectList(Model.LstApplicationUserRoles, "UserRoleId", "UserRoleName"), "Please Select")
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.FkUserRoleId)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Assign company <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.DropDownListFor(m => m.ApplicationUsers.FkCompanyId, new SelectList(Model.LstCompanies, "CompanyId", "CompanyName"), "Please Select")
+                            @Html.ValidationMessageFor(m => m.ApplicationUsers.FkCompanyId)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Can access system  </label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 singlecheckbox">
+                            <span class="custom-control custom-checkbox d-inline-block">
+                                @Html.CheckBoxFor(m => m.ApplicationUsers.IsActive, new { @class = "custom-control-input" })
+                                @*<input type="checkbox" class="custom-control-input" id="customCheck7" checked="">*@
+                                <label class="custom-control-label" for="ApplicationUsers_IsActive"></label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="bg-gradient">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                
+                <a href="/manageapplicationuser/viewusers" class="btn btn-secondary">
+                    <i class="fa fa-arrow-left position-right"></i>
+                    &nbsp; Back
+                </a>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                <button type="submit" class="btn btn-primary">
+                    Update User Details
+                    &nbsp; <i class="far fa-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+   
+
+</form>
+

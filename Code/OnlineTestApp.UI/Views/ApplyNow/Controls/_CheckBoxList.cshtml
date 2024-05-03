@@ -1,0 +1,30 @@
+﻿@model OnlineTestApp.Domain.Candidate.CandidateTestQuestions
+@{
+    Layout = null;
+}
+<ul class="list-unstyled">
+    @for (int i = 0; i < Model.LstCandidateTestQuestionOptions.Count(); i++)
+    {
+        <li>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="@Model.LstCandidateTestQuestionOptions[i].CandidateQuestionOptionId" name="@Model.LstCandidateTestQuestionOptions[i].FkQuestionId" class="custom-control-input" onchange="UpdateSelectedVal()">
+                <label class="custom-control-label" for="@Model.LstCandidateTestQuestionOptions[i].CandidateQuestionOptionId">@Model.LstCandidateTestQuestionOptions[i].QuestionAnswer</label>
+                @Html.HiddenFor(m => @Model.LstCandidateTestQuestionOptions[i].CandidateQuestionOptionId)
+
+            </div>
+        </li>
+    }
+    @Html.HiddenFor(m => Model.IsSelectedAnswer)
+    @*@foreach (var option in @Model.LstCandidateTestQuestionOptions.Where(x => x.IsDeleted == false).OrderBy(x => x.DisplayOrder))
+    {
+        <li>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="@Model.LstCandidateTestQuestionOptions[i].CandidateQuestionOptionId" name="@Model.LstCandidateTestQuestionOptions[i].FkQuestionId" class="custom-control-input">
+                <label class="custom-control-label" for="@Model.LstCandidateTestQuestionOptions[i].CandidateQuestionOptionId">@Model.LstCandidateTestQuestionOptions[i].QuestionAnswer</label>
+               
+            </div>
+        </li>
+    }*@
+
+</ul>
+

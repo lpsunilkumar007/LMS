@@ -1,0 +1,57 @@
+﻿@model List<OnlineTestApp.Domain.TestPaper.TestInvitations>
+@{
+    ViewBag.Title = "GetCandidatesResultbyTestpaperId";
+    Layout = "~/Views/Shared/_CompanyModelPopUpMaster.cshtml";
+}
+@if (Model.Count > 0)
+{
+    <table id="" class="tablesorter rTable dashboard-result ">
+        <thead class="">
+            <tr class="rTableRow">
+                <th class="rTableHead test-date sorting">Candidate</th>
+                <th class="rTableHead attempt sorting">Marks Obtained</th>
+                @*<th class="rTableHead passed sorting">Status</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var testInvitation in Model)
+            {
+                <tr class="rTableRow">
+
+                    @if (@testInvitation.IsTestFinished)
+                    {
+                        <td class="rTableCell">
+                            <a target="_blank" class="text-success" href="/dashboard/InvitedTestCandidateTestResults?testInvitationId=@testInvitation.TestInvitationId" disabled="true">@testInvitation.CandidateName</a>
+                        </td>
+                        <td class="rTableCell">@testInvitation.TotalCandidateScoreObtained/ @testInvitation.TotalScore</td>
+
+                    }
+                    else
+                    {
+                        <td class="rTableCell">
+                            <a  class="text-danger" >@testInvitation.Email</a>
+                        </td>
+                        <td class= "text-danger rTableCell">Not Attempted</td>
+                    }
+
+                    @*@if (@testInvitation.IsPassed)
+                        {
+                            <td class="rTableCell passed">
+                                <span class="d-none">1</span>
+                            </td>
+                        }
+                        else
+                        {
+                            <td class="rTableCell failed">
+                                <span class="d-none">0</span>
+                            </td>
+                        }*@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+}

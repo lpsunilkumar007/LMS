@@ -1,0 +1,36 @@
+﻿@model List<OnlineTestApp.Domain.SampleTest.SampleTestMockups>
+
+@{int mockupCounter = 1;}
+
+<h3> 4. Sample Tests </h3>
+<p> We have prepared  tests for you. Select and proceed next</p>
+<div class="col per-tab clearfix">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-xl-5 col-lg-6 col-md-12 col-sm-6 col-12">
+                <div class="perv-tab">
+                    <span class="num-span"> @mockupCounter </span>
+                    <h4>
+                        <a href="javascript:void(0)" class="checked-icon" sample-test-btn-mb="@item.SampleTestMockUpId" onClick="selectTestMockup('@item.SampleTestMockUpId')"><i class="fa fa-check"></i></a>
+                        Mockup-@mockupCounter
+                    </h4>
+                    <p>In this test you have total @item.TotalQuestions questions. </p>
+                    <div class="btn-group">
+                        <button onclick="previewMockupTestById('@item.SampleTestMockUpId')" class="btn btn-primary hvr-bounce-to-bottom"><img src="~/Template/Company/images/preview-test-icon.png" class="preview-select-icon"><span> Preview</span></button>
+                        <button type="button" class="btn btn-primary hvr-bounce-to-bottom select-button" sample-test-btn="@item.SampleTestMockUpId" onClick="selectTestMockup('@item.SampleTestMockUpId')">Select</button>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<div class="alert alert-danger d-none " id="sampleTest-tab-error">
+    Please select  one of sample test
+</div>
+<div class="right-btn float-right mt-4">
+    <button id="btn-inviteCandidate" type="button" onclick="previewTestSubmit()" class="btn btn-default btn-block" disabled>Invite Candidates <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+</div>
+

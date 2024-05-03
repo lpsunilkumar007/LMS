@@ -1,0 +1,45 @@
+﻿@model OnlineTestApp.ViewModel.Candidate.CandidateTestQuestionsViewModel
+
+<form id="CandidateQuestionDetails">
+    <div class="question-box clearfix">
+        @Html.HiddenFor(m => m.CandidateTestQuestions.FkTestInvitationId)
+        @Html.HiddenFor(m => m.CandidateTestQuestions.CandidateTestQuestionId)
+
+        <div class="question-heading">
+            @*<h5><i class="fa fa-clock-o" aria-hidden="true"></i><span>00:10:00</span></h5>*@
+            <h2><b>Q&nbsp;<span class="ques-num">@Model.CandidateTestQuestions.DisplayOrder&nbsp;</span>.</b> &nbsp; @Model.CandidateTestQuestions.QuestionTitle</h2>
+
+        </div>
+
+        <ul class="list-unstyled QuestionOptions">
+            @if (@Model.CandidateTestQuestions.FieldType == @OnlineTestApp.Enums.Question.FieldType.CheckBoxList)
+            {
+                Html.RenderPartial("~/Views/Candidate/Controls/_CheckBoxList.cshtml", @Model);
+            }
+            else
+            {
+                Html.RenderPartial("~/Views/Candidate/Controls/_RadioButtonList.cshtml", @Model);
+            }
+        </ul>
+
+        <div class="alert alert-danger d-none mt-4" id="error-question-selection">
+            Please select one of the option.
+        </div>
+    </div>
+    <div class="right-btn float-right mt-4">
+
+        @if (!@Model.IsLastQuestion)
+        {
+            <button type="button" class="btn btn-default btn-block btn-blue" onclick="GetNextQuestion()">Next <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-block" onclick="UpdateSkipQuestion('@Model.CandidateTestQuestions.CandidateTestQuestionId','@Model.CandidateTestQuestions.FkTestInvitationId')">Skip <i class="fa fa-share" aria-hidden="true"></i></button>
+        }
+        else
+        {
+            @*<button type="button" class="btn btn-default btn-block" onclick="UpdateSkipQuestion('@Model.CandidateTestQuestions.CandidateTestQuestionId','@Model.CandidateTestQuestions.FkTestInvitationId')">Skip And Finish<i class="fa fa-share" aria-hidden="true"></i></button>*@
+            <button type="button" class="btn btn-default btn-block btn-blue" onclick="SubmitTest('@Model.CandidateTestQuestions.CandidateTestQuestionId','@Model.CandidateTestQuestions.FkTestInvitationId')">Finish <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+        }
+
+    </div>
+</form>
+
+

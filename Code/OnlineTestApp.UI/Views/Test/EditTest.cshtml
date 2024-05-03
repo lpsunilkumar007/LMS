@@ -1,0 +1,109 @@
+﻿@model OnlineTestApp.Domain.Test.TestDetails
+@{
+    ViewBag.PageTitle = "Edit Test Details";
+}
+
+@section PageHeading
+ {
+    Manage Test
+}
+@section PageSubHeading
+{
+    Edit Test Details
+}
+@section PageBreadCrum
+ {
+    <li><a href="/test/viewtests">Manage Test</a></li>
+    <li class="active"> Edit Test Details</li>
+}
+
+<form class="content-group" method="post" id="editTestDetails" data-post-type='ajax' action="/test/edittest?testDetailId=@Model.TestDetailId"
+      data-success-method="AjaxHitRunSuccessfully">
+    @Html.AntiForgeryToken()
+    <div class="card">
+        <div class="card-body card-box-body">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Test Title<i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.TestTitle, new { autofocus = "autofocus" })
+                            @Html.ValidationMessageFor(m => m.TestTitle)
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.TotalTime)
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Test Description</label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextAreaFor(m => m.TestIntroductoryText, new { @rows = 10 })
+                            @Html.ValidationMessageFor(m => m.TestIntroductoryText)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group row">
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                            <label>Test Valid Upto <i class="fa fa-asterisk"></i></label>
+                        </div>
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12">
+                            @Html.TextBoxFor(m => m.ValidUpTo)
+                            @Html.ValidationMessageFor(m => m.ValidUpTo)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bg-gradient ">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                <button type="reset" class="btn btn-secondary hideReset">
+                    <i class="fa fa-refresh"></i>
+                    Reset
+                </button>
+                <a href="/test/viewtests" class="btn btn-secondary">
+                    <i class="fa fa-arrow-left "></i>
+                    &nbsp; Back
+
+                </a>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                <button type="submit" class="btn btn-primary">
+                    Update Test Details
+                   
+                     
+                    &nbsp; <i class="far fa-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+@section pageFooterResources
+{
+@{
+    var validUpTo = Model.ValidUpTo.ToString("dd MMM yyyy") + " " + Model.ValidUpTo.ToType<DateTime>
+     ().ToString("HH:mm");
+
+}
+    <script>
+
+        $('#ValidUpTo').datetimepicker({
+            timepicker: true,
+            step: 5,
+            inline: false,
+            format: 'd M Y H:i',
+         value: '@validUpTo'
+        });
+
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@model OnlineTestApp.ViewModel.Company.TestMockupViewModel
+<div id="technology-tab" class="invite-test-tabs d-none">
+    <h3> 2. Choose your technology </h3>
+    <div class="col tech-tab">
+        @*@Html.ListBoxFor(m => m.Technology, new SelectList(Model.LstTestTechnology, "LookUpDomainValueId", "LookUpDomainValueText"), "Please Select Technology")*@
+
+        <select class="form-control" id="question-technology"  data-placeholder="choose a technology." multiple>
+            @for (int i = 0; i < Model.LstTestTechnology.Count(); i++)
+            {
+                var select = "";
+                if (Model.LstTestTechnology[i].LookUpDomainValueText == "C++")
+                {
+                    select = "selected";
+                }
+                <option value="@Model.LstTestTechnology[i].LookUpDomainValueId" @select>@Model.LstTestTechnology[i].LookUpDomainValueText</option>
+
+            }
+        </select>
+    </div>
+    <div class="alert alert-danger d-none " id="technology-tab-error">
+        Please select  technology
+    </div>
+    <div class="note mt-4"> Please choose technology for  vacancy. This will be used to fetch questions for preparing the test </div>
+    <div class="right-btn float-right mt-4">
+        <button type="button" class="btn btn-default btn-block" onclick="technologyListSubmit()">Next <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+    </div>
+</div>

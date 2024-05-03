@@ -1,0 +1,13 @@
+﻿@model OnlineTestApp.Domain.Question.Questions
+<ul class="list-unstyled">
+    @foreach (var option in @Model.LstQuestionOptions.Where(x => x.IsDeleted == false).OrderBy(x => x.DisplayOrder))
+    {
+        <li>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio_@option.FkQuestionId@option.DisplayOrder" name="customRadio_@option.FkQuestionId" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio_@option.FkQuestionId@option.DisplayOrder">@option.QuestionAnswer</label>
+            </div>
+        </li>
+    }
+</ul>
+

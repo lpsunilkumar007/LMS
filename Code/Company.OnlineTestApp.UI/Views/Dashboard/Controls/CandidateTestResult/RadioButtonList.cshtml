@@ -1,0 +1,57 @@
+﻿@model OnlineTestApp.Domain.Candidate.CandidateTestQuestions
+
+
+<ul class="list-unstyled static-table">
+    <li>
+        <div class="rTableHead candidtae-TR-first">
+            Options
+        </div>
+
+        <div class="rTableHead text-center">
+             Answered
+        </div>
+
+        <div class="rTableHead text-center">
+            Correct 
+        </div>
+    </li>
+    @foreach (var option in @Model.LstCandidateTestQuestionOptions.Where(x => x.IsDeleted == false).OrderBy(x => x.DisplayOrder))
+    {
+        <li>
+            @{
+                var labelClass = (option.IsCorrect ? "bg-success" : (option.IsCandidateAnswered ? "bg-danger" : ""));
+                var spanClass = (option.IsCorrect ? "fa-check" : (option.IsCandidateAnswered ? "fa-times" : ""));
+                <div class="custom-control custom-radio rTableCell candidtae-TR-first">
+                   
+                    <label class="" for="customRadio_@option.FkQuestionId@option.DisplayOrder">@option.QuestionAnswer</label>
+                
+
+                </div>
+
+
+                <div class="rTableCell text-center">
+                    @if (option.IsCandidateAnswered)
+                    {
+                        if (option.IsCorrect)
+                        {
+                            <i class="fa fa-check"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-times"></i>
+                        }
+                    }
+                </div>
+
+                <div class="rTableCell text-center">
+                    @if (option.IsCorrect)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                </div>
+            }
+        </li>
+    }
+
+</ul>
+

@@ -1,0 +1,47 @@
+﻿@model OnlineTestApp.ViewModel.Test.AddNewTestViewModel
+@{
+
+    Layout = null;
+}
+
+
+<div class="tab-border">
+    <h5>Select Test Paper</h5>
+    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+</div>
+@if (Model.LstViewPreparedTestBaches.Count == 0)
+{
+    <div class="norecords alert alert-info in alert-dismissable"><strong>No record found!</strong></div>
+    <p class="text-center">
+        <button onclick="GoToStep1()" class="btn btn-primary">Click here to go back</button>
+    </p>
+}
+else
+{
+    <div class="row justify-content-md-center paper-row">
+        @for (int i = 0; i < Model.LstViewPreparedTestBaches.Count; i++)
+        {
+            if (i == 0)
+            {
+                Model.LstViewPreparedTestBaches[i].IsSelected = true;
+            }
+            <div class="col" onclick="SelectQuestionPaper(@i,this)" style="cursor:pointer">
+                @Html.CheckBoxFor(m => Model.LstViewPreparedTestBaches[i].IsSelected, new { @style = "display:none;width:auto", })
+                @Html.HiddenFor(m => Model.LstViewPreparedTestBaches[i].QuestionIds)
+                <div class="time-paper">
+                    <b>@Model.LstViewPreparedTestBaches[i].TotalTime</b><br /> Minute
+                </div>
+                <div class="paper-box @(i==0?" selected": "")">
+                    <div class="file-numbering">
+                        <span>@Model.LstViewPreparedTestBaches[i].QuestionIds.Split(',').Count()</span>
+                    </div>
+                    <a href="/test/previewtest?tempTestId=@Model.LstViewPreparedTestBaches[i].TempTestId" target="_blank" class="paper-preview">LIVE PREVIEW</a>
+                </div>
+            </div>
+        }
+    </div>
+    <p class="text-center">
+        <button onclick="GetStep3Data()" class="btn btn-primary">Proceed</button>
+    </p>
+
+}

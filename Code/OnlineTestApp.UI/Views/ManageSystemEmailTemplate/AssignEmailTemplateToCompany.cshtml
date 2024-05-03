@@ -1,0 +1,53 @@
+﻿
+@model OnlineTestApp.ViewModel.Email.AssignSystemEmailTemplateToCompany
+@{
+    ViewBag.PageTitle = "Assign email template to company";
+    Layout = "~/Views/Shared/MasterPages/SuperAdminPopUpMaster.cshtml";
+}
+
+@section PageHeading
+{
+    @ViewBag.PageTitle
+}
+@section PopUpCloseButton
+{
+    <button class="close" onclick="window.parent.closeModelPopUpForm(false)">&times;</button>
+}
+@if (Model.LstCompany.Count > 0)
+{
+    <form method="post" id="assignToCompany" data-post-type='ajax' action="/managesystememailtemplate/assignemailtemplatetocompany" data-success-method="AssignEmailTemplateToCompanySuccess">
+        @Html.AntiForgeryToken()
+        <div class="card">
+            <div class="card-body card-box-body">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            @Html.ListBoxFor(m => m.LstCompanyIds, new SelectList(Model.LstCompany, "CompanyId", "CompanyName"))
+                            @Html.ValidationMessageFor(m => m.LstCompanyIds)
+                            @Html.HiddenFor(m => m.EmailTemplateId)
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="bg-gradient">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+
+
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                    <button type="submit" class="btn btn-info">Assign <i class="far fa-save"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+}
+else
+{
+    <span>No Company found to assign Email Template</span>
+}

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    @{Html.RenderPartial("~/Views/Shared/_pageHeader.cshtml");}
+    @RenderSection("pageHeaderResources", false)
+</head>
+<body style="overflow-x:hidden;">
+    <div class="right-content-area">
+        <div class="jumbotron bg-white heading-box py-3 mb-2">
+            <h1 class="text-primary">
+                @RenderSection("PageHeading", true)
+                <span style="color:#2d2d2d;font-size:14px;float:right">@RenderSection("PopUpCloseButton", true)   </span>
+            </h1>
+        </div>
+        <div class="mx-2 mx-sm-2 mx-xl-3 mx-lg-3 my-3">
+            
+            @RenderBody()
+        </div>
+    </div>
+   
+    @Scripts.Render("~/Ljs")
+    @RenderSection("pageFooterResources", false)
+    @if (ViewBag.ErrorBlock != null)
+    {
+        <script type="text/javascript">
+            ErrorBlock('@ViewBag.ErrorBlock');
+        </script>
+    }
+    else if (ViewBag.success != null)
+    {
+        <script type="text/javascript">
+            Success('@ViewBag.Success');
+        </script>
+    }
+</body>
+
+</html>

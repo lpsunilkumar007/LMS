@@ -1,0 +1,38 @@
+D:\Codes\Utilities\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+D:\Codes\Utilities\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+D:\Codes\Utilities\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+D:\Codes\Utilities\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb
+D:\Codes\Utilities\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csprojResolveAssemblyReference.cache
+D:\Official\Projects\Common Codes\Utilities\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+D:\Official\Projects\Common Codes\Utilities\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+D:\Official\Projects\Common Codes\Utilities\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+D:\Official\Projects\Common Codes\Utilities\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb
+D:\CodeSetup\CyerDime\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+D:\CodeSetup\CyerDime\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+D:\CodeSetup\CyerDime\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csprojResolveAssemblyReference.cache
+D:\CodeSetup\CyerDime\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+D:\CodeSetup\CyerDime\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+D:\CodeSetup\CyerDime\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csprojResolveAssemblyReference.cache
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csprojResolveAssemblyReference.cache
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+E:\Works\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb
+I:\OnlineTestApp\Code\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.dll
+I:\OnlineTestApp\Code\Utilities.EmailSender\bin\Debug\Utilities.EmailSender.pdb
+I:\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csprojAssemblyReference.cache
+I:\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.csproj.CoreCompileInputs.cache
+I:\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.dll
+I:\OnlineTestApp\Code\Utilities.EmailSender\obj\Debug\Utilities.EmailSender.pdb

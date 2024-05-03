@@ -1,0 +1,81 @@
+﻿@model OnlineTestApp.ViewModel.Candidate.CandidateTestQuestionsViewModel
+@if (Model.CandidateTestQuestions != null)
+{
+    TimeSpan questionDuration = (@Model.CandidateTestQuestions.EndTime - OnlineTestApp.DateSettings.CurrentDateTime).Value;
+    <form id="CandidateQuestionDetails">
+        <div class="question-box clearfix">
+            @Html.HiddenFor(m => m.CandidateTestQuestions.FkTestInvitationId)
+            @Html.HiddenFor(m => m.CandidateTestQuestions.CandidateTestQuestionId)
+            @Html.HiddenFor(m => m.IsLastQuestion)
+
+            <div class="question-heading">
+                <h5><i class="fa fa-clock-o mr-1" aria-hidden="true"></i><span id="ques-timer"> </span></h5>
+                <h2><b>Q&nbsp;<span class="ques-num">@Model.CandidateTestQuestions.DisplayOrder&nbsp;</span>.</b> &nbsp; @Model.CandidateTestQuestions.QuestionTitle</h2>
+            </div>
+
+            <ul class="list-unstyled QuestionOptions">
+                @if (@Model.CandidateTestQuestions.FieldType == @OnlineTestApp.Enums.Question.FieldType.CheckBoxList)
+                {
+                    Html.RenderPartial("~/Views/Candidate/Controls/_CheckBoxList.cshtml", @Model);
+                }
+                else
+                {
+                    Html.RenderPartial("~/Views/Candidate/Controls/_RadioButtonList.cshtml", @Model);
+                }
+            </ul>
+
+            <div class="alert alert-danger d-none mt-4" id="error-question-selection">
+                Please select one of the option.
+            </div>
+        </div>
+        <div class="right-btn float-right mt-4">
+
+            @if (!@Model.IsLastQuestion)
+            {
+                <button type="button" class="btn btn-default btn-block btn-blue" onclick="GetNextQuestion()">Next <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+                @*<button type="button" class="btn btn-default btn-block" onclick="UpdateSkipQuestion('@Model.CandidateTestQuestions.CandidateTestQuestionId','@Model.CandidateTestQuestions.FkTestInvitationId')">Skip <i class="fa fa-share" aria-hidden="true"></i></button>*@
+                <button type="button" class="btn btn-default btn-block" onclick="SkipQuestion()">Skip <i class="fa fa-share" aria-hidden="true"></i></button>
+
+
+            }
+            else
+            {
+                @*<button type="button" class="btn btn-default btn-block" onclick="UpdateSkipQuestion('@Model.CandidateTestQuestions.CandidateTestQuestionId','@Model.CandidateTestQuestions.FkTestInvitationId')">Skip And Finish<i class="fa fa-share" aria-hidden="true"></i></button>*@
+                <button type="button" class="btn btn-default btn-block btn-blue " onclick="SubmitTest()">Finish <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+            }
+
+        </div>
+    </form>
+
+    <script>
+        var totalQuesTime = '@questionDuration.Minutes:@questionDuration.Seconds';
+        var totalQuestTimeArr = totalQuesTime.split(':');
+        var questMinutes = totalQuestTimeArr[0];
+        var questSec = totalQuestTimeArr[1];
+        var Quesmillis = questSec * 1000 + questMinutes * 60 * 1000;
+           questionSetInterVariable=  setInterval(function () {
+                Quesmillis -= 1000;
+                displayQuesTimer();
+            }, 1000);
+        function displayQuesTimer() {
+            var hours = Math.floor(Quesmillis / 36e5),
+                mins = Math.floor((Quesmillis % 36e5) / 6e4),
+                secs = Math.floor((Quesmillis % 6e4) / 1000);
+            if (hours <= 0 && mins <= 0 && secs <= 0) {
+                if ($("#IsLastQuestion").val() == "False") {
+                    SkipQuestion();
+                } else {
+                    SubmitTest();
+                }
+            }
+            else {
+                $('#ques-timer').html(hours + ':' + mins + ':' + secs);
+            }
+            // for change timer color
+            if (mins < 1 && secs <30) {
+                $("#ques-timer").addClass('text-danger blink_me');
+            }
+           }
+
+    </script>
+}

@@ -1,0 +1,37 @@
+﻿@model OnlineTestApp.ViewModel.ApplyNow.Step2ConfirmationViewModel
+
+@{
+    Layout = "~/Views/Shared/MasterPages/CandidateApplyNowMaster.cshtml";
+    ViewBag.PageTitle = "Apply For Test";
+}
+<form method="post" id="applyForCandidateTest" action="/applynow/candidatetestdetails" data-success-method="AjaxRedirectToUrlSuccessfully" data-post-type='ajax'>
+    @Html.AntiForgeryToken()
+    <div class="main-card read-instrution-card">
+        <div class="content-card">
+            <h6>
+                @Model.TestDetails.TestTitle
+                @Html.HiddenFor(m => m.TestDetails.TestDetailId)
+                @Html.HiddenFor(m => m.CandidateAssignedId)
+                @Html.HiddenFor(m => m.ReferenceNumber)
+
+            </h6>
+            <p>
+                @Model.TestDetails.TestIntroductoryText
+            </p>
+            <div class="box-content">
+                <p class="heading-box">Read Instruction</p>
+                <ul class="list-inline">
+                    <li class="list-inline-item">Time alloted : @Model.TestDetails.TotalTime</li>
+                    <li class="list-inline-item text-right">DO NOT refresh the page.</li>
+                    <li class="list-inline-item">Total marks : @Model.TestDetails.TotalScore</li>
+                    <li class="list-inline-item text-right">All the best</li>
+                </ul>
+            </div>
+            <button type="submit" class="btn btn-secondary"> Start</button>
+
+        </div>
+    </div>
+
+
+
+</form>

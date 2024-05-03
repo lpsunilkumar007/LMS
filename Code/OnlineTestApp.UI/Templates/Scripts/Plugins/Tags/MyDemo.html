@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="css/jquery.tag-editor.css" rel="stylesheet" />
+    <script src="Js/jquery.caret.js"></script>
+    <script src="Js/jquery.tag-editor.js"></script>
+</head>
+<body>
+    <textarea tabindex="3" id="hero-demo">Ujjwal,example tags, sortable, autocomplete, edit in place, tab/cursor navigation, duplicate check, callbacks, copy-paste, placeholder, public methods, custom delimiter, graceful degradation</textarea>
+
+    <script>
+        $('#hero-demo').tagEditor({
+            placeholder: 'Enter tags ...',
+            autocomplete: { forceLowercase: true, source: '', minLength: 3, delay: 250, html: true, position: { collision: 'flip' } }
+        });
+        $('#hero-demo').show();
+    </script>
+</body>
+</html>

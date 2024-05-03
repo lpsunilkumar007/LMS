@@ -1,0 +1,96 @@
+﻿@model OnlineTestApp.ViewModel.Test.InviteForTest
+
+@{
+    ViewBag.PageTitle = "Invite Again";
+
+}
+@section PageHeading
+{
+    Manage Test
+}
+
+@section PageSubHeading
+{
+    Invite Again
+}
+@section PageBreadCrum
+ {
+    <li><a href="/question/viewquestions">Manage Test</a></li>
+    <li class="active"> Invite Again</li>
+}
+
+
+
+<form class="content-group" method="post" id="inviteAgain" data-post-type='ajax' action="/test/inviteagain?testDetailId=@ViewBag.TestDetailsId"
+      data-success-method="AjaxHitRunSuccessfully">
+
+    <div class="card">
+        <div class="card-body card-box-body">           
+            <div class="form-group">
+                @Html.TextAreaFor(m => m.EmailTo, new { placeholder = "Enter Candidate  Emails", @rows = 5 })
+                @Html.ValidationMessageFor(m => m.EmailTo)
+                <p class="help-block">( use semi-colon ";" or comma ',' for adding multiple email )</p>
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.EmailSubject, new { placeholder = "Email Subject" })
+                @Html.ValidationMessageFor(m => m.EmailSubject)
+
+            </div>
+            <div class="form-group">
+                @Html.TextAreaFor(m => m.EmailBody, new { placeholder = "Enter body" })
+                @Html.ValidationMessageFor(m => m.EmailBody)
+            </div>
+</div></div>
+
+
+            <div class="bg-gradient ">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                        <button type="reset" class="btn btn-secondary hideReset">
+                            <i class="fa fa-refresh"></i>
+                            Reset
+                        </button>
+                        <a href="/test/viewtests" class="btn btn-secondary">
+                            <i class="fa fa-arrow-left "></i>
+                            &nbsp; Back
+
+                        </a>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                        <button type="submit" class="btn btn-primary">
+                            Invite Candidate
+                            &nbsp; <i class="far fa-save"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+</form>
+
+@section pageFooterResources{
+    <script src="~/Templates/editor/ckeditor/ckeditor.js?v=@OnlineTestApp.SystemSettings.ChkEditorVersion"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('EmailBody', {
+            allowedContent: true,
+            height: '500px',
+            width: '100%',
+            forcePasteAsPlainText: true,
+            filebrowserUploadUrl: '/editor/uploadEmailTemplateImages/',
+            toolbar: [
+{ name: 'document', items: ['Source'] },
+{ name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+{ name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe'] },
+{ name: 'links', items: ['Link', 'Unlink'] },
+{ name: 'editing', groups: ['find', 'selection', 'spellchecker'], items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'] },
+'/',
+{ name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'] },
+{ name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
+{ name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+{ name: 'colors', items: ['TextColor', 'BGColor'] },
+{ name: 'tools', items: ['Maximize', 'ShowBlocks'] },
+            ]
+        });
+    </script>
+}

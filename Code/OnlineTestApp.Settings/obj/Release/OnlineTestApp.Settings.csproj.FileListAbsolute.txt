@@ -1,0 +1,10 @@
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\bin\Release\OnlineTestApp.Settings.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\bin\Release\OnlineTestApp.Settings.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\bin\Release\Utilities.Conversion.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\bin\Release\Utilities.Helper.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\bin\Release\Utilities.Conversion.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\bin\Release\Utilities.Helper.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\obj\Release\OnlineTestApp.Settings.csprojResolveAssemblyReference.cache
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\obj\Release\OnlineTestApp.Settings.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\obj\Release\OnlineTestApp.Settings.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Settings\obj\Release\OnlineTestApp.Settings.pdb

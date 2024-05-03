@@ -1,0 +1,253 @@
+﻿@model OnlineTestApp.ViewModel.Question.AddEditQuestionViewModel
+@{
+    ViewBag.PageTitle = "Edit Question";
+    
+}
+@section PageHeading
+{
+    Manage Questions
+}
+
+@section PageSubHeading
+{
+    Edit Question Details
+}
+@section PageBreadCrum
+ {
+<li><a href="/question/viewquestions">Manage Questions</a></li>
+    <li class="active"> Edit Question Details</li>
+}
+
+
+<form class="content-group" method="post" id="addEditQuestion"
+      action="/question/EditQuestion"
+      data-success-method="AjaxHitRunSuccessfully" data-post-type='ajax'>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Questions.QuestionId)
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Question Form</h3>
+        </div>
+        <div class="card-body card-box-body">
+            <div class="form-group row">
+                <div class="col-xl-2 col-lg-4 col-md-5 col-sm-12">
+                    <label>Question Title <i class="fa fa-asterisk"></i></label>
+                </div>
+                <div class="col-xl-10 col-lg-8 col-md-7 col-sm-12">
+
+                    @Html.TextBoxFor(m => m.Questions.QuestionTitle, new { autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(m => m.Questions.QuestionTitle)
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 col-lg-4 col-md-5 col-sm-12">
+                    <label>Question Description <i class="fa fa-asterisk"></i></label>
+                </div>
+                <div class="col-xl-10 col-lg-8 col-md-7 col-sm-12">
+                    @Html.TextAreaFor(m => m.Questions.QuestionDescription)
+                    @Html.ValidationMessageFor(m => m.Questions.QuestionDescription)
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 col-lg-4 col-md-2 col-sm-12">
+                    <label>Can Skip</label>
+                </div>
+                <div class="col-xl-10 col-lg-8 col-md-10 col-sm-12">
+                    <span class="custom-control custom-checkbox d-inline-block">
+                        @Html.CheckBoxFor(m => m.Questions.CanSkipQuestion, new { @class = "custom-control-input" })
+                        @*<input type="checkbox" class="custom-control-input" id="customCheck7" checked="">*@
+                        <label class="custom-control-label" for="Questions_CanSkipQuestion"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 col-lg-4 col-md-2 col-sm-12">
+                    <label>Negative Marks  </label>
+                </div>
+                <div class="col-xl-10 col-lg-8 col-md-10 col-sm-12">
+                    <span class="custom-control custom-checkbox d-inline-block">
+                        @Html.CheckBoxFor(m => m.Questions.NegativeMarks, new { @class = "custom-control-input" })
+                        @Html.ValidationMessageFor(m => m.Questions.NegativeMarks)
+                        <label class="custom-control-label" for="Questions_NegativeMarks"></label>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 pt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Level <i class="fa fa-asterisk"></i></h3>
+                </div>
+                <div class="card-body card-box-body">
+                    @Html.ListBoxFor(m => m.QuestionLevel, new SelectList(Model.LstQuestionLevel, "LookUpDomainValueId", "LookUpDomainValueText"))
+                    @Html.ValidationMessageFor(m => m.QuestionLevel)
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 pt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Technology <i class="fa fa-asterisk"></i></h3>
+                </div>
+                <div class="card-body card-box-body">
+                    @Html.ListBoxFor(m => m.QuestionTechnology, new SelectList(Model.LstQuestionTechnology, "LookUpDomainValueId", "LookUpDomainValueText"))
+                    @Html.ValidationMessageFor(m => m.QuestionTechnology)
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 pt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Total Time</h3>
+                </div>
+                <div class="card-body card-box-body">
+                    <div class="form-control spinner" id="spinner">
+                        @Html.TextBoxFor(m => m.Questions.TotalTime, new { @class = "spinner-input border-0 bg-white", max = 100, min = 0 })
+
+                        
+                        <span class="label-spinner">Minute</span>
+                        <div class="input-group-text border-0 bg-white">
+                            <button type="button" class="btn decrement_btn" data-action="decrement"><i class="fas fa-caret-up"></i></button>
+                            <button type="button" class="btn increment_btn" data-action="increment"><i class="fas fa-caret-down"></i></button>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Questions.TotalTime)
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 pt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Control</h3>
+                </div>
+                <div class="card-body card-box-body">
+                    @Html.DropDownListFor(m => m.Questions.FieldType, new SelectList(Model.LstQuestionFieldTypes, "FieldType", "FieldDisplayName"))
+                    @Html.ValidationMessageFor(m => m.Questions.FieldType)
+
+                </div>
+
+                @*<div class="card-body card-box-body control_body_option">
+                        <div class="custom-control custom-checkbox d-inline-block mr-5">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Checkbox</label>
+                        </div>
+
+                        <div class="custom-control custom-checkbox d-inline-block">
+                            <input type="checkbox" class="custom-control-input" checked="" id="customCheck12">
+                            <label class="custom-control-label" for="customCheck12">Radio</label>
+                        </div>
+
+                    </div>*@
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 pt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0">Maximum Score</h3>
+                </div>
+                <div class="card-body card-box-body">
+                    <div class="form-control spinner" id="spinner">
+                        @Html.TextBoxFor(m => m.Questions.MaxScore, new { @class = "spinner-input border-0 bg-white", max = 100, min = 0 })
+
+                        
+                        <span class="label-spinner">Score</span>
+                        <div class="input-group-text border-0 bg-white">
+                            <button type="button" class="btn decrement_btn" data-action="decrement"><i class="fas fa-caret-up"></i></button>
+                            <button type="button" class="btn increment_btn" data-action="increment"><i class="fas fa-caret-down"></i></button>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Questions.MaxScore)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3 class="mb-0"><span class="text-success">Options :</span> @*ONLINE TEST QUESTION PAPER DESIGN*@</h3>            
+        </div>
+        <div class="card-body card-box-body question-add-table">           
+                <table id="QuestionOptionsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="td-question">Options</th>
+                            <th scope="col" class="td-order">Set Order</th>
+                            <th scope="col" class="td-score">Set Score</th>
+                            <th scope="col" class="td-answer">Is Answer</th>
+                            <th scope="col" class="td-action"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="QuestionOptionsBody">
+                        @{var count = 1;
+                           
+                            foreach (var questionOptionsData in Model.Questions.LstQuestionOptions.OrderBy(x => x.DisplayOrder))
+                            {
+                                Html.RenderAction("_AddQuestionOptions", new { OptionsData = questionOptionsData, displayOrder = count });
+                                count = count + 1;
+                            }
+                        }
+                    </tbody>
+                </table>@Html.Hidden("OptionsOrder", @Model.Questions.LstQuestionOptions.Count + 1)
+                <span class="btn btn-primary btn-shadow" onclick="AddQuestionOptions()"><i class="fas fa-plus"></i> &nbsp; Add More Options</span>
+
+             
+        </div>
+    </div>
+   
+    <div class="bg-gradient">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                
+                <a href="/question/viewquestions" class="btn btn-secondary">
+                    <i class="fa fa-arrow-left position-right"></i>
+                    &nbsp; Back
+                </a>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                <button type="submit" class="btn btn-primary">
+                    Update Question Details  &nbsp;
+                    <i class="far fa-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>   
+</form>
+<script>
+    window.onbeforeunload = function () { return "Your work will be lost."; };
+</script>
+
+@*@section pageFooterResources{
+    <script type="text/javascript">
+        var wscrolltop = 0;
+        $("#QuestionOptionsTable tbody").sortable({
+            forcePlaceholderSized: true,
+            axis: "y",
+            start: function (event, ui) {
+                wscrolltop = $(window).scrollTop();
+            },
+            stop: function (event, ui) {
+                $("#QuestionOptionsList").find('tbody tr').each(function (index, element) {
+
+                    var hiddenInput = $(element).find(".displayOrder").find("input[type=\"text\"]").first();
+                    hiddenInput.val(index + 1);
+                });
+                $('table.table tr:odd').removeClass('even');
+                $('table.table tr:even').removeClass('even');
+
+                $('table.table tr:odd').addClass('even');
+                $('table.table tr:even').addClass('odd');
+            },
+            sort: function (event, ui) {
+                ui.helper.css({ 'top': ui.position.top + wscrolltop + 'px' });
+            }
+
+        });
+    </script>
+}*@

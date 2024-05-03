@@ -1,0 +1,17 @@
+D:\Codes\Utilities\Utilities.Export\bin\Release\Utilities.Export.dll
+D:\Codes\Utilities\Utilities.Export\bin\Release\Utilities.Export.pdb
+D:\Codes\Utilities\Utilities.Export\obj\Release\Utilities.Export.csprojResolveAssemblyReference.cache
+D:\Codes\Utilities\Utilities.Export\obj\Release\Utilities.Export.dll
+D:\Codes\Utilities\Utilities.Export\obj\Release\Utilities.Export.pdb
+D:\CyerDime\Utilities.Export\bin\Release\Utilities.Export.dll
+D:\CyerDime\Utilities.Export\bin\Release\Utilities.Export.pdb
+D:\CyerDime\Utilities.Export\obj\Release\Utilities.Export.csprojResolveAssemblyReference.cache
+D:\CyerDime\Utilities.Export\obj\Release\Utilities.Export.csproj.CoreCompileInputs.cache
+D:\CyerDime\Utilities.Export\obj\Release\Utilities.Export.dll
+D:\CyerDime\Utilities.Export\obj\Release\Utilities.Export.pdb
+E:\Works\OnlineTestApp\Code\Utilities.Export\bin\Release\Utilities.Export.dll
+E:\Works\OnlineTestApp\Code\Utilities.Export\bin\Release\Utilities.Export.pdb
+E:\Works\OnlineTestApp\Code\Utilities.Export\obj\Release\Utilities.Export.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\Utilities.Export\obj\Release\Utilities.Export.dll
+E:\Works\OnlineTestApp\Code\Utilities.Export\obj\Release\Utilities.Export.pdb
+E:\Works\OnlineTestApp\Code\Utilities.Export\obj\Release\Utilities.Export.csprojResolveAssemblyReference.cache

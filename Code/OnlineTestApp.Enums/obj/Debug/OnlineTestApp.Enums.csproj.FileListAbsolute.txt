@@ -1,0 +1,10 @@
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\bin\Debug\OnlineTestApp.Enums.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\bin\Debug\OnlineTestApp.Enums.pdb
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Debug\OnlineTestApp.Enums.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Debug\OnlineTestApp.Enums.dll
+E:\Works\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Debug\OnlineTestApp.Enums.pdb
+I:\OnlineTestApp\Code\OnlineTestApp.Enums\bin\Debug\OnlineTestApp.Enums.dll
+I:\OnlineTestApp\Code\OnlineTestApp.Enums\bin\Debug\OnlineTestApp.Enums.pdb
+I:\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Debug\OnlineTestApp.Enums.csproj.CoreCompileInputs.cache
+I:\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Debug\OnlineTestApp.Enums.dll
+I:\OnlineTestApp\Code\OnlineTestApp.Enums\obj\Debug\OnlineTestApp.Enums.pdb

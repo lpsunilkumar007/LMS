@@ -1,0 +1,154 @@
+﻿@{
+    ViewBag.Title = "CandidateTestQuestions";
+    Layout = "~/Views/Shared/_CandidateMaster.cshtml";
+}
+<div class="row">
+    <aside class="col-xl-2 col-lg-3 col-md-4 col-sm-12 col-12 left-side">
+        <div class="top-heading">
+            @*<h3> Eligible Test </h3>*@
+        </div>
+        <div class="left-panel text-center text-white">
+            @{Html.RenderAction("_CandidateTestLeftSide"); }
+
+        </div>
+    </aside>
+    <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12 right-side">
+        <div class="right-panel test-detail">
+            @{Html.RenderAction("_CandidateTestTimeDetails"); }
+            <div id="dvCandidateTestQuestionDetails">
+                @{Html.RenderAction("_CandidateTestQuestionDetails"); }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //on question time  over, load next one question
+    function NextQuestion() {
+        clearQuestiontimer();
+        PostData("/candidate/candidatenextquestion", $("#CandidateQuestionDetails").serialize(), GetNextQuestionSuccess, false);
+    }
+    // on skip button click and question time over
+    function SkipQuestion() {
+        clearQuestiontimer();
+        PostData("/candidate/candidatequestionskipped", $("#CandidateQuestionDetails").serialize(), UpdateSkipQuestionSuccess, false);
+    }
+    //On skip button
+    function UpdateSkipQuestion(CandidateTestQuestionId, TestInvitationId) {
+        clearQuestiontimer();
+        PostData("/candidate/candidatequestionskipped", { TestInvitationId: TestInvitationId, CandidateTestQuestionId: CandidateTestQuestionId }, UpdateSkipQuestionSuccess, false);
+    }
+    function UpdateSkipQuestionSuccess(result) {
+        if (result.Success) {
+            if (result.Message == "Test Completed") {
+                window.location = result.RedirectUrl;
+                // AjaxRedirectToUrlSuccessfully(result);
+            }
+            else {
+                $("#dvCandidateTestQuestionDetails").html(result.OutPut);
+                updateCandidateLeftPanel("skipped");
+            }
+        }
+        else {
+            $("#error-question-selection").removeClass('d-none');
+        }
+    }
+    //Next Question
+    function GetNextQuestion() {
+        if (hasCandidateAnswered()) {
+            clearQuestiontimer();
+            PostData("/candidate/candidatequestiondetails", $("#CandidateQuestionDetails").serialize(), GetNextQuestionSuccess, false);
+        } else {
+            $("#error-question-selection").removeClass('d-none');
+        }
+    }
+    function GetNextQuestionSuccess(result) {
+        clearQuestiontimer();
+        if (result.Success) {
+            if (result.Message == "Test Completed") {
+                window.location = result.RedirectUrl;
+                // AjaxRedirectToUrlSuccessfully(result);
+            }
+            else {
+                $("#dvCandidateTestQuestionDetails").html(result.OutPut);
+                updateCandidateLeftPanel("attempted");
+            }
+        }
+        else {
+            $("#error-question-selection").removeClass('d-none');
+        }
+    }
+    //on finish
+    function SubmitTest() {
+        clearQuestiontimer();
+        if (hasCandidateAnswered()) {
+            PostData("/candidate/candidatequestiondetails", $("#CandidateQuestionDetails").serialize());
+        } else {
+
+            PostData("/candidate/candidatequestionskipped", $("#CandidateQuestionDetails").serialize());
+        }
+        FinishTest();
+    }
+    // used to calculate test result i.e obtained marks etc
+    function FinishTest() {
+        PostData("/candidate/finishtest", $("#CandidateQuestionDetails").serialize(), FinishTestSuccess, false);
+    }
+    //
+    function FinishTestSuccess(result) {
+        if (result.Success) {
+            if (result.Message == "Test Completed") {
+                window.location = result.RedirectUrl;
+            }
+        }
+    }
+    //
+    function updateCandidateLeftPanel(action) {
+        var totalQuest = $("#total-ques-count").attr('total-ques');
+        totalQuest = parseInt(totalQuest);
+
+        var totalAttemptedQuest = $("#attempted-ques-count").attr('total-attempted');
+        totalAttemptedQuest = parseInt(totalAttemptedQuest);
+
+        var totalSkippedQuest = $("#skipped-ques-count").attr('total-skipped');
+        totalSkippedQuest = parseInt(totalSkippedQuest);
+
+        if (action == "attempted") {
+            totalAttemptedQuest = parseInt(totalAttemptedQuest) + 1;
+            $("#attempted-ques-count").html(totalAttemptedQuest);
+            $("#attempted-ques-count").attr('total-attempted', totalAttemptedQuest);
+        } else if ("skipped") {
+            totalSkippedQuest = parseInt(totalSkippedQuest) + 1;
+            $("#skipped-ques-count").html(totalSkippedQuest);
+            $("#skipped-ques-count").attr('total-skipped', totalSkippedQuest);
+        }
+        //update left panel values for attempted  and Pending count
+
+        var totalPendingQuest = totalQuest - (totalAttemptedQuest + totalSkippedQuest);           
+        $("#pending-ques-count").html(totalPendingQuest);
+        $("#pending-ques-count").attr('total-pending', totalPendingQuest);
+    }
+    //
+    function UpdateSelectedVal() {
+        var answerIds = '';
+        $.each($(".QuestionOptions .custom-control-input"), function (key, value) {
+            if (value.checked) {
+                answerIds = answerIds + $(value)[0].id + ",";
+            }
+        });
+        answerIds = answerIds.replace(/,\s*$/, "");
+        // $("#IsSelectedAnswer").val(answerIds);
+        $("#CandidateTestQuestions_IsSelectedAnswer").val(answerIds);
+    }
+    //
+    function hasCandidateAnswered() {
+        if ($("#CandidateTestQuestions_IsSelectedAnswer").val() == "") {
+            return false;
+        } else { return true; }
+    }
+    //
+    function clearQuestiontimer() {
+        if (questionSetInterVariable != null && questionSetInterVariable != undefined) {
+            clearInterval(questionSetInterVariable);
+        }
+    }
+</script>

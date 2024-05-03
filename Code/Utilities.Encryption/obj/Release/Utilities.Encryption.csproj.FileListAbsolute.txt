@@ -1,0 +1,12 @@
+D:\CyerDime\Utilities.Encryption\bin\Release\Utilities.Encryption.dll
+D:\CyerDime\Utilities.Encryption\bin\Release\Utilities.Encryption.pdb
+D:\CyerDime\Utilities.Encryption\obj\Release\Utilities.Encryption.csprojResolveAssemblyReference.cache
+D:\CyerDime\Utilities.Encryption\obj\Release\Utilities.Encryption.csproj.CoreCompileInputs.cache
+D:\CyerDime\Utilities.Encryption\obj\Release\Utilities.Encryption.dll
+D:\CyerDime\Utilities.Encryption\obj\Release\Utilities.Encryption.pdb
+E:\Works\OnlineTestApp\Code\Utilities.Encryption\bin\Release\Utilities.Encryption.dll
+E:\Works\OnlineTestApp\Code\Utilities.Encryption\bin\Release\Utilities.Encryption.pdb
+E:\Works\OnlineTestApp\Code\Utilities.Encryption\obj\Release\Utilities.Encryption.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\Utilities.Encryption\obj\Release\Utilities.Encryption.dll
+E:\Works\OnlineTestApp\Code\Utilities.Encryption\obj\Release\Utilities.Encryption.pdb
+E:\Works\OnlineTestApp\Code\Utilities.Encryption\obj\Release\Utilities.Encryption.csprojResolveAssemblyReference.cache

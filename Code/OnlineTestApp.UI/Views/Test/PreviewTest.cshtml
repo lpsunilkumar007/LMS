@@ -1,0 +1,54 @@
+﻿@model OnlineTestApp.ViewModel.Test.PreviewTestViewModel
+
+@{
+    Layout = "~/Views/Shared/MasterPages/CandidateApplyNowMaster.cshtml";
+    ViewBag.PageTitle = "Preview Test";
+}
+
+<div class="container-fluid">
+    <div class="top-breadcrumb">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <p>Total Questions : <a href="javascript:void(0)">@Model.TempTests.TotalQuestions</a></p>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <h4>Total Time: <span>@Model.TempTests.TotalTime minutes</span></h4>
+            </div>
+        </div>
+    </div>
+
+    @foreach (var question in Model.LstQuestions)
+    {
+        int index = Model.LstQuestions.FindIndex(a => a.QuestionId == question.QuestionId)+1;
+        <div class="question-box">
+            <div class="question-heading">
+                <h2><span class="ques-num">@index </span>@question.QuestionTitle</h2>
+                <h5><span class="ques-num">&nbsp; </span> @question.QuestionDescription</h5>
+            </div>
+
+            @if (@question.FieldType == @OnlineTestApp.Enums.Question.FieldType.CheckBoxList)
+            {
+                Html.RenderPartial("~/Views/Test/Controls/PreviewTest/CheckBoxList.cshtml", @question);
+            }
+            else
+            {
+                Html.RenderPartial("~/Views/Test/Controls/PreviewTest/RadioButtonList.cshtml", @question);
+            }
+        </div>
+    }
+
+</div>
+
+
+<style>
+    .container-steps, .container-steps .row {
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .question-box {
+        height: auto;
+        padding: 20px 50px;
+        margin: 25px 60px;
+    }
+</style>

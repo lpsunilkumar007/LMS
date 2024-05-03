@@ -1,0 +1,180 @@
+﻿@model OnlineTestApp.ViewModel.Question.ViewQuestionViewModel
+@{
+    ViewBag.PageTitle = "View Questions";
+
+}
+@section PageHeading
+{
+    Manage Questions
+}
+@section PageSubHeading
+{
+    View Questions
+}
+@section PageBreadCrum
+ {
+    <li><a href="/question/viewquestions">Manage Questions</a></li>
+    <li class="active"> View Questions</li>
+}
+<form role="form" method="get">
+    <div class="card-body card-box-body">
+        <div class="form-row">
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Question Title</label>
+                    @Html.TextBoxFor(m => m.QuestionTitle)
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Question Technology</label>
+                    @Html.DropDownListFor(m => m.QuestionTechnology, new SelectList(Model.LstQuestionTechnology, "LookUpDomainValueId", "LookUpDomainValueText"), "Please Select")
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <label>Question Level</label>
+                    @Html.DropDownListFor(m => m.QuestionLevel, new SelectList(Model.LstQuestionLevel, "LookUpDomainValueId", "LookUpDomainValueText"), "Please Select")
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <a href="/question/viewquestions" class="btn btn-secondary">
+                        Reset
+                        &nbsp; <i class="fa fa-refresh position-right"></i>
+                    </a>
+
+                    <button class="btn btn-info" value="Search">Search &nbsp;<i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div class="card-box-body card-body mt-4">
+    @if (Model.LstQuestions.Count > 0)
+    {
+        string sorting = Model.SortBy;
+
+
+        <div class="row justify-content-between">
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                <div class="search-data">
+                    <input type="text" data-filter-grid="true" data-filter-grid-id="filter-questions" placeholder="search" />
+                    <span class="search-icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                @{
+                    Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize, isTopPaging = true });
+                }
+            </div>
+        </div>
+        <div class="data-grid pt-3">
+            <table class="display datatable-pagination table table-stripped dataTable" cellspacing="0">
+                <thead>
+                    <tr>
+
+                        @switch (sorting)
+                        {
+                            case "QuestionTitle asc":
+                                <th class="sorting_asc"><a href="?sortBy=QuestionTitle desc">Question Title</a></th>
+                                break;
+                            case "QuestionTitle desc":
+                                <th class="sorting_desc"><a href="?sortBy=QuestionTitle asc">Question Title</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=QuestionTitle asc">Question Title</a></th>
+                                break;
+                        }
+
+                        @switch (sorting)
+                        {
+                            case "FieldType asc":
+                                <th class="sorting_asc"><a href="?sortBy=FieldType desc">Field Type</a></th>
+                                break;
+                            case "FieldType desc":
+                                <th class="sorting_desc"><a href="?sortBy=FieldType asc">Field Type</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=FieldType asc">Field Type</a></th>
+                                break;
+                        }
+
+                        <th>Question Level</th>
+                        <th>Technology</th>
+                        <th>Total Time</th>
+                        <th>Can skip question</th>
+                        <th>Negative marks</th>
+                        <th>Max score</th>
+                        <th>Total score</th>
+                        <th>Total Options</th>
+                        @switch (sorting)
+                        {
+                            case "CreatedDateTime asc":
+                                <th class="sorting_asc"><a href="?sortBy=CreatedDateTime desc">Created At</a></th>
+                                break;
+                            case "CreatedDateTime desc":
+                                <th class="sorting_desc"><a href="?sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                            default:
+                                <th class="sorting"><a href="?sortBy=CreatedDateTime asc">Created At</a></th>
+                                break;
+                        }
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="filter-questions">
+                    @foreach (var data in Model.LstQuestions)
+                    {
+                        <tr>
+                            <td>@data.QuestionTitle</td>
+                            <td>@data.FieldType.ToString()</td>
+                            <td>@String.Join(", ", data.LstQuestionLevel.Select(x => x.QuestionLevels.LookUpDomainValueText))</td>
+                            <td>@String.Join(", ", data.LstQuestionTechnology.Select(x => x.QuestionTechnologies.LookUpDomainValueText))</td>
+                            <td>@data.TotalTime</td>
+                            <td>@data.CanSkipQuestion</td>
+                            <td>@data.NegativeMarks</td>
+                            <td>@data.MaxScore</td>
+                            <td>@data.TotalScore</td>
+                            <td>@data.TotalOptions</td>
+                            <td><time>@data.CreatedDateTime_ToLongDateString</time></td>
+                            <td class="tr-action actionsBtn">
+
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="/question/editquestion/@data.QuestionId" class="dropdown-item">Edit <i class="fas fa-pencil-alt"></i></a>
+                                        <a href="javascript:void(0)" class="dropdown-item"
+                                           data-inline-delete="true" data-succuss-message="Question deleted successfully"
+                                           data-process-url="/question/deletequestion?questionId=@data.QuestionId">Delete<i class="fas fa-trash"></i></a>
+                                    </div>
+                                </div>
+
+
+
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+
+
+        Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize });
+
+
+
+    }
+    else
+    {
+        <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@model OnlineTestApp.ViewModel.SampleTest.SampleTestViewModel
+@{
+    Layout = "~/Views/Shared/_CompanyModelPopUpMaster.cshtml";
+
+}
+
+            @if (Model.Questions.Count > 0)
+            {
+                <table class="display datatable-pagination table table-stripped dataTable" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Question </th>
+                            <th>Marks </th>
+                            <th>Duration </th>
+                            <th>Technology</th>
+                        </tr>
+                    </thead>
+                    @{
+                        int i = 0;
+                    }
+                    <tbody id="filter-questions">
+                        @foreach (var data in Model.SampleTestQuestions)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().QuestionDescription</td>
+                                <td>@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().TotalScore</td>
+                                <td>@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().TotalTime</td>
+                                <td>@Model.LookUpDomainValues.Where(x => x.LookUpDomainValueId == data.FkQuestionTechnologyId).FirstOrDefault().LookUpDomainValueText</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+            }
+       
+

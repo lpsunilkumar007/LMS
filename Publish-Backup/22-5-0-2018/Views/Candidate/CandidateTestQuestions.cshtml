@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "CandidateTestQuestions";
+    Layout = "~/Views/Shared/_CandidateMaster.cshtml";
+}
+<div class="row">
+    <aside class="col-xl-2 col-lg-3 col-md-4 col-sm-12 col-12 left-side">
+        <div class="top-heading">
+            @*<h3> Eligible Test </h3>*@
+        </div>
+        <div class="left-panel text-center text-white">
+            @{Html.RenderAction("_CandidateTestLeftSide"); }
+
+        </div>
+    </aside>
+    <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12 right-side">
+        <div class="right-panel test-detail">
+            @{Html.RenderAction("_CandidateTestTimeDetails"); }
+            <div id="dvCandidateTestQuestionDetails">
+                @{Html.RenderAction("_CandidateTestQuestionDetails"); }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //on finish
+    function SubmitTest(CandidateTestQuestionId, TestInvitationId) {
+        if (hasCandidateAnswered()) {         
+            PostData("/candidate/candidatequestiondetails", $("#CandidateQuestionDetails").serialize());
+        } else {
+            PostData("/candidate/candidatequestionskipped", { TestInvitationId: TestInvitationId, CandidateTestQuestionId: CandidateTestQuestionId });
+        }
+        FinishTest(TestInvitationId);
+    }
+
+    // used to calculate test result i.e obtained marks etc
+    function FinishTest(TestInvitationId) {     
+        PostData("/candidate/finishtest", { testInvitationId: TestInvitationId }, FinishTestSuccess, false);        
+    }
+
+    function FinishTestSuccess(result) {
+        if (result.Success) {
+            if (result.Message == "Test Completed") {
+                window.location = result.RedirectUrl;                
+            }
+        }
+    }
+    //On skip button
+    function UpdateSkipQuestion(CandidateTestQuestionId, TestInvitationId) {
+        PostData("/candidate/candidatequestionskipped", { TestInvitationId: TestInvitationId, CandidateTestQuestionId: CandidateTestQuestionId }, UpdateSkipQuestionSuccess, false);
+    }
+
+    function UpdateSkipQuestionSuccess(result) {
+        if (result.Success) {
+            if (result.Message == "Test Completed") {
+                window.location = result.RedirectUrl;
+                // AjaxRedirectToUrlSuccessfully(result);
+            }
+            else {
+                $("#dvCandidateTestQuestionDetails").html(result.OutPut);
+                //updateCandidateLeftPanel();
+            }
+        }
+        else {
+            $("#error-question-selection").removeClass('d-none');
+        }
+    }
+
+    //Next Question
+    function GetNextQuestion() {
+        if (hasCandidateAnswered()) {
+            PostData("/candidate/candidatequestiondetails", $("#CandidateQuestionDetails").serialize(), GetNextQuestionSuccess, false);
+        } else {
+            $("#error-question-selection").removeClass('d-none');
+        }
+    }
+    function GetNextQuestionSuccess(result) {
+        if (result.Success) {
+            if (result.Message == "Test Completed") {
+                window.location = result.RedirectUrl;
+                // AjaxRedirectToUrlSuccessfully(result);
+            }
+            else {
+                $("#dvCandidateTestQuestionDetails").html(result.OutPut);
+                updateCandidateLeftPanel();
+            }
+        }
+        else {
+            $("#error-question-selection").removeClass('d-none');
+        }
+    }
+
+    function updateCandidateLeftPanel() {
+        //update left panel values for attempted  and Pending count
+
+        var totalAttemptedQuest = $("#attempted-ques-count").attr('total-attempted');
+        totalAttemptedQuest = parseInt(totalAttemptedQuest) + 1;
+        $("#attempted-ques-count").html(totalAttemptedQuest);
+        $("#attempted-ques-count").attr('total-attempted', totalAttemptedQuest);
+
+        var totalPendingQuest = $("#pending-ques-count").attr('total-pending');
+        totalPendingQuest = parseInt(totalPendingQuest) - 1;
+        $("#pending-ques-count").html(totalPendingQuest);
+        $("#pending-ques-count").attr('total-pending', totalPendingQuest);
+    }
+
+    function UpdateSelectedVal() {
+        var answerIds = '';
+        $.each($(".QuestionOptions .custom-control-input"), function (key, value) {
+            if (value.checked) {
+                answerIds = answerIds + $(value)[0].id + ",";
+            }
+        });
+        answerIds = answerIds.replace(/,\s*$/, "");
+        // $("#IsSelectedAnswer").val(answerIds);
+        $("#CandidateTestQuestions_IsSelectedAnswer").val(answerIds);
+    }
+    function hasCandidateAnswered() {
+        if ($("#CandidateTestQuestions_IsSelectedAnswer").val() == "") {
+            return false;
+        } else { return true; }
+    }
+</script>

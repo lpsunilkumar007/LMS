@@ -1,0 +1,49 @@
+D:\Projects\Nutrition7\Nutrition7\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+D:\Projects\Nutrition7\Nutrition7\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+D:\Projects\Nutrition7\Nutrition7\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojResolveAssemblyReference.cache
+D:\Projects\Nutrition7\Nutrition7\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+D:\Projects\Nutrition7\Nutrition7\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+D:\Codes\Utilities\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+D:\Codes\Utilities\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+D:\Codes\Utilities\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+D:\Codes\Utilities\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+D:\Codes\Utilities\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojResolveAssemblyReference.cache
+D:\Official\Projects\Common Codes\Utilities\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+D:\Official\Projects\Common Codes\Utilities\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+D:\Official\Projects\Common Codes\Utilities\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+D:\Official\Projects\Common Codes\Utilities\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+D:\CodeSetup\CyerDime\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+D:\CodeSetup\CyerDime\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+D:\CodeSetup\CyerDime\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojResolveAssemblyReference.cache
+D:\CodeSetup\CyerDime\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csproj.CoreCompileInputs.cache
+D:\CodeSetup\CyerDime\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+D:\CodeSetup\CyerDime\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojResolveAssemblyReference.cache
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csproj.CoreCompileInputs.cache
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+D:\Work\Projects_Svn\OnlineTestApp\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojResolveAssemblyReference.cache
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csproj.CoreCompileInputs.cache
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+D:\Work\Projects_Svn\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.Conversion.dll
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.Conversion.pdb
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojResolveAssemblyReference.cache
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csproj.CoreCompileInputs.cache
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+E:\Works\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb
+I:\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.dll
+I:\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.FileSystem.pdb
+I:\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.Conversion.dll
+I:\OnlineTestApp\Code\Utilities.FileSystem\bin\Debug\Utilities.Conversion.pdb
+I:\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csprojAssemblyReference.cache
+I:\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csproj.CoreCompileInputs.cache
+I:\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.csproj.CopyComplete
+I:\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.dll
+I:\OnlineTestApp\Code\Utilities.FileSystem\obj\Debug\Utilities.FileSystem.pdb

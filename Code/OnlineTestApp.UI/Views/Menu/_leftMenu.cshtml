@@ -1,0 +1,114 @@
+﻿@{
+    bool isSuperAdmin = OnlineTestApp.UserVariables.IsSuperAdmin;
+}
+<aside id="sidebar-wrapper" class="bg-dark">
+    <div class="Left-navbar">
+        <div class="nav-search">
+            <input type="text" class="mb-0" id="search" placeholder="Search">
+        </div>
+        <div class="mCustomScrollbar">
+            <ul class="sidebar-nav list-unstyled" id="navigation">
+
+                <li class="sidebar-nav-iten">
+                    <a href="/reports/dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-iten dropdown-Nav">
+                    <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                        <i class="fas fa-user"></i>
+                        <span>My Account</span>
+                    </a>
+                    <ul class="dropdownMenu list-unstyled">
+                        <li><a class="dropdown-item" href="/myaccount/editprofile">  Edit Profile</a></li>
+                        <li><a class="dropdown-item" href="/myaccount/changepassword"> Change Password</a></li>
+                    </ul>
+                </li>
+                @if (isSuperAdmin)
+                {
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                            <i class="fas fa-building"></i>
+                            <span>Manage Companies</span>
+                        </a>
+                        <ul class="dropdownMenu list-unstyled">
+                            <li><a class="dropdown-item" href="/companies/addnewcompany">  Add New Company</a></li>
+                            <li><a class="dropdown-item" href="/companies/viewcompanies"> View Companies</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                            <i class="fas fa-users"></i>
+                            <span>Manage Users</span>
+                        </a>
+                        <ul class="dropdownMenu list-unstyled">
+                            <li><a class="dropdown-item" href="/manageapplicationuser/adduser"> Add New User</a></li>
+                            <li><a class="dropdown-item" href="/manageapplicationuser/viewusers"> View Users</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                            <i class="fas fa-question"></i>
+                            <span>Manage Questions</span>
+                        </a>
+                        <ul class="dropdownMenu list-unstyled">
+                            <li><a class="dropdown-item" href="/question/addnewquestion">Add New Question</a></li>
+                            <li><a class="dropdown-item" href="/question/viewquestions">View Questions</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                            <i class="fas fa-cogs"></i>
+                            <span>Settings</span>
+                        </a>
+                        <ul class="dropdownMenu list-unstyled">
+                            <li><a class="dropdown-item" href="/lookup/viewlookupvalues?lookupdomaincode=@OnlineTestApp.Enums.LookUps.LookUpDomainCode.QuestionLevels.ToString().ToLower()">Manage Question Levels</a></li>
+                            <li><a class="dropdown-item" href="/lookup/viewlookupvalues?lookupdomaincode=@OnlineTestApp.Enums.LookUps.LookUpDomainCode.Technology.ToString().ToLower()">Manage Technology</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Templates</span>
+                        </a>
+                        <ul class="dropdownMenu list-unstyled">
+
+                            <li><a class="dropdown-item" href="/managesystememailtemplate/addnewemailtemplate">Add New System Email Template</a></li>
+
+                            <li><a class="dropdown-item" href="/managesystememailtemplate/viewemailtemplates"> View Email Templates</a></li>
+
+                        </ul>
+                    </li>
+                }
+                <li class="sidebar-nav-iten dropdown-Nav">
+                    <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                        <i class="fas fa-building"></i>
+                        <span>Manage Test</span>
+                    </a>
+                    <ul class="dropdownMenu list-unstyled">
+                        <li><a class="dropdown-item" href="/test/addnewtest"> Add New Test</a></li>
+                        <li><a class="dropdown-item" href="/test/viewtests"> View My Test</a></li>
+                    </ul>
+                </li>
+                @if (OnlineTestApp.UserVariables.CanAccessAdminModules)
+                {                   
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Templates</span>
+                        </a>
+                        <ul class="dropdownMenu list-unstyled">                           
+                            <li><a class="dropdown-item" href="/manageadminemailtemplates/viewemailtemplates"> View Email Templates</a></li>
+
+                        </ul>
+                    </li>
+                }
+
+
+            </ul>
+        </div>
+
+    </div>
+</aside>

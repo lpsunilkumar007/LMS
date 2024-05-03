@@ -1,0 +1,30 @@
+﻿@model OnlineTestApp.ViewModel.Company.TestMockupViewModel
+<div id="experience-tab" class="invite-test-tabs">
+    <h3> 1. Experience Level </h3>
+    <div class="col exp-tab">
+       
+        @for (int i = 0; i < Model.LstExperienceLevel.Count(); i++)
+        {
+
+            var check = "";
+            if (Model.LstExperienceLevel[i].LookUpDomainValueText == "Intermediate")
+            {
+                check = "checked";
+            }
+            <div class="custom-control custom-radio">
+                <input type="radio" id="@Model.LstExperienceLevel[i].LookUpDomainValueId" name="experienceLevels" class="custom-control-input" value="@Model.LstExperienceLevel[i].LookUpDomainValueId" @check>
+                <label class="custom-control-label" for="@Model.LstExperienceLevel[i].LookUpDomainValueId">@Model.LstExperienceLevel[i].LookUpDomainValueText</label>
+            </div>
+        }
+    </div>
+
+    <div class="alert alert-danger d-none " id="experience-tab-error">
+        Please select  experience level
+    </div>
+    <div class="note mt-4"> Please choose the experience level for the vacancy. This will be used to fetch questions for preparing the test </div>
+    <div class="right-btn float-right mt-4">
+        <button type="button" class="btn btn-default btn-block" onclick="experinceLevelSubmit()">Next <i class="fa fa-caret-right" aria-hidden="true"></i></button>
+    </div>
+
+
+</div>

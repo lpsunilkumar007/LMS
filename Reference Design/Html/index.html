@@ -1,0 +1,504 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+    <link href="css/chosen.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/StyleSheet.css" />
+
+    <title>ONLINE TESTING</title>
+</head>
+<body id="wrapper" class="MenuActive">
+    <nav class="navbar-top fixed-top flex-md-nowrap bg-primary py-0">
+        <a class="navbar-brand mr-0" href="#">
+            <img src="images/logo.png" />
+        </a>
+        <span class="px-4 menu-toggle" id="menu-toggle">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </span>
+
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="images/user-profile.png" class="user-profile mr-3" />  John Doe
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="javascript:void(0)">Edit Profile</a>
+                <a class="dropdown-item" href="javascript:void(0)">Change Password</a>
+                <a class="dropdown-item" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+    </nav>
+    <aside id="sidebar-wrapper" class="bg-dark">
+        <div class="Left-navbar">
+            <div class="nav-search">
+                <input type="text" class="form-control mb-0" id="search" placeholder="Search" title="Type in a name">
+            </div>
+            <div class="mCustomScrollbar">
+                <ul class="sidebar-nav list-unstyled" id="myUL">
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <span class="toggle-dropdown">
+                            <span class="icon-navigation"><i class="fab fa-buromobelexperte"></i></span>
+                            <span class="text-navigation">Main Navigation......</span>
+                        </span>
+                        <ul class="dropdownMenu list-unstyled" style="display: block;">
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-folder"></i>
+                                    <span>Application</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Examantion</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <span class="toggle-dropdown">
+                            <span class="icon-navigation"><i class="fas fa-question"></i></span>
+                            <span class="text-navigation">Question......</span>
+                        </span>
+                        <ul class="dropdownMenu list-unstyled" style="display: block;">
+                            <li class="dropdown-Nav active">
+                                <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>Question Paper</span>
+                                </a>
+                                <ul class="dropdownMenu list-unstyled" style="display: block;">
+                                    <li class="active"><a class="dropdown-item" href=""> <i class="fas fa-angle-double-right"></i>Add New Question paper</a></li>
+                                    <li><a class="dropdown-item" href=""> <i class="fas fa-angle-double-right"></i>Question Help</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-users"></i>
+                                    <span>Candidates</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Emails</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fa fa-table"></i>
+                                    <span>Forms</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-users"></i>
+                                    <span>Candidates</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Emails</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fa fa-table"></i>
+                                    <span>Forms</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-nav-iten dropdown-Nav">
+                        <span class="toggle-dropdown">
+                            <span class="icon-navigation"><i class="fas fa-cog"></i></span>
+                            <span class="text-navigation">Components......</span>
+                        </span>
+                        <ul class="dropdownMenu list-unstyled" style="display: block;">
+
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-code"></i>
+                                    <span>Helps Classes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="javascript:void(0)">
+                                    <i class="fas fa-folder-open"></i>
+                                    <span>Project Board</span>
+                                </a>
+                            </li>
+                            <li class="dropdown-Nav">
+                                <a class="dropdown-item toggle-dropdown" href="javascript:void(0)">
+                                    <i class="fas fa-user"></i>
+                                    <span>User Profile</span>
+                                </a>
+                                <ul class="dropdownMenu list-unstyled" style="display: none;">
+                                    <li><a class="dropdown-item" href="javascript:void(0)"><i class="fas fa-angle-double-right"></i> Settings</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)"><i class="fas fa-angle-double-right"></i> Change Password</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            
+        </div>
+    </aside>
+
+    <section class="right-content-area">
+        <div class="jumbotron bg-white heading-box py-4 mb-3">
+            <h1 class="text-primary">CUSTOMER SERVICES REPRESENTATIVE</h1>
+            <h4 class="mb-0">Welcome to customer help with Requirment...</h4>
+        </div>
+        <div class="mx-3 mx-sm-3 mx-xl-5 mx-lg-4 my-3 min-height">
+            <ol class="breadcrumb bg-gradient">
+                <li class="breadcrumb-item">
+                    <a href="#">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    Question Help
+                </li>
+            </ol>
+
+            <form>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">QUESTION FORM</h3>
+                    </div>
+                    <div class="card-body card-box-body">
+                        <div class="form-group row">
+                            <div class="col-xl-2 col-lg-4 col-md-5 col-sm-12">
+                                <label>Question Title</label>
+                            </div>
+                            <div class="col-xl-10 col-lg-8 col-md-7 col-sm-12">
+                                <input type="text" id="inputEmail3">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xl-2 col-lg-4 col-md-5 col-sm-12">
+                                <label>Question Description</label>
+                            </div>
+                            <div class="col-xl-10 col-lg-8 col-md-7 col-sm-12">
+                                <textarea id="txtEditor" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xl-2 col-lg-4 col-md-2 col-sm-12">
+                                <label>Can Skip</label>
+                            </div>
+                            <div class="col-xl-10 col-lg-8 col-md-10 col-sm-12">
+                                <span class="custom-control custom-checkbox d-inline-block">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck7" checked>
+                                    <label class="custom-control-label" for="customCheck7"></label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 pt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">LEVEL</h3>
+                            </div>
+                            <div class="card-body card-box-body">
+                                <select data-placeholder="year" multiple class="chosen-select" tabindex="8">
+                                    <option value=""></option>
+                                    <option>0 - 1 year</option>
+                                    <option>1 - 2 year</option>
+                                    <option>1 - 3 years </option>
+                                    <option>1 - 4 years</option>
+                                    <option>1 - 5 years</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 pt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">TECHNOLOGY</h3>
+                            </div>
+                            <div class="card-body card-box-body">
+                                <select data-placeholder="Technology" multiple class="chosen-select" tabindex="8">
+                                    <option value=""></option>
+                                    <option>Java</option>
+                                    <option>HTML5</option>
+                                    <option>CSS3</option>
+                                    <option>PHP</option>
+                                    <option>.NET</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 pt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">TOTAL TIME</h3>
+                            </div>
+                            <div class="card-body card-box-body">
+                                <div class="input-group spinner" id="spinner">
+                                    <input name="qty" type="text" class="form-control border-right-0 bg-white" value="5" min="1" max="10">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text border-left-0 bg-white">
+                                            <button type="button" class="btn decrement_btn" data-action="decrement"><i class="fas fa-caret-up"></i></button>
+                                            <button type="button" class="btn increment_btn" data-action="increment"><i class="fas fa-caret-down"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 pt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">CONTROL</h3>
+                            </div>
+                            <div class="card-body card-box-body control_body_option">
+                                <div class="custom-control custom-checkbox d-inline-block mr-5">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Checkbox</label>
+                                </div>
+
+                                <div class="custom-control custom-checkbox d-inline-block">
+                                    <input type="checkbox" class="custom-control-input" checked id="customCheck12">
+                                    <label class="custom-control-label" for="customCheck12">Radio</label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 pt-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="mb-0">MAXIMUM SCORE</h3>
+                            </div>
+                            <div class="card-body card-box-body">
+                                <div class="input-group spinner" id="spinner">
+                                    <input name="qty" type="text" class="form-control border-right-0 bg-white" value="60" min="1" max="10" disabled>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text border-left-0 bg-white">
+                                            <button type="button" class="btn decrement_btn" data-action="decrement"><i class="fas fa-caret-up"></i></button>
+                                            <button type="button" class="btn increment_btn" data-action="increment"><i class="fas fa-caret-down"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3 class="mb-0"><span class="text-success">ONLINE TEST :</span> ONLINE TEST QUESTION PAPER DESIGN</h3>
+                    </div>
+                    <div class="card-body card-box-body question-add-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="td-question"><span>1.</span> What is the prototype of the default constructor?</th>
+                                    <th scope="col" class="td-order">SET ORDER</th>
+                                    <th scope="col" class="td-score">SET SCORE</th>
+                                    <th scope="col" class="td-answer">IS ANSWER</th>
+                                    <th scope="col" class="td-action"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="col" class="td-question">
+                                        <span class="question-input">
+                                            <textarea placeholder="a. Test()" class="AutoHeightTextarea"></textarea>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-order" data-th="SET ORDER">
+                                        <span class="order-input">
+                                            <input type="text" class="" placeholder="1" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-score" data-th="SET SCORE">
+                                        <span class="score-input">
+                                            <input type="text" class="bg-success" placeholder="10" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-answer" data-th="IS ANSWER">
+                                        <span class="score-input">
+                                            <span class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                <label class="custom-control-label" for="customCheck2"></label>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-action">
+                                        <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td scope="col" class="td-question">
+                                        <span class="question-input">
+                                            <textarea placeholder="a. Test()" class="AutoHeightTextarea"></textarea>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-order" data-th="SET ORDER">
+                                        <span class="order-input">
+                                            <input type="text" class="" placeholder="1" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-score" data-th="SET SCORE">
+                                        <span class="score-input">
+                                            <input type="text" class=" bg-success" placeholder="10" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-answer" data-th="IN ANSWER">
+                                        <span class="score-input">
+                                            <span class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                                <label class="custom-control-label" for="customCheck3"></label>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-action">
+                                        <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td scope="col" class="td-question">
+                                        <span class="question-input">
+                                            <textarea placeholder="a. Test()" class="AutoHeightTextarea"></textarea>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-order" data-th="SET ORDER">
+                                        <span class="order-input">
+                                            <input type="text" class="" placeholder="1" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-score" data-th="SET SCORE">
+                                        <span class="score-input">
+                                            <input type="text" class="bg-success" placeholder="10" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-answer" data-th="IS ANSWER">
+                                        <span class="score-input">
+                                            <span class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                                <label class="custom-control-label" for="customCheck4"></label>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-action">
+                                        <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td scope="col" class="td-question disabled">
+                                        <span class="question-input">
+                                            <textarea placeholder="a. Test()" class="AutoHeightTextarea"></textarea>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-order disabled" data-th="SET ORDER">
+                                        <span class="order-input">
+                                            <input type="text" class="" placeholder="1" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-score disabled" data-th="SET SCORE">
+                                        <span class="score-input">
+                                            <input type="text" class="bg-success" placeholder="10" readonly />
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-answer disabled" data-th="IS ANSWER">
+                                        <span class="score-input">
+                                            <span class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                                <label class="custom-control-label" for="customCheck4"></label>
+                                            </span>
+                                        </span>
+                                    </td>
+                                    <td scope="col" class="td-action">
+                                        <button class="btn btn-primary"><i class="fas fa-undo-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-primary btn-shadow"><i class="fas fa-plus"></i> &nbsp; &nbsp; ANSWER</button>
+                    </div>
+                </div>
+                <div class="p-3 bg-gradient mt-4">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                            <button class="btn btn-success btn-shadow">SAVE &nbsp; <i class="far fa-save"></i></button>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 text-right">
+                            <button class="btn btn-primary btn-shadow">CANCEL &nbsp; <i class="fas fa-times"></i></button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <footer class="position-sticky py-4 px-5">
+            <p class="mb-0"><a href="javascript:void(0)">copyright &copy; Essor reserved</a></p>
+        </footer>
+
+
+    </section>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/chosen-plugin/chosen.jquery.min.js"></script>
+    <script src="js/chosen-plugin/init.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/common.js"></script>
+   <style>
+       .mCustomScrollbar {
+         
+           position: relative;
+           height: 750px;
+           -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+           box-sizing: border-box;
+       }
+       .MenuActive .mCustomScrollbar {
+           overflow: auto;
+       }
+       .MenuActive .mCustomScrollBox {
+           overflow: hidden;
+       }
+       .MenuActive .mCSB_container {
+           overflow: hidden;
+       }
+   </style>
+</body>
+</html>

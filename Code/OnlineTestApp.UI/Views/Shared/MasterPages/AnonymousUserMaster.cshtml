@@ -1,0 +1,30 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    @{Html.RenderPartial("~/Views/Shared/_pageHeader.cshtml");}
+    @RenderSection("pageHeaderResources", false)
+</head>
+<body style="overflow-x:hidden;">
+    @RenderBody()
+
+    @Scripts.Render("~/Anonymousjs")
+    @RenderSection("pageFooterResources", false)
+    @if (ViewBag.ErrorBlock != null)
+    {
+        <script type="text/javascript">
+            ErrorBlock('@ViewBag.ErrorBlock');
+        </script>
+    }
+    else if (ViewBag.success != null)
+    {
+        <script type="text/javascript">
+            Success('@ViewBag.Success');
+        </script>
+    }
+    
+    <footer class="py-2 px-5">
+        <p class="mb-0"><a href="javascript:void(0)">copyright &copy; </a></p>
+    </footer>
+</body>
+
+</html>

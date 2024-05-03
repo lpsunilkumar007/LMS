@@ -1,0 +1,40 @@
+﻿@model OnlineTestApp.ViewModel.Company.TestTockenVerficationViewModel
+@{
+    ViewBag.Title = "AccountVerification";
+    Layout = "~/Views/Shared/_CandidateMaster.cshtml";
+}
+
+<div class="row">
+    @{Html.RenderAction("_accountVerificationAsside"); }
+    <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12 col-12 right-side">
+        <div class="right-panel token">
+            <div class="row">
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h4 class="mt-5">Please verify your account with token</h4>
+                    @if (ViewBag.ErrorBlock != null)
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong> @ViewBag.ErrorBlock
+                        </div>
+                    }
+                    <form method="post" role="form">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.TextBoxFor(x => x.TestTocken, new { @class = "form-control" })
+                            @*<input type="text" class="form-control" id="token" placeholder="Add Token" name="token">*@
+                            @*<p style="font-size:11px; ">Add token in this field </p>*@
+                            @Html.ValidationMessageFor(x => x.TestTocken)
+                        </div>
+                        <button type="submit" class="btn btn-default">Verify Token</button>
+                    </form>
+                </div>
+
+
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <img class="rounded img-fluid" src="~/Template/Candidate/images/token-image.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

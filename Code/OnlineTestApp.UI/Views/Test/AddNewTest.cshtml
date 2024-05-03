@@ -1,0 +1,210 @@
+﻿@model OnlineTestApp.ViewModel.Test.AddNewTestViewModel
+@{
+    ViewBag.PageTitle = "Add New Test";
+
+}
+@section PageHeading
+ {
+    Manage Test
+}
+@section PageSubHeading
+{
+    Add New Test
+}
+@section PageBreadCrum
+ {
+    <li><a href="/test/viewtests">Manage Test</a></li>
+    <li class="active"> Add New Test</li>
+}
+<form method="post" id="submitTestQuestionDetails"
+      action="/test/testquestiondetails" data-clear-form="true"  data-success-method="AjaxRedirectToUrlSuccessfully"
+      data-post-type='ajax'>
+    @Html.AntiForgeryToken()
+    <div class="tab-test">
+        @*Tab 4 Starts*@
+        <div class="tab-section tab-last-active" id="step4Tab">
+            <div class="tab-test-container invite-candidate">
+                <a class="nav-tab" href="javascript:void(0)">
+                    <i class="fas fa-user"></i>
+                    Invite Candidate
+                </a>
+                <div class="tab-active-bg">
+                    <div class="tab-content form-white">
+                        <div id="step4">
+                            @{Html.RenderPartial("Step4", Model); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Tab 4 Ends*@
+
+        @*Tab 3 Starts*@
+        <div class="tab-section" id="step3Tab">
+            <div class="tab-test-container Question-paper">
+                <a class="nav-tab" href="javascript:void(0)">
+                    <i class="fas fa-users"></i>
+                    Question Paper
+                </a>
+                <div class="tab-active-bg">
+                    <div class="tab-content">
+                        <div id="step3">
+                            @{Html.RenderPartial("Step3", Model); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Tab 3 Ends*@
+
+
+
+        @*Tab 2 Starts*@
+        <div class="tab-section " id="step2Tab">
+            <div class="tab-test-container select-paper">
+                <a class="nav-tab" href="javascript:void(0)">
+                    <i class="fas fa-file-alt"></i>
+                    Select Test Paper
+                </a>
+                <div class="tab-active-bg">
+                    <div class="tab-content">
+                        <div id="step2">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*Tab 2 Ends*@
+
+
+        @*Tab 1 Starts*@
+        <div class="tab-section" id="step1Tab">
+            <div class="tab-test-container candidate-test">
+                <a class="nav-tab" href="javascript:void(0)">
+                    <i class="fas fa-users"></i>
+                    Eligible Candidate Test
+                </a>
+                <div class="tab-active-bg">
+                    <div class="tab-content form-white">
+                        <div id="step1">
+                            @{Html.RenderPartial("Step1", Model); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*Tab 1 Ends*@
+
+
+
+    </div>
+
+
+
+
+
+</form>
+
+@section pageFooterResources
+{
+    <script src="~/Templates/editor/ckeditor/ckeditor.js?v=@OnlineTestApp.SystemSettings.ChkEditorVersion"></script>
+<script type="text/javascript">
+//    CKEDITOR.replace('InviteForTest_EmailBody', {
+//            allowedContent: true,
+//            height: '500px',
+//            width: '100%',
+//            forcePasteAsPlainText: true,
+//            filebrowserUploadUrl: '/editor/uploadEmailTemplateImages/',
+//            toolbar: [
+//{ name: 'document', items: ['Source'] },
+//{ name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+//{ name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar', 'PageBreak', 'Iframe'] },
+//{ name: 'links', items: ['Link', 'Unlink'] },
+//{ name: 'editing', groups: ['find', 'selection', 'spellchecker'], items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'] },
+//'/',
+//{ name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat'] },
+//{ name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
+//{ name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+//{ name: 'colors', items: ['TextColor', 'BGColor'] },
+//{ name: 'tools', items: ['Maximize', 'ShowBlocks'] },
+//            ]
+//        });
+
+        function GoToStep1() {
+            $("#step1Tab").removeClass('tab-active');
+            $("#step1").show();
+            $("#step2").hide();
+        }
+
+
+        function GetStep2Data() {
+            $(this).preventdefault
+            var technology = [];
+            var level = $('#QuestionLevel :selected').val();
+            var time = $('#TestDetails_TotalTime').val();
+
+            var technology = [];
+            $('#QuestionTechnology :selected').each(function (i, selected) {
+                technology[i] = $(selected).val();
+            });
+
+            $('#step1 :input').valid()
+
+            if (trim(level) != "" && trim(time) != "" && technology.length > 0 && $('#step1 :input').valid()) {//technology length check
+                PostData("/Test/GetStep2Data", { technology: technology, level: level, totalTime: time }, GetStep2DataSuccess);
+            }
+        }
+        function GetStep2DataSuccess(result, data) {
+
+            if (result.Success == true) {
+                $("#step2").html(result.OutPut);
+                $("#step1Tab").addClass('tab-active');
+                $("#step2").show();
+                $("#step1").hide();
+            }
+            else {
+                ErrorBlock(result.Message);
+            }
+        }
+
+
+        function GetStep3Data() {
+            $("#step2Tab").hide();
+            $("#step2Tab").addClass('tab-active');
+            $("#step3").show();
+            $("#step2").hide();
+        }
+        function GetStep4Data() {
+            if ($('#step3 :input').valid()) {
+                $("#step3Tab").hide();
+                $("#step3Tab").addClass('tab-active');
+                $("#step4").show();
+                $("#step3").hide();
+            }
+        }
+
+        function SelectQuestionPaper(count, current) {
+            $("#step2").find("input:checkbox").prop('checked', false);
+            $("#step2").find(".paper-box").removeClass('selected');
+            $(current).find(".paper-box").addClass('selected');
+            $(current).find("input:checkbox").prop('checked', true);
+            //$("#LstViewPreparedTestBaches_" + count + "__IsSelected").prop('checked', true);
+        }
+
+
+
+
+        //function TestQuestionDetailsSuccess(data, form) {
+        //    if (data.Success) {
+        //        alert(data.OutPut);
+        //        window.location.href = "/test/addnewtest";
+        //    }
+        //    else {
+        //        ErrorBlock(data.Message);
+        //    }
+        //}
+
+</script>
+}

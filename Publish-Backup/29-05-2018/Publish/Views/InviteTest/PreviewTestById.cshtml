@@ -1,0 +1,73 @@
+﻿@model OnlineTestApp.ViewModel.SampleTest.SampleTestViewModel
+@{
+    Layout = "~/Views/Shared/_CompanyModelPopUpMaster.cshtml";
+
+}
+
+@if (Model.Questions.Count > 0)
+{
+    <div id="tbl-prev">
+        <table class="display datatable-pagination table table-stripped dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th width="350">Question </th>
+                    <th>Marks </th>
+                    <th>Duration </th>
+                    <th>Technology</th>
+                </tr>
+            </thead>
+            @{
+                int i = 0;
+                decimal duration = 0;
+                decimal totalMarks = 0;
+            }
+            <tbody id="filter-questions">
+                @foreach (var data in Model.SampleTestQuestions)
+                {
+                    i++;
+
+                    decimal queDuration = Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().TotalTime;
+                    duration = duration + queDuration;
+                    decimal marks = @Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().TotalScore;
+                        totalMarks = totalMarks + marks;
+                    <tr>
+                        <td>@i</td>
+                        <td width="350">@Model.Questions.Where(x => x.QuestionId == data.FkQuestionId).FirstOrDefault().QuestionDescription</td>
+                        <td><wnumber>@marks</wnumber></td>
+                        <td>@queDuration min</td>
+                        <td>@Model.LookUpDomainValues.Where(x => x.LookUpDomainValueId == data.FkQuestionTechnologyId).FirstOrDefault().LookUpDomainValueText</td>
+
+                    </tr>
+                }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th> Total</th>
+                    <th width="350"> &nbsp;</th>
+
+                    <th><wnumber>@totalMarks<wnumber></th>
+                    <th>@duration min</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+
+
+}
+else
+{
+    <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            WholeNumberConvertor();
+            $(".modal-footer").addClass('d-none');
+        })
+    </script>
+}

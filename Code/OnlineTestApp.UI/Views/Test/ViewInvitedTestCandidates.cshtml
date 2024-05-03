@@ -1,0 +1,171 @@
+﻿@model OnlineTestApp.ViewModel.Test.ViewTestDetailsViewModel
+
+@{
+    ViewBag.PageTitle = "View Tests";
+  
+
+}
+@section PageHeading
+{
+    Manage Test
+}
+@section PageSubHeading
+{
+    View Test Candidates
+}
+@section PageBreadCrum
+ {
+    <li><a href="/test/viewtests">Manage Test</a></li>
+    <li><a href="/test/viewtests">View Test</a></li>
+    <li class="active">View Test Candidates</li>
+}
+
+<form>
+    <div class="card-box-body card-body mt-4">
+        <h2>Test Details</h2>
+        <div class="form-row">
+            @*<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Test Title:</label><span>@Model.TestDetails.TestTitle</span>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Test Description:</label><span>@Model.TestDetails.TestIntroductoryText</span>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label>Total score:</label><span>@Model.TestDetails.TotalScore</span>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+
+    <div class="card-box-body card-body mt-4">
+        @if (Model.LstCandidateAssignedTest.Count > 0)
+        {
+
+            @Html.HiddenFor(m => m.TestDetailId)
+            <div class="form-row tst-res">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="bg-info"></div> <label>Test not started</label>
+
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="bg-success"></div> <label>Test completed</label>
+                        
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+                    <div class="form-group">
+                        <div class="bg-danger"></div> <label>Test not completed yet</label>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-between">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="search-data">
+                        <input type="text" data-filter-grid="true" data-filter-grid-id="filter-tests" placeholder="search" />
+                        <span class="search-icon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    @{
+                        Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize, isTopPaging = true });
+                    }
+                </div>
+            </div>
+            <div class="data-grid pt-3">
+                <table class="display datatable-pagination table table-stripped dataTable" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" /></th>
+                            <th>Candidate Email Address</th>
+                            <th>Dates</th>
+                            <th>Scores</th> @*Total Questions*@ @*Total Answered Questions*@ @*Max Score*@ @*Total Score*@
+                            <th>Questions/Answers</th>
+                            @*<th>Is Completed</th>*@
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="filter-tests">
+                        @foreach (var data in Model.LstCandidateAssignedTest)
+                        {
+                            <tr @(data.CandidateTestDetails == null ? "class=bg-info" : (data.CandidateTestDetails.IsCompleted ? "class=bg-success" : "class=bg-danger"))>
+                                <td></td>
+                                <td>@data.Candidates.CandidateEmailAddress</td>
+                                <td>
+                                    @if (data.CandidateTestDetails == null)
+                                    {
+                                        <span>Test Sent: <dateTime>@data.CreatedDateTime_ToLongDateString</dateTime><br /></span>
+                                    }
+                                    else
+                                    {
+                                        <span>
+                                            Test Sent: <dateTime>@data.CreatedDateTime_ToLongDateString</dateTime><br />
+                                            Test Start: <dateTime>@data.CandidateTestDetails.StartTime</dateTime><br />
+                                            Test End: <dateTime>@data.CandidateTestDetails.EndTime  </dateTime>
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (@data.CandidateTestDetails != null)
+                                    {
+                                        <span>
+                                            Total Score: @data.CandidateTestDetails.TotalScore<br />
+                                            Max Score: @data.CandidateTestDetails.MaxScore<br />
+                                            Score Obtained: @data.CandidateTestDetails.TotalCandidateScoreObtained
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (@data.CandidateTestDetails != null)
+                                    {
+                                        <span>
+                                            Total Questions: @data.CandidateTestDetails.TotalQuestions<br />
+                                            Total Correct Answers: @data.CandidateTestDetails.TotalCorrectAnswers<br />
+                                            Total Partial Correct Answers: @data.CandidateTestDetails.TotalPartialAnswers<br />
+                                            Total Wrong Answers: @data.CandidateTestDetails.TotalWrongAnswers
+                                        </span>
+                                    }
+                                </td>
+
+                                @*   <td></td>*@
+                                <td class="tr-action actionsBtn">
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Actions
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenu3">
+                                            <a href="/test/invitedtestcandidatetestresults/?candidateTestDetailId=@data.CandidateAssignedTestId&testDetailId=@data.TestDetailId" class="dropdown-item">View <i class="fa fa-search"></i></a>
+                                            <a href="javascript:void(0)" class="dropdown-item"
+                                               data-inline-delete="true" data-succuss-message="Test deleted successfully"
+                                               data-process-url="/test/deleteinvitedtestcandidatetest?candidateTestDetailId=@data.CandidateAssignedTestId">Delete<i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            Html.RenderAction("paging", "controls", new { totalRecords = Model.TotalRecords, pageSize = Model.PageSize });
+
+        }
+        else
+        {
+            <div class="norecords alert alert-info in alert-dismissable">No record found!</div>
+        }
+    </div>
+</form>
